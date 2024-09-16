@@ -1,5 +1,5 @@
-import "../About.css";
-import "../Home.css";
+import "./About.css";
+import "./Home.css";
 
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import FormGroup from '@mui/material/FormGroup';
