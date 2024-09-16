@@ -8,6 +8,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import store from './store';
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
