@@ -5,6 +5,7 @@ import "./About.css";
 import "./Layout";
 import Book from './Books/Book'; 
 import { fontSize } from "@mui/system";
+import { Button } from "@mui/material";
 
 const stories = [
   {
@@ -39,6 +40,14 @@ const stories = [
     num_comments: 9,
     points: 8,
     objectID: 3,
+  }, {
+    image: 'https://m.media-amazon.com/images/I/91Gy28f5M0L._AC_UF1000,1000_QL80_.jpg',
+    title: 'Boy In The Stripped',
+    url: 'https://stepheniemeyer.com/the-twilight-saga/',
+    author: 'Stephenie Meyer',
+    num_comments: 9,
+    points: 8,
+    objectID: 4,
   }
 ];
 
@@ -62,6 +71,9 @@ const Home = () => {
         <span className='flex-container'>
           <Book stories={stories} />
         </span>
+        <br></br>
+        <br></br>
+        <button></button>
       </div>
       </>
   );
