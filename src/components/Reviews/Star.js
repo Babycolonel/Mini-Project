@@ -9,7 +9,7 @@ const Star = ({filled, onClick}) => (
     style={{ 
       cursor: 'pointer', 
       color: filled ? 'gold' : 'gray', 
-      fontSize: '24px'  
+      fontSize: '5vw'  
     }}
 
   >

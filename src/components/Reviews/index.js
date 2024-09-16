@@ -1,4 +1,3 @@
-import '../Home.css';
 import '../About.css';
 import Rate from './StarRating';
 
@@ -16,14 +15,17 @@ const Review = ({ review }) => {
 
         <div className='reviewTitle'>
         <span>
-          <a href={url}>{title}</a>
+          <a>{title}</a>
           <br></br>
           <span>{author}</span>
-          
+          <Rate></Rate> 
         </span>
         </div>
-        <Rate></Rate>
-        <img src={image} className='bookImage'></img>
+        <div className = "rateStyle">
+
+        </div>
+
+        <img src={image} className='reviewImage'></img>
         <br></br>
 
         <br></br>
