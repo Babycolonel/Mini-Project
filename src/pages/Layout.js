@@ -6,20 +6,16 @@ import "../About.css";
 const Layout = () => {
     return(
       <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-        </ul>
-      </nav>
-
-
-      <Outlet />
-      </>
+          <nav>
+              <li className='navHeight'>
+                <div className='flex-container'>
+                  <Link to="/">Home</Link>
+                  <Link to="/about">About</Link>
+                </div>
+              </li>
+          </nav>
+        <Outlet />
+        </>
     )
 };
 
