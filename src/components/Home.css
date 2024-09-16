@@ -261,4 +261,8 @@ body {
   margin-left: 2vw;
   margin-bottom: 0vw;
   color:  rgb(212, 175, 106);;
+} 
+
+.navHeight {
+  list-style-type: none;
 }
