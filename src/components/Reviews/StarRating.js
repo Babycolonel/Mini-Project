@@ -41,7 +41,7 @@ const Rate = ({}) => {
   
     return (
       <div>
-        <h1>Your Rating</h1>
+        <h1>Your Rating!</h1>
         <StarRating 
           initialRating={3} 
           maxRating={5} 
