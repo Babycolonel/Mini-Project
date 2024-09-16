@@ -5,11 +5,11 @@ import Story from '.';
 
 const App = ({ stories }) =>
   <div className="app">
-     <div className="stories">
+     <div className="stories" >
     {(stories || []).map(x =>
         <Story story={x} />
     )}
-  </div>
+  </div>fffffffffffffffffffffffffffffffffffffffffffffffffffffff
   </div>
 
 export default App;

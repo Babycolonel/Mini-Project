@@ -13,7 +13,7 @@ const Story = ({ story }) => {
         <span>
           <a href={url}>{title}</a>
         </span>
-        <span>xxx  {author}</span>
+        <span>xffffffffffffffffffffffffffffffffffffffffffffffff {author}</span>
         <span>{num_comments}</span>
         <span>{points}</span>
       </div>
