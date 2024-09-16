@@ -4,9 +4,9 @@ import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Layout from "./pages/Layout";
+import Home from "./components/Home";
+import About from "./components/About";
+import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
