@@ -67,3 +67,18 @@
     width: 50px;
     background-color: red;
   }
+
+  .app {
+    margin-left: 10%;
+  }
+
+  .reviews{
+    padding: 0;
+
+  }
+
+  .reviewTitle{
+    position: absolute;
+    padding-left: 30vw;
+    font-size: 3vw;
+  }
