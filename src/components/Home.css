@@ -217,4 +217,35 @@ body {
 .bookImage {
   width: 20vw;
   height: 30vw;
+  align-items: center;
+  border-radius: 4%;
+  margin-left: 0.5vw;
+  margin-top: 0.5vw;
+}
+
+.homePageContainer {
+  width: 25vw;
+  height: 38vw;
+  color: white;
+  border: solid;
+  align-items: center;
+  margin-left: 2vw;
+  margin-top: 2vw;
+  display: flex;
+  border-radius: 4%;
+  background-color: rgb(212, 175, 106);
+}
+
+.homePageTitles {
+  font-size: 2vw;
+  align-self: center;
+  color: black;
+  margin-left: 0.5vw;
+}
+
+.homePageText {
+  font-size: 1.5vw;
+  align-items: center;
+  color: black;
+  margin-left: 0.5vw;
 }

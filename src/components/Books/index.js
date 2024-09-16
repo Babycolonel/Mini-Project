@@ -11,18 +11,25 @@ const Story = ({ story }) => {
     } = story;
   
     return (
-      <div className="story">
-        <img src={image} className='bookImage'></img>
-        <br></br>
-        <span>
-          <a href={url}>{title}</a>
-        </span>
-        <br></br>
-        <span>{author}</span>
-        <br></br>
-        <span>{num_comments}</span>
-        <span>{points}</span>
+      <div className='homePageContainer'>
+        <div className="story">
+            <img src={image} className='bookImage'></img>
+            <br></br>
+            <div className='homePageTitles'>
+                <span>
+                <a>{title}</a>
+                </span>
+                <br></br>
+            </div>
+        <div className='homePageText'>
+            <span>{author}</span>
+            <br></br>
+            <span>{num_comments} comments</span>
+            <br></br>
+            <a href={url}>Website</a>
+        </div>
       </div>
+      </div>  
     );
   }
 
