@@ -213,12 +213,3 @@ body {
 .red {
   color: red;
 }
-
-#linkedinLogo {
-  background-image: url('/home/maximilian/Downloads/inkedin-thumbnail-removebg-preview.png');
-  background-size: contain;
-  width: 3vw;
-  height: 3vw;
-  color: rgb(216, 216, 216);
-  
-}
