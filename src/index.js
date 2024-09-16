@@ -9,26 +9,27 @@ import About from "./components/About";
 import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import store from './store';
+import App from './components/App';
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
-export default function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
-}
+// export default function App() {
+//   return (
+//     <BrowserRouter>
+//       <Routes>
+//         <Route path="/" element={<Layout/>}>
+//           <Route index element={<Home />} />
+//           <Route path="about" element={<About />} />
+//         </Route>
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App stories={store.getState()} onArchive={() => {}}  />
   </React.StrictMode>
 );
 

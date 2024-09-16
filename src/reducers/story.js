@@ -7,7 +7,8 @@ const INITIAL_STATE = [
         num_comments: 3,
         points: 4,
         objectID: 0,
-      }, {
+      }, 
+      {
         image: 'https://m.media-amazon.com/images/I/81R2N4PRuUL._AC_UF1000,1000_QL80_.jpg',
         title: 'Diary of a Wimpy Kid',
         url: 'https://wimpykid.com/',
