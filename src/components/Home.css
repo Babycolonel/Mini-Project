@@ -67,7 +67,7 @@
 /* big name at the top */
 #titleName {
   position: absolute;
-  font-size: 5vw;
+  font-size: 8vw;
   margin: 0;
   padding: 0;
   top: 40%;
@@ -84,7 +84,7 @@
   font-size: 3vw;
   margin: 0;
   padding: 0;
-  top: 65%;
+  top: 75%;
   left: 50%;
   color: rgb(235, 210, 173);
   transform: translate(-50%, -50%);
@@ -252,6 +252,13 @@ body {
   align-items: center;
   color: black;
   margin-left: 0.5vw;
+}
+
+.headerBorder {
+  border: solid;
+  border-color: rgb(212, 95, 91);
+  border-width: 0.4vw;
+  background-color: rgb(141, 56, 53);
 }
 
 .headerText {

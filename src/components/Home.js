@@ -61,13 +61,15 @@ const Home = () => {
       <div id="home">
         <div id="titleBackground">
           <div id="titleName">
-            <p>「✦ Bookifyinator ✦」</p>
+            <p>Le Book Navigator</p>
           </div>
           <div id="titleWords">
             <p>welcome to our website</p>
           </div>
         </div>
+        <div className="headerBorder">
         <p className="headerText">Browse</p>
+        </div>
         <span className='flex-container'>
           <Book stories={stories} />
         </span>
