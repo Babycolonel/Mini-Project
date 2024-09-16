@@ -9,7 +9,7 @@ const App = ({ stories }) =>
     {(stories || []).map(x =>
         <Story story={x} />
     )}
-  </div>fffffffffffffffffffffffffffffffffffffffffffffffffffffff
+  </div>
   </div>
 
 export default App;

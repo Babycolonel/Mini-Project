@@ -213,3 +213,8 @@ body {
 .red {
   color: red;
 }
+
+.bookImage {
+  width: 20vw;
+  height: 30vw;
+}
