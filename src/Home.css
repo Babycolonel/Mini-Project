@@ -72,7 +72,7 @@
   padding: 0;
   top: 40%;
   left: 50%;
-  color: rgb(132, 250, 222);
+  color: rgb(212, 175, 106);
   transform: translate(-50%, -50%);
   /* keep font consistent */
   white-space: nowrap;
@@ -86,7 +86,7 @@
   padding: 0;
   top: 65%;
   left: 50%;
-  color: rgb(255, 255, 255);
+  color: rgb(235, 210, 173);
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
@@ -113,7 +113,7 @@
 li a:is(:link, :active, :visited) {
   /* have the image float toward the left */
   float: left;
-  color: rgb(159, 128, 196);
+  color: rgb(212, 175, 106);
   text-align: center;
   padding: 1vw 2vw;
   /* remove underlines */
@@ -191,7 +191,7 @@ a:is(:link, :active, :visited){
 }
 
 body {
-  background-color: rgb(65, 65, 65);
+  background-color: rgb(43, 75, 57);
 }
 
 /* profile picture image top left */
