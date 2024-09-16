@@ -221,6 +221,7 @@ body {
   border-radius: 4%;
   margin-left: 0.5vw;
   margin-top: 0.5vw;
+  transform: translate(10%,0%);
 }
 
 .homePageContainer {
@@ -228,10 +229,13 @@ body {
   height: 38vw;
   color: white;
   border: solid;
+  border-color: rgb(114, 83, 54);
+  border-width: 0.4vw;
   align-items: center;
-  margin-left: 2vw;
-  margin-top: 2vw;
-  display: flex;
+  margin-left: 4vw;
+  margin-right: 2vw;
+  margin-top: 3vw;
+  display: inline-block;
   border-radius: 4%;
   background-color: rgb(212, 175, 106);
 }
@@ -244,8 +248,16 @@ body {
 }
 
 .homePageText {
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   align-items: center;
   color: black;
   margin-left: 0.5vw;
+}
+
+.headerText {
+  font-size: 8vw;
+  font-family: "Bebas Neue", sans-serif;
+  margin-top: 0.5vw;
+  margin-left: 2vw;
+  margin-bottom: 0vw;
 }

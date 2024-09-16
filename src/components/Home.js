@@ -4,6 +4,7 @@ import "./Home.css";
 import "./About.css";
 import "./Layout";
 import Book from './Books/Book'; 
+import { fontSize } from "@mui/system";
 
 const stories = [
   {
@@ -30,6 +31,14 @@ const stories = [
     num_comments: 2,
     points: 6,
     objectID: 2,
+  }, {
+    image: 'https://i.ebayimg.com/images/g/QTUAAOSwIOtbYt82/s-l1200.jpg',
+    title: 'Twilight',
+    url: 'https://stepheniemeyer.com/the-twilight-saga/',
+    author: 'Stephenie Meyer',
+    num_comments: 9,
+    points: 8,
+    objectID: 3,
   }
 ];
 
@@ -49,10 +58,10 @@ const Home = () => {
             <p>welcome to our website</p>
           </div>
         </div>
-          <div className='flex-container'>
-          <Book stories={stories} />,
-          </div>
-          
+        <p className="headerText">Browse</p>
+        <span className='flex-container'>
+          <Book stories={stories} />
+        </span>
       </div>
       </>
   );
