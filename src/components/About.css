@@ -67,3 +67,35 @@
     width: 50px;
     background-color: red;
   }
+
+  .app {
+    margin-left: 10%;
+  }
+
+  .reviews{
+    padding: 0;
+
+  }
+
+  .reviewTitle{
+    position: absolute;
+    padding-left: 20vw;
+    font-size: 3vw;
+    width: fit-content ;
+    color: #000000;
+    
+  }
+
+  .rateStyle{
+    position: absolute;
+    padding-left: 70vw;
+    width: fit-content;
+  }
+
+  .reviewImage{
+    position: absolute;
+    border-radius: 4%;
+  }
+  a:is(:link, :active, :visited){
+    color: #000000;
+  }
