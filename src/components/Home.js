@@ -6,6 +6,7 @@ import "./Layout";
 import Book from './Books/Book'; 
 import { fontSize } from "@mui/system";
 import { Button } from "@mui/material";
+import store from '../reducers/story';
 
 const stories = [
   {
@@ -51,7 +52,7 @@ const stories = [
   }
 ];
 
-const Home = () => {
+const Home = ({ stories, onArchive}) => {
   return (
     <>
       <head>
@@ -71,11 +72,11 @@ const Home = () => {
         <p className="headerText">Browse</p>
         </div>
         <span className='flex-container'>
-          <Book stories={stories} />
+          <Book stories={stories} onArchive={onArchive}/>
         </span>
         <br></br>
         <br></br>
-        <button></button>
+
       </div>
       </>
   );

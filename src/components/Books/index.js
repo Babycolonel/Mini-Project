@@ -1,6 +1,7 @@
+import { Button } from '@mui/material';
 import '../Home.css';
 
-const Story = ({ story }) => {
+const Story = ({ story, onArchive }) => {
     const {
       title,
       url,
@@ -8,6 +9,7 @@ const Story = ({ story }) => {
       num_comments,
       points,
       image,
+      objectID,
     } = story;
   
     return (
@@ -27,10 +29,27 @@ const Story = ({ story }) => {
             <span>{num_comments} comments</span>
             <br></br>
             <a href={url}>Website</a>
+            <ButtonInline onClick={() => onArchive(objectID)}>
+              Archive
+            </ButtonInline>
         </div>
       </div>
       </div>  
     );
   }
+
+  /*Button as reusable component*/
+  const ButtonInline = ({
+    onClick,
+    type = 'button',
+    children
+  }) =>
+    <button
+      type={type}
+      className="button-inline"
+      onClick={onClick}
+    >
+      {children}
+    </button>
 
   export default Story;

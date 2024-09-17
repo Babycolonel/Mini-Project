@@ -13,6 +13,10 @@ import App from './components/App';
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
+function seeList(){
+  console.log(store);
+}
+
 // export default function App() {
 //   return (
 //     <BrowserRouter>
@@ -29,9 +33,11 @@ import App from './components/App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App stories={store.getState()} onArchive={() => {}}  />
+    <Home stories={store.getState()} onArchive={() => {}}  />
   </React.StrictMode>
 );
+
+console.log(store.getState());
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

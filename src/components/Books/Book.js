@@ -3,11 +3,14 @@ import '../App.css';
 import Story from '.';
 
 
-const App = ({ stories }) =>
+const Book = ({ stories, onArchive }) =>
      <div className="stories" >
-    {(stories || []).map(x =>
-        <Story story={x} />
+    {(stories || []).map(story =>
+        <Story 
+        key={story.objectID}
+        story={story} 
+        onArchive={onArchive}/>
     )}
   </div>
 
-export default App;
+export default Book;
