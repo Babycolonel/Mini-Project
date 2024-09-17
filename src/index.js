@@ -8,10 +8,6 @@ import { Provider } from 'react-redux';
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
-function seeList(){
-  console.log(store);
-}
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -20,8 +16,6 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-console.log(store.getState());
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
