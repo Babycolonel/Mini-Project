@@ -12,6 +12,7 @@ const Story = ({ story, onArchive }) => {
       objectID,
     } = story;
   
+    /* layout of the UI when displaying the state from the store */
     return (
       <div className='homePageContainer'>
         <div className="story">
