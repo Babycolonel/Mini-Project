@@ -12,26 +12,18 @@ const Review = ({ review }) => {
   
     return (
       <div className="reviewBig">
-
+        <div>
+          <img src={image} className='reviewImage'></img>
+        </div>
         <div className='reviewTitle'>
-        <span>
-          <a>{title}</a>
-          <br></br>
-          <span>{author}</span>
-          <Rate></Rate> 
-        </span>
+          <div className='reviewTitle'>
+            <p id='p-title'>{title}</p>
+            <p>{author}</p>
+          </div>
+          <div className = "rateStyle">
+            <Rate></Rate>
+          </div>
         </div>
-        <div className = "rateStyle">
-
-        </div>
-
-        <img src={image} className='reviewImage'></img>
-        <br></br>
-
-        <br></br>
-        <span>{num_comments}</span>
-        <br></br>
-
       </div>
     );
   }
