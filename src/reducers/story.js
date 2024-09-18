@@ -1,3 +1,5 @@
+import { STORY_ARCHIVE } from '../constants/actionTypes';
+
 const INITIAL_STATE = [
     {
         image: 'https://cdn.kobo.com/book-images/00437f92-768a-4b3d-9f43-a1c2ac75816a/353/569/90/False/geronimo-stilton-and-the-kingdom-of-fantasy-2-the-quest-for-paradise.jpg',
@@ -46,10 +48,19 @@ const INITIAL_STATE = [
         objectID: 4,
         genre: 'Literature'
       }
-]
+];
+
+const applyArchiveStory = (state, action) => { 
+  console.log(action)
+  return state.filter((book) => {return action.id != book.objectID})
+}
+  // [ ...state, action.id ];
 
 function storyReducer(state = INITIAL_STATE, action) {
     switch(action.type) {
+      case STORY_ARCHIVE: {
+        return applyArchiveStory(state, action);
+      }
       default : return state;
     }
   }

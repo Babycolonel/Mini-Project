@@ -10,7 +10,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import { STORY_ARCHIVE } from '../constants/actionTypes';
 import { getReadableStories } from '../selectors/story';
 
-const Home = ({ stories, onArchive}) => {
+const Home = ({ stories }) => {
   return (
     <>
       <head>
