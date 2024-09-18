@@ -24,22 +24,6 @@ const Layout = () => {
                 <Link to="/about">About</Link>
               </div>
             </li>
-            <div className="dropDownContainer">
-            <InputLabel id="dropDownLabel">Genre</InputLabel>
-            <Select 
-              labelId="dropDownLabel"
-              id="dropDown"
-              value={age}
-              label="Age"
-              onChange={handleChange}
-            >
-              <MenuItem className="dropDownSelected" value={'adventure'}>Adventure</MenuItem>
-              <MenuItem className="dropDownSelected" value={'children'}>Children</MenuItem>
-              <MenuItem className="dropDownSelected" value={'fantasy'}>Fantasy</MenuItem>
-              <MenuItem className="dropDownSelected" value={'romance'}>Romance</MenuItem>
-              <MenuItem className="dropDownSelected" value={'literature'}>Literature</MenuItem>
-            </Select>
-            </div>
             
         </nav>
         <Outlet />

@@ -9,8 +9,18 @@ import store from "../store";
 import { type } from "@testing-library/user-event/dist/type";
 import { STORY_ARCHIVE } from '../constants/actionTypes';
 import { getReadableStories } from '../selectors/story';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 
 const Home = ({ stories }) => {
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+    
+  };
   return (
     <>
       <head>
@@ -27,7 +37,23 @@ const Home = ({ stories }) => {
           </div>
         </div>
         <div className="headerBorder">
-        <p className="headerText">Browse</p>
+        <div className="dropDownContainer">
+            <InputLabel id="dropDownLabel">Genre</InputLabel>
+            <Select 
+              labelId="dropDownLabel"
+              id="dropDown"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={'adventure'}>Adventure</MenuItem>
+              <MenuItem value={'children'}>Children</MenuItem>
+              <MenuItem value={'fantasy'}>Fantasy</MenuItem>
+              <MenuItem value={'romance'}>Romance</MenuItem>
+              <MenuItem value={'literature'}>Literature</MenuItem>
+            </Select>
+            </div>
+        <span className="headerText">Browse</span>
         </div>
         <span className='flex-container'>
           <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/>

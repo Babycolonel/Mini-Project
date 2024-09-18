@@ -31,7 +31,7 @@ const Story = ({ story, onArchive }) => {
             <br></br>
             <a href={url}>Website</a>
             <ButtonInline onClick={() => onArchive(objectID)}>
-              Archive
+              BookMark
             </ButtonInline>
         </div>
       </div>
