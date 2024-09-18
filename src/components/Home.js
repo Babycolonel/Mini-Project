@@ -30,7 +30,7 @@ const Home = ({ stories, onArchive}) => {
         <p className="headerText">Browse</p>
         </div>
         <span className='flex-container'>
-          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})}/>
+          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/>
         </span>
         <br></br>
         <br></br>
