@@ -18,7 +18,15 @@ const reviews = [
    num_comments: 3,
 
    objectID: 0,
- }
+ }, {
+  image: 'https://cdn.kobo.com/book-images/00437f92-768a-4b3d-9f43-a1c2ac75816a/353/569/90/False/geronimo-stilton-and-the-kingdom-of-fantasy-2-the-quest-for-paradise.jpg',
+  title: 'Geronimo Stilton',
+  url: 'https://facebook.github.io/react/',
+  author: 'Jordan Walker',
+  num_comments: 3,
+
+  objectID: 0,
+}
 ];
 
 const About = () => {
@@ -27,14 +35,19 @@ const About = () => {
      <head>
        <link rel="stylesheet" type="text/css" href="App.css"/>
        <script defer src='activePage.js'></script>
-     </head> 
+     </head>
+
      <div id="home">
-       <div id="titleBackground">
-         <div id="titleName">
+     <div id="titleBackground">
+     <div id="titleName">
            <p>「✦ Book reviews ✦」</p>
-         </div>
        </div>
-         <div className='flex-container'>
+
+       </div>
+       <div className="headerBorder">
+        <p className="headerText">Review</p>
+        </div>
+         <div className="reviewText">
          <Review reviews={reviews} />
          </div>
  

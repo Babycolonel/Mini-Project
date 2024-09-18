@@ -61,41 +61,66 @@
     line-height: 2.5;
     letter-spacing: 0.00938em;
 }
+
+.square {
+  height: 50px;
+  width: 50px;
+  background-color: red;
+}
+
+.app {
+  margin-left: 10%;
+}
+
+.reviews{
+  padding: 0;
+
+}
+
+.reviewTitle{
+  position: relative;
+  padding-left: 1vw;
+  font-size: 2vw;
+  width: fit-content ;
+  color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rateStyle{
+  position: relative;
+
+  width: fit-content;
+
+}
+.reviewImage{
+  display: inline;
+  position: relative;
+  width: 20vw;
+  border-radius: 4%;
+  margin-top: 0;
+}
+
+a:is(:link, :active, :visited){
+  color: #000000;
+}
+
+
+.reviewText {
   
-  .square {
-    height: 50px;
-    width: 50px;
-    background-color: red;
-  }
+  position: absolute;
+}
 
-  .app {
-    margin-left: 10%;
-  }
+.reviewBig{
+  position: absolute;
+  align-content: center;
+  margin-left: 28vw;
+  border: solid;
+  padding: fit-content;
+  display: flex;
+}
 
-  .reviews{
-    padding: 0;
-
-  }
-
-  .reviewTitle{
-    position: absolute;
-    padding-left: 20vw;
-    font-size: 3vw;
-    width: fit-content ;
-    color: #000000;
-    
-  }
-
-  .rateStyle{
-    position: absolute;
-    padding-left: 70vw;
-    width: fit-content;
-  }
-
-  .reviewImage{
-    position: absolute;
-    border-radius: 4%;
-  }
-  a:is(:link, :active, :visited){
-    color: #000000;
-  }
+#p-title{
+  font-weight: bold;
+}
