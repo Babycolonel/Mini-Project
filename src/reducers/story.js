@@ -1,4 +1,4 @@
-import { FILTER_ARCHIVE, STORY_ARCHIVE } from '../constants/actionTypes';
+import { FILTER_GENRE, STORY_ARCHIVE } from '../constants/actionTypes';
 
 const INITIAL_STATE = [
     {
@@ -42,7 +42,7 @@ const INITIAL_STATE = [
         image: 'https://m.media-amazon.com/images/I/91Gy28f5M0L._AC_UF1000,1000_QL80_.jpg',
         title: 'Boy In The Stripped',
         url: 'https://stepheniemeyer.com/the-twilight-saga/',
-        author: 'Stephenie Meyer',
+        author: 'John Boyne',
         num_comments: 9,
         points: 8,
         objectID: 4,
@@ -65,7 +65,7 @@ function storyReducer(state = INITIAL_STATE, action) {
       case STORY_ARCHIVE: {
         return applyArchiveStory(state, action);
       }
-      case FILTER_ARCHIVE: {
+      case FILTER_GENRE: {
         return applyFilterStory(state, action);
       }
       default : return state;

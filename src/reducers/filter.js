@@ -1,4 +1,4 @@
-import { FILTER_ARCHIVE } from '../constants/actionTypes';
+import { FILTER_GENRE} from '../constants/actionTypes';
 const INITIAL_STATE = [];
 
 const applyFilterStory = (state, action) =>
@@ -7,7 +7,7 @@ const applyFilterStory = (state, action) =>
 /* keeps list of references to filtered stories */
 function filterReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case FILTER_ARCHIVE : {
+    case FILTER_GENRE : {
       return applyFilterStory(state, action);
     }
     default : return state;

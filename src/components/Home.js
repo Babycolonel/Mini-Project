@@ -12,14 +12,21 @@ import { getReadableStories } from '../selectors/story';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
+import { FILTER_GENRE } from "../constants/actionTypes";
+import { Action } from "@remix-run/router";
 
 const Home = ({ stories }) => {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event) => {
+  //  alert(event.target.value);
     setAge(event.target.value);
-    
+
+   // store.dispatch({ type: STORY_ARCHIVE, id })
+  const genre  = event.target.value
+  store.dispatch({type: FILTER_GENRE, genre })
+    /* settle logic for identifying which genre here */
+    return 
   };
   return (
     <>
@@ -38,7 +45,7 @@ const Home = ({ stories }) => {
         </div>
         <div className="headerBorder">
         <div className="dropDownContainer">
-            <InputLabel id="dropDownLabel">Genre</InputLabel>
+            <InputLabel id="dropDownLabel" onFilter={genre => store.dispatch({type: FILTER_GENRE, genre })} >Genre</InputLabel>
             <Select 
               labelId="dropDownLabel"
               id="dropDown"
@@ -46,11 +53,11 @@ const Home = ({ stories }) => {
               label="Age"
               onChange={handleChange}
             >
-              <MenuItem value={'adventure'}>Adventure</MenuItem>
-              <MenuItem value={'children'}>Children</MenuItem>
-              <MenuItem value={'fantasy'}>Fantasy</MenuItem>
-              <MenuItem value={'romance'}>Romance</MenuItem>
-              <MenuItem value={'literature'}>Literature</MenuItem>
+              <MenuItem value={'Adventure'}>Adventure</MenuItem>
+              <MenuItem value={'Children'}>Children</MenuItem>
+              <MenuItem value={'Fantasy'}>Fantasy</MenuItem>
+              <MenuItem value={'Romance'}>Romance</MenuItem>
+              <MenuItem value={'Literature'}>Literature</MenuItem>
             </Select>
             </div>
         <span className="headerText">Browse</span>

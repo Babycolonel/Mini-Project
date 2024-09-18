@@ -1,2 +1,2 @@
 export const STORY_ARCHIVE = 'STORY_ARCHIVE';
-export const FILTER_ARCHIVE = 'FILTER_ARCHIVE';
+export const FILTER_GENRE = 'FILTER_GENRE';
