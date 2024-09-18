@@ -7,6 +7,7 @@ const INITIAL_STATE = [
         num_comments: 3,
         points: 4,
         objectID: 0,
+        genre: 'Adventure',
       }, 
       {
         image: 'https://m.media-amazon.com/images/I/81R2N4PRuUL._AC_UF1000,1000_QL80_.jpg',
@@ -16,6 +17,7 @@ const INITIAL_STATE = [
         num_comments: 2,
         points: 5,
         objectID: 1,
+        genre: 'Children'
       }, {
         image: 'https://preview.redd.it/fgy14jrd3af41.jpg?auto=webp&s=4425fb0240637ce6bbeec7fdc49ce5d4718323f8',
         title: 'Dune',
@@ -24,6 +26,7 @@ const INITIAL_STATE = [
         num_comments: 2,
         points: 6,
         objectID: 2,
+        genre: 'Fantasy',
       }, {
         image: 'https://i.ebayimg.com/images/g/QTUAAOSwIOtbYt82/s-l1200.jpg',
         title: 'Twilight',
@@ -32,6 +35,7 @@ const INITIAL_STATE = [
         num_comments: 9,
         points: 8,
         objectID: 3,
+        genre: 'Romance',
       }, {
         image: 'https://m.media-amazon.com/images/I/91Gy28f5M0L._AC_UF1000,1000_QL80_.jpg',
         title: 'Boy In The Stripped',
@@ -40,6 +44,7 @@ const INITIAL_STATE = [
         num_comments: 9,
         points: 8,
         objectID: 4,
+        genre: 'Literature'
       }
 ]
 

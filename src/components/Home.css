@@ -278,3 +278,18 @@ body {
 .navHeight {
   list-style-type: none;
 }
+
+.dropDownContainer {
+  width: 10vw;
+  transform: translate(800%); 
+}
+
+#dropDownLabel {
+  font-size: 1.5vw;
+  color:  rgb(212, 175, 106);;
+}
+
+.dropDownSelected {
+  width: 8vw;
+  color:  rgb(212, 175, 106);;
+}
