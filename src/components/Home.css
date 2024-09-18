@@ -238,6 +238,11 @@ body {
   display: inline-block;
   border-radius: 4%;
   background-color: rgb(212, 175, 106);
+  transition: all .1s ease-in-out;
+}
+
+.homePageContainer:hover {
+  transform: scale(1.1);
 }
 
 .homePageTitles {
