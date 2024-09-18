@@ -1,9 +1,20 @@
 import { Outlet, Link } from "react-router-dom";
 import "./Home.css";
 import "./About.css";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import * as React from 'react';
+
 
 
 const Layout = () => {
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+    setAge(event.target.value);
+    
+  };
     return(
       <>
         <nav>
@@ -13,6 +24,23 @@ const Layout = () => {
                 <Link to="/about">About</Link>
               </div>
             </li>
+            <div className="dropDownContainer">
+            <InputLabel id="dropDownLabel">Genre</InputLabel>
+            <Select 
+              labelId="dropDownLabel"
+              id="dropDown"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem className="dropDownSelected" value={'adventure'}>Adventure</MenuItem>
+              <MenuItem className="dropDownSelected" value={'children'}>Children</MenuItem>
+              <MenuItem className="dropDownSelected" value={'fantasy'}>Fantasy</MenuItem>
+              <MenuItem className="dropDownSelected" value={'romance'}>Romance</MenuItem>
+              <MenuItem className="dropDownSelected" value={'literature'}>Literature</MenuItem>
+            </Select>
+            </div>
+            
         </nav>
         <Outlet />
       </>
