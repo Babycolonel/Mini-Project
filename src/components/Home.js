@@ -5,10 +5,12 @@ import "./About.css";
 import "./Layout";
 import Book from './Books/Book'; 
 import { connect } from 'react-redux';
+import store from "../store";
+import { type } from "@testing-library/user-event/dist/type";
+import { STORY_ARCHIVE } from '../constants/actionTypes';
+import { getReadableStories } from '../selectors/story';
 
 const Home = ({ stories, onArchive}) => {
-  console.log(stories)
-
   return (
     <>
       <head>
@@ -28,7 +30,7 @@ const Home = ({ stories, onArchive}) => {
         <p className="headerText">Browse</p>
         </div>
         <span className='flex-container'>
-          <Book stories={stories} onArchive={onArchive}/>
+          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})}/>
         </span>
         <br></br>
         <br></br>
