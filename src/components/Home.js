@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { FILTER_GENRE } from "../constants/actionTypes";
 import { Action } from "@remix-run/router";
+import { SEARCH_BOOK } from "../constants/actionTypes";
 
 const Home = ({ stories }) => {
   const [age, setAge] = React.useState('');
@@ -25,8 +26,6 @@ const Home = ({ stories }) => {
    // store.dispatch({ type: STORY_ARCHIVE, id })
   const genre  = event.target.value
   store.dispatch({type: FILTER_GENRE, genre })
-    /* settle logic for identifying which genre here */
-    return 
   };
   return (
     <>

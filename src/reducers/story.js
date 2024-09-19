@@ -1,4 +1,4 @@
-import { FILTER_GENRE, STORY_ARCHIVE } from '../constants/actionTypes';
+import { FILTER_GENRE, STORY_ARCHIVE, SEARCH_BOOK } from '../constants/actionTypes';
 
 const INITIAL_STATE = [
     {
@@ -62,6 +62,11 @@ const applyFilterStory = (state, action) => {
   console.log(action)
   return state.filter((book) => {return action.genre == book.genre})
 }
+
+const applySearchStory = (state, action) => { 
+  console.log(action)
+  return state.filter((book) => {return action.title == book.title})
+}
   
 function storyReducer(state = INITIAL_STATE, action) {
     switch(action.type) {
@@ -70,6 +75,9 @@ function storyReducer(state = INITIAL_STATE, action) {
       }
       case FILTER_GENRE: {
         return applyFilterStory(state, action);
+      }
+      case SEARCH_BOOK: {
+        return applySearchStory(state, action);
       }
       default : return state;
     }
