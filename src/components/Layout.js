@@ -9,9 +9,16 @@ import Form from 'react-bootstrap/Form';
 import { SEARCH_BOOK } from "../constants/actionTypes";
 import store from "../store";
 
+// const InputCustom = React.memo((props) => {
+//   console.log('render');
+//   return (
+//     <input onChange={props.onChange} value={props.value} type="text" id='searchBar' placeholder="Find a book for yourself!" />
+//   )
+// });
+
 const Layout = ({ stories }) => {
   const [age, setAge] = React.useState('');
-  //const [input, setInput] = React.useState('');
+  // const [input, setInput] = React.useState('');
   const handleChange = (event) => {
     setAge(event.target.value);
   
@@ -25,8 +32,8 @@ const Layout = ({ stories }) => {
   };
 
   // React.useEffect (() => {
-  //   store.dispatch({type: SEARCH_BOOK, title });
-  // },[input])
+  //   store.dispatch({ type: SEARCH_BOOK, title: input });
+  // },[input]);
 
     return(
       <>
@@ -36,8 +43,10 @@ const Layout = ({ stories }) => {
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
                 <form onSubmit={handleChange}>
-                  <input /*onChange={handleChange}*/type="text" id='searchBar' placeholder="Find a book for yourself!" />
+                  <input type="text" id='searchBar' placeholder="Find a book for yourself!" />
                 </form>
+
+                  {/* <InputCustom onChange={(e) => setInput(e.target.value)} value={input} /> */}
               </div>
             </li>
             
@@ -48,4 +57,4 @@ const Layout = ({ stories }) => {
 };
 
 
-export default Layout;
+export default React.memo(Layout);
