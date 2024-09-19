@@ -304,3 +304,17 @@ body {
   margin-left: 60vw;
   font-size: 1.1vw;
 }
+
+#bookMark {
+  width: 2.5vw;
+  height: 2.5vw;
+  margin-left: 15vw;
+  transform: translateY(-0.5vw);
+  transform: translateX(2.6vw);
+  font-size: 1.2vw;
+  border-radius: 100%;
+}
+
+#bookmark:hover {
+  background-color: rgba(59, 54, 48, 0.747);
+}

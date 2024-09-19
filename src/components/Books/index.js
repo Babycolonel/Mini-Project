@@ -31,7 +31,7 @@ const Story = ({ story, onArchive }) => {
             <br></br>
             <a href={url}>Website</a>
             <ButtonInline onClick={() => onArchive(objectID)}>
-              BookMark
+            ❤️
             </ButtonInline>
         </div>
       </div>
@@ -45,7 +45,7 @@ const Story = ({ story, onArchive }) => {
     type = 'button',
     children
   }) =>
-    <button
+    <button id='bookMark'
       type={type}
       className="button-inline"
       onClick={onClick}

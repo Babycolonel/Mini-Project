@@ -11,17 +11,23 @@ import store from "../store";
 
 const Layout = ({ stories }) => {
   const [age, setAge] = React.useState('');
-
+  //const [input, setInput] = React.useState('');
   const handleChange = (event) => {
-    //  alert(event.target.value);
-      setAge(event.target.value);
+    setAge(event.target.value);
   
-     // store.dispatch({ type: STORY_ARCHIVE, id })
     const titleInput  = document.getElementById("searchBar");
     const title = titleInput.value;
-    console.log(title.value);
     store.dispatch({type: SEARCH_BOOK, title })
+    console.log("title is " + title);
+    if ("title != to any titles in list") {
+      //change placeholder to something like "0 search results"
+    }
   };
+
+  // React.useEffect (() => {
+  //   store.dispatch({type: SEARCH_BOOK, title });
+  // },[input])
+
     return(
       <>
         <nav>
@@ -30,7 +36,7 @@ const Layout = ({ stories }) => {
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
                 <form onSubmit={handleChange}>
-                  <input type="text" id='searchBar' placeholder="Find a book for yourself!" />
+                  <input /*onChange={handleChange}*/type="text" id='searchBar' placeholder="Find a book for yourself!" />
                 </form>
               </div>
             </li>
