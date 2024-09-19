@@ -47,6 +47,15 @@ const INITIAL_STATE = [
         points: 8,
         objectID: 4,
         genre: 'Literature'
+      }, {
+        image: 'https://upload.wikimedia.org/wikipedia/en/d/db/The_Maze_Runner_cover.png',
+        title: 'The Maze Runner',
+        url: 'https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/',
+        author: 'James Dashner',
+        num_comments: 15,
+        points: 8,
+        objectID: 5,
+        genre: 'Adventure'
       }
 ];
 
@@ -65,6 +74,8 @@ const applyFilterStory = (state, action) => {
 
 const applySearchStory = (state, action) => { 
   console.log(action)
+  /* toLowerCase() make it possible for lower case search */
+  /* includes() make it possible for search with fewer words */
   return state.filter((book) => {return book.title.toLowerCase().includes(action.title.toLowerCase())})
 }
   

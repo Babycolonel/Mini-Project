@@ -66,7 +66,10 @@ const Home = ({ stories }) => {
         </span>
         <br></br>
         <br></br>
-
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
       </>
   );
