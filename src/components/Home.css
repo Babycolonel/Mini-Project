@@ -301,7 +301,7 @@ body {
 #searchBar {
   width: 18vw;
   height: 2vw;
-  margin-left: 60vw;
+  margin-left: 46vw;
   font-size: 1.1vw;
 }
 
@@ -316,5 +316,5 @@ body {
 }
 
 #bookMark:hover {
-  background-color: rgba(59, 54, 48, 0.747);
+  background-color: rgb(244, 224, 247);
 }
