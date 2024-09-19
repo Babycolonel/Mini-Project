@@ -65,7 +65,7 @@ const applyFilterStory = (state, action) => {
 
 const applySearchStory = (state, action) => { 
   console.log(action)
-  return state.filter((book) => {return action.title == book.title})
+  return state.filter((book) => {return book.title.toLowerCase().includes(action.title.toLowerCase())})
 }
   
 function storyReducer(state = INITIAL_STATE, action) {

@@ -86,7 +86,7 @@
   padding: 0;
   top: 75%;
   left: 50%;
-  color: rgb(235, 210, 173);
+  color:rgb(212, 175, 106);
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
@@ -113,7 +113,7 @@
 li a:is(:link, :active, :visited) {
   /* have the image float toward the left */
   float: left;
-  color: rgb(212, 175, 106);
+  color: rgb(235, 210, 173);
   text-align: center;
   padding: 1vw 2vw;
   /* remove underlines */
@@ -295,7 +295,7 @@ body {
 
 .dropDownSelected {
   width: 8vw;
-  color:  rgb(212, 175, 106);;
+  color:  rgb(216, 216, 216);
 }
 
 #searchBar {
@@ -315,6 +315,6 @@ body {
   border-radius: 100%;
 }
 
-#bookmark:hover {
+#bookMark:hover {
   background-color: rgba(59, 54, 48, 0.747);
 }
