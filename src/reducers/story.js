@@ -52,6 +52,9 @@ const INITIAL_STATE = [
 
 const applyArchiveStory = (state, action) => { 
   console.log(action)
+  //use this code for when implementing with actual API, filter code is right
+  // newDataFilter = api.fetch("xxxx?q=${book.objectID}")
+  // return newDateFilter;
   return state.filter((book) => {return action.id != book.objectID})
 }
 
