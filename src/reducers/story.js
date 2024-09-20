@@ -1,4 +1,4 @@
-import { FILTER_GENRE, STORY_ARCHIVE, SEARCH_BOOK } from '../constants/actionTypes';
+import { FILTER_GENRE, STORY_ARCHIVE, SEARCH_BOOK, REVIEW_BOOK } from '../constants/actionTypes';
 
 const INITIAL_STATE = [
     {
@@ -78,6 +78,11 @@ const applySearchStory = (state, action) => {
   /* includes() make it possible for search with fewer words */
   return state.filter((book) => {return book.title.toLowerCase().includes(action.title.toLowerCase())})
 }
+
+const applyReviewStory = (state, action) => {
+  console.log(action)
+  return state.filter((book) => {return action.id === book.objectID})
+}
   
 function storyReducer(state = INITIAL_STATE, action) {
     switch(action.type) {
@@ -89,6 +94,9 @@ function storyReducer(state = INITIAL_STATE, action) {
       }
       case SEARCH_BOOK: {
         return applySearchStory(state, action);
+      }
+      case REVIEW_BOOK: {
+        return applyReviewStory(state, action);
       }
       default : return state;
     }

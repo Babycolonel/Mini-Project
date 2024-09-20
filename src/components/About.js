@@ -1,5 +1,5 @@
 import "./About.css";
-import "./Home.css";
+
 
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
@@ -8,28 +8,28 @@ import "./About.css";
 import "./Layout";
 import Review from "./Reviews/Review";
 import Rate from "./Reviews/StarRating";
+import Book from './Books/Book'; 
+import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
+import store from "../store";
+import { connect } from 'react-redux';
+import { useParams } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
-const reviews = [
- {
-   image: 'https://cdn.kobo.com/book-images/00437f92-768a-4b3d-9f43-a1c2ac75816a/353/569/90/False/geronimo-stilton-and-the-kingdom-of-fantasy-2-the-quest-for-paradise.jpg',
-   title: 'Geronimo Stilton',
-   url: 'https://facebook.github.io/react/',
-   author: 'Jordan Walker',
-   num_comments: 3,
+const About = (props) => {
+  const { reviews } = props;
 
-   objectID: 0,
- }, {
-  image: 'https://cdn.kobo.com/book-images/00437f92-768a-4b3d-9f43-a1c2ac75816a/353/569/90/False/geronimo-stilton-and-the-kingdom-of-fantasy-2-the-quest-for-paradise.jpg',
-  title: 'Geronimo Stilton',
-  url: 'https://facebook.github.io/react/',
-  author: 'Jordan Walker',
-  num_comments: 3,
+  const [reviewItem, setReviewItem] = useState(null);
 
-  objectID: 0,
-}
-];
+  const pa = useParams();
 
-const About = () => {
+  // const router = useRoutes();
+
+  useEffect(() => {
+    const book = reviews.find(item => item.objectID == pa.id);
+    console.log(book);
+    setReviewItem(book);
+  }, [pa.id, reviews.length]);
+
  return (
    <>
      <head>
@@ -45,14 +45,24 @@ const About = () => {
 
        </div>
        <div className="headerBorder">
-        <p className="headerText">Review</p>
+        <p className="ABheaderText">Review</p>
         </div>
          <div className="reviewText">
-         <Review reviews={reviews} />
+         <Review reviews={reviewItem ? [reviewItem] : []} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
          </div>
  
      </div>
      </>
  );
 }
-export default About;
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    reviews: state,
+  };
+}
+
+export default connect(
+  mapStateToProps,
+)(About);

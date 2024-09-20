@@ -1,13 +1,13 @@
 import ReactDOM from "react-dom/client"
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import "./Home.css";
-import "./About.css";
+
 import "./Layout";
 import Book from './Books/Book'; 
 import { connect } from 'react-redux';
 import store from "../store";
 import { type } from "@testing-library/user-event/dist/type";
-import { STORY_ARCHIVE } from '../constants/actionTypes';
+import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
 import { getReadableStories } from '../selectors/story';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -62,7 +62,7 @@ const Home = ({ stories }) => {
         <span className="headerText">Browse</span>
         </div>
         <span className='flex-container'>
-          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/>
+          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
         </span>
         <br></br>
         <br></br>

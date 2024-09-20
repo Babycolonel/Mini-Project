@@ -2,14 +2,16 @@ import React from 'react';
 import '../App.css';
 import Review from '.'
 
-
-const App = ({ reviews }) =>
+const Review1 = ({ reviews}) =>
     <div className="app">
        <div className="reviews" >
       {(reviews || []).map(x =>
-          <Review review={x} />
+          <Review 
+  
+          review={x}
+          />
       )}
     </div>
     </div>
   
-  export default App;
+  export default Review1;

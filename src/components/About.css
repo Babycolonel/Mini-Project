@@ -125,7 +125,12 @@ a:is(:link, :active, :visited){
   font-weight: bold;
 }
 
-.headerText {
-  width: fit-content;
-  margin-left: 25vw;
+.ABheaderText {
+  font-size: 8vw;
+  font-family: "Bebas Neue", sans-serif;
+  margin-top: 0.5vw;
+  margin-left: 3vw;
+  margin-bottom: 0vw;
+  color:  rgb(212, 175, 106);
+  display: inline-block;
 }

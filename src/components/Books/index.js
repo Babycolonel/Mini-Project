@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import '../Home.css';
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-const Story = ({ story, onArchive }) => {
+const Story = ({ story, onArchive, onReview }) => {
 
   const navigate = useNavigate();
 
@@ -17,15 +17,15 @@ const Story = ({ story, onArchive }) => {
     } = story;
 
     const handleClick = (id) => {
-      console.log('work', id);
-      navigate('/about')
+      navigate(`/about/${id}`);
+      // onReview(id);
     }
   
     /* layout of the UI when displaying the state from the store */
     return (
-      <div className='homePageContainer' onClick={() => handleClick(objectID)}>
+      <div className='homePageContainer' >
         <div className="story">
-            <img src={image} className='bookImage'></img>
+            <img src={image} className='bookImage' onClick={() => handleClick(objectID)}></img>
             <br></br>
             <div className='homePageTitles'>
                 <span>
