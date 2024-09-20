@@ -86,7 +86,7 @@
   padding: 0;
   top: 75%;
   left: 50%;
-  color: rgb(235, 210, 173);
+  color:rgb(212, 175, 106);
   transform: translate(-50%, -50%);
   white-space: nowrap;
 }
@@ -113,7 +113,7 @@
 li a:is(:link, :active, :visited) {
   /* have the image float toward the left */
   float: left;
-  color: rgb(212, 175, 106);
+  color: rgb(235, 210, 173);
   text-align: center;
   padding: 1vw 2vw;
   /* remove underlines */
@@ -270,9 +270,10 @@ body {
   font-size: 8vw;
   font-family: "Bebas Neue", sans-serif;
   margin-top: 0.5vw;
-  margin-left: 2vw;
+  margin-left: -8vw;
   margin-bottom: 0vw;
-  color:  rgb(212, 175, 106);;
+  color:  rgb(212, 175, 106);
+  display: inline-block;
 } 
 
 .navHeight {
@@ -281,15 +282,39 @@ body {
 
 .dropDownContainer {
   width: 10vw;
+  height: auto;
   transform: translate(800%); 
+  display: inline-block;
 }
 
 #dropDownLabel {
-  font-size: 1.5vw;
-  color:  rgb(212, 175, 106);;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 3vw;
+  color:  rgb(235, 210, 173);
 }
 
 .dropDownSelected {
   width: 8vw;
-  color:  rgb(212, 175, 106);;
+  color:  rgb(216, 216, 216);
+}
+
+#searchBar {
+  width: 18vw;
+  height: 2vw;
+  margin-left: 46vw;
+  font-size: 1.1vw;
+}
+
+#bookMark {
+  width: 2.5vw;
+  height: 2.5vw;
+  margin-left: 15vw;
+  transform: translateY(-0.5vw);
+  transform: translateX(2.6vw);
+  font-size: 1.2vw;
+  border-radius: 100%;
+}
+
+#bookMark:hover {
+  background-color: rgb(244, 224, 247);
 }

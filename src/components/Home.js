@@ -9,8 +9,24 @@ import store from "../store";
 import { type } from "@testing-library/user-event/dist/type";
 import { STORY_ARCHIVE } from '../constants/actionTypes';
 import { getReadableStories } from '../selectors/story';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import { FILTER_GENRE } from "../constants/actionTypes";
+import { Action } from "@remix-run/router";
+import { SEARCH_BOOK } from "../constants/actionTypes";
 
-const Home = ({ stories, onArchive}) => {
+const Home = ({ stories }) => {
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event) => {
+  //  alert(event.target.value);
+    setAge(event.target.value);
+
+   // store.dispatch({ type: STORY_ARCHIVE, id })
+  const genre  = event.target.value
+  store.dispatch({type: FILTER_GENRE, genre })
+  };
   return (
     <>
       <head>
@@ -27,14 +43,33 @@ const Home = ({ stories, onArchive}) => {
           </div>
         </div>
         <div className="headerBorder">
-        <p className="headerText">Browse</p>
+        <div className="dropDownContainer">
+            <InputLabel id="dropDownLabel" onFilter={genre => store.dispatch({type: FILTER_GENRE, genre })} >Genre</InputLabel>
+            <Select 
+              labelId="dropDownLabel"
+              id="dropDown"
+              value={age}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value={'Adventure'}>Adventure</MenuItem>
+              <MenuItem value={'Children'}>Children</MenuItem>
+              <MenuItem value={'Fantasy'}>Fantasy</MenuItem>
+              <MenuItem value={'Romance'}>Romance</MenuItem>
+              <MenuItem value={'Literature'}>Literature</MenuItem>
+            </Select>
+            </div>
+        <span className="headerText">Browse</span>
         </div>
         <span className='flex-container'>
           <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/>
         </span>
         <br></br>
         <br></br>
-
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
       </div>
       </>
   );
