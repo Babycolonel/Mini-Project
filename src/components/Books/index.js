@@ -11,10 +11,14 @@ const Story = ({ story, onArchive }) => {
       image,
       objectID,
     } = story;
+
+    const handleClick = () => {
+      console.log('work');
+    }
   
     /* layout of the UI when displaying the state from the store */
     return (
-      <div className='homePageContainer'>
+      <div className='homePageContainer' onClick={handleClick}>
         <div className="story">
             <img src={image} className='bookImage'></img>
             <br></br>
