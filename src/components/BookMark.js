@@ -1,16 +1,27 @@
 import "./BookMark.css";
 import { connect } from 'react-redux';
 import Book from "./Books/Book";
-import { STORY_ARCHIVE } from "../constants/actionTypes";
+import { DISPLAY_ARCHIVE, STORY_ARCHIVE } from "../constants/actionTypes";
 import store from "../store";
+import React, { useEffect, useState, createContext, useContext } from 'react';
 
 const BookMark = ({ stories }) => {
+    // const [age, setAge] = React.useState('');
+    // const handleChange = (event) => {
+    //     //  alert(event.target.value);
+    //       setAge(event.target.value);
+      
+    //      // store.dispatch({ type: STORY_ARCHIVE, id })
+    //     const Id  = event.target.value
+    //     store.getState({type: DISPLAY_ARCHIVE, Id })
+    //     };
     return (
         <>
         <head>
         <link rel="stylesheet" type="text/css" href="App.css"/>
         <script defer src='activePage.js'></script>
       </head> 
+      <body /*onLoad={handleChange}*/>    
       <div id="bookmark">
         <div id="titleBackground">
           <div id="titleName">
@@ -25,9 +36,10 @@ const BookMark = ({ stories }) => {
         </div>
         <span className='flex-container'>
             {/* display archived stories */}
-            {/* <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/> */}
+            <Book stories={stories} /> 
         </span>
         </div>
+      </body>
         </>
     );
 }
