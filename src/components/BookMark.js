@@ -24,8 +24,8 @@ const BookMark = ({ stories }) => {
         <span className="BMheaderText">Browse</span>
         </div>
         <span className='flex-container'>
-            {/* display archived stories */}
-            {/* <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id}) }/> */}
+            {/* display archived stories how??? */}
+            <Book stories={stories} />
         </span>
         </div>
         </>
