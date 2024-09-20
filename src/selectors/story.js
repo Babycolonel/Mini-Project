@@ -3,9 +3,6 @@ const isNotArchived = archivedIds => story =>
   
   const getReadableStories = ({ storyState, archiveState }) =>
     storyState.filter(isNotArchived(archiveState));
-  // if (storyState == null){
-  //   console.log('story state is null');
-  // }
   
   export {
     getReadableStories,
