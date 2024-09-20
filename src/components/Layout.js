@@ -42,7 +42,7 @@ const Layout = ({ stories }) => {
               <div className='flex-container'>
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
-                <Link to="/bookmark">BookMark</Link>
+                <Link to="/bookmark" >BookMark</Link>
                 <form onSubmit={handleChange}>
                   <input type="text" id='searchBar' placeholder="Find a book for yourself!" />
                 </form>
