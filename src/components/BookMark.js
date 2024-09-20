@@ -4,24 +4,25 @@ import Book from "./Books/Book";
 import { DISPLAY_ARCHIVE, STORY_ARCHIVE } from "../constants/actionTypes";
 import store from "../store";
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import archiveStore from "../store/archiveindex";
 
 const BookMark = ({ stories }) => {
-    // const [age, setAge] = React.useState('');
-    // const handleChange = (event) => {
-    //     //  alert(event.target.value);
-    //       setAge(event.target.value);
-      
-    //      // store.dispatch({ type: STORY_ARCHIVE, id })
-    //     const Id  = event.target.value
-    //     store.getState({type: DISPLAY_ARCHIVE, Id })
-    //     };
+    const [age, setAge] = React.useState('');
+    const handleChange = (event) => {
+        //  alert(event.target.value);
+          setAge(event.target.value);
+      console.log("IN BOOKMARK")
+         // store.dispatch({ type: STORY_ARCHIVE, id })
+        const Id  = event.target.value
+        archiveStore.getState()
+        };
     return (
         <>
         <head>
         <link rel="stylesheet" type="text/css" href="App.css"/>
         <script defer src='activePage.js'></script>
       </head> 
-      <body /*onLoad={handleChange}*/>    
+      <body onLoad={handleChange}>    
       <div id="bookmark">
         <div id="titleBackground">
           <div id="titleName">
