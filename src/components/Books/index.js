@@ -18,7 +18,7 @@ const Story = ({ story, onArchive }) => {
 
     const handleClick = (id) => {
       console.log('work', id);
-      //navigate('/about')
+      navigate('/about')
     }
   
     /* layout of the UI when displaying the state from the store */
