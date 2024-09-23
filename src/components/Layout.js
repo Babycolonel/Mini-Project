@@ -17,7 +17,7 @@ import store from "../store";
 // });
 
 const Layout = ({ stories }) => {
-  const [searchTerm, setSearchTerm] = React.useState('');
+/*  const [searchTerm, setSearchTerm] = React.useState('');
 
   // Load search term from local storage on mount
   React.useEffect(() => {
@@ -44,7 +44,7 @@ const Layout = ({ stories }) => {
   // React.useEffect (() => {
   //   store.dispatch({ type: SEARCH_BOOK, title: input });
   // },[input]);
-
+*/
     return(
       <>
         <nav>
@@ -57,8 +57,8 @@ const Layout = ({ stories }) => {
                   type="text"
                   id='searchBar'
                   placeholder="Find a book for yourself!"
-                  value={searchTerm}
-                  onChange={handleChange}
+                  //value={searchTerm}
+                  //onChange={handleChange}
                 />
               </div>
             </li>
