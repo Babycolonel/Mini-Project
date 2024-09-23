@@ -16,6 +16,12 @@ const BookMark = ({ stories }) => {
     setArchivedBooks(storedBooks);
   }, []);
 
+  const clearBookmarks = () => {
+    // Clear bookmarks from local storage
+    localStorage.removeItem('archivedBooks');
+    setArchivedBooks([]);
+  };
+
     return (
         <>
         <head>
@@ -44,6 +50,7 @@ const BookMark = ({ stories }) => {
           />
         ))}
         </span>
+        <button onClick={clearBookmarks}>CLEAR ALL BOOKMARKS</button>
         </div>
       </body>
         </>
