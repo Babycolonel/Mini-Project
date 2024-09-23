@@ -20,6 +20,21 @@ const Story = ({ story, onArchive, onReview }) => {
       navigate(`/about/${id}`);
       // onReview(id);
     }
+
+    const handleArchive = (id) => {
+      //store archived book in localStorage
+      const archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+      const isBookMarked = archivedBooks.some(book => book.objectID === objectID)
+      if (!isBookMarked) {
+        archivedBooks.push(story);
+        localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
+        //call onArchive callback if needed
+        if (onArchive) onArchive(id);
+      }
+      else {
+        alert("Book is already added to bookmarks")
+      }
+    };
   
     /* layout of the UI when displaying the state from the store */
     return (
@@ -39,7 +54,7 @@ const Story = ({ story, onArchive, onReview }) => {
             <span>{num_comments} comments</span>
             <br></br>
             <a href={url}>Website</a>
-            <ButtonInline onClick={() => onArchive(objectID)}>
+            <ButtonInline onClick={() => handleArchive(objectID)}>
             ❤️
             </ButtonInline>
         </div>

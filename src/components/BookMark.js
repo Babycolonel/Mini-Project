@@ -4,17 +4,18 @@ import Book from "./Books/Book";
 import { DISPLAY_ARCHIVE, STORY_ARCHIVE } from "../constants/actionTypes";
 import store from "../store";
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import Story from "./Books";
+import "./Home.css";
 
 const BookMark = ({ stories }) => {
-    // const [age, setAge] = React.useState('');
-    // const handleChange = (event) => {
-    //     //  alert(event.target.value);
-    //       setAge(event.target.value);
-      
-    //      // store.dispatch({ type: STORY_ARCHIVE, id })
-    //     const Id  = event.target.value
-    //     store.getState({type: DISPLAY_ARCHIVE, Id })
-    //     };
+  const [archivedBooks, setArchivedBooks] = useState([]);
+
+  useEffect(() => {
+    //get archived books from localStorage
+    const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+    setArchivedBooks(storedBooks);
+  }, []);
+
     return (
         <>
         <head>
@@ -35,8 +36,13 @@ const BookMark = ({ stories }) => {
         <span className="BMheaderText">Browse</span>
         </div>
         <span className='flex-container'>
-            {/* display archived stories */}
-            <Book stories={stories} /> 
+        {archivedBooks.map(book => (
+          <Story
+            key={book.objectID}
+            story={book}
+            // onArchive and onReview can be passed as needed
+          />
+        ))}
         </span>
         </div>
       </body>
