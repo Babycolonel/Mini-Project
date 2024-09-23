@@ -8,6 +8,8 @@ const Review = ({ review }) => {
       author,
       num_comments,
       image,
+      objectID,
+      star,
     } = review;
   
     return (

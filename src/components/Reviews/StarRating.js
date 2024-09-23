@@ -43,7 +43,7 @@ const Rate = ({}) => {
       <div>
         <p>Your Rating!</p>
         <StarRating 
-          initialRating={3} 
+          initialRating={0} 
           maxRating={5} 
           onRate={handleRatingChange} 
         />
