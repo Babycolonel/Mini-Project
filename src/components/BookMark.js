@@ -45,7 +45,6 @@ const BookMark = ({ stories }) => {
           <Story
             key={book.objectID}
             story={book}
-            // onArchive and onReview can be passed as needed
           />
         ))}
         </span>

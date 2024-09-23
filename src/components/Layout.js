@@ -8,6 +8,7 @@ import * as React from 'react';
 import Form from 'react-bootstrap/Form';
 import { SEARCH_BOOK } from "../constants/actionTypes";
 import store from "../store";
+import Home from "./Home.js";
 
 // const InputCustom = React.memo((props) => {
 //   console.log('render');
@@ -17,7 +18,7 @@ import store from "../store";
 // });
 
 const Layout = ({ stories }) => {
-/*  const [searchTerm, setSearchTerm] = React.useState('');
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   // Load search term from local storage on mount
   React.useEffect(() => {
@@ -36,15 +37,16 @@ const Layout = ({ stories }) => {
     
     // Dispatch the search action
     store.dispatch({ type: SEARCH_BOOK, title });
-  };
 
-  const filteredStories = stories.filter(story =>
-    story.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredSearch = JSON.parse(localStorage.getItem('books')).filter(book =>
+      book.title.toLowerCase().includes(searchTerm.toLowerCase()));
+      //find a way to pass filteredSearch to Books
+  };
 
   // React.useEffect (() => {
   //   store.dispatch({ type: SEARCH_BOOK, title: input });
   // },[input]);
-*/
+
     return(
       <>
         <nav>
@@ -57,8 +59,8 @@ const Layout = ({ stories }) => {
                   type="text"
                   id='searchBar'
                   placeholder="Find a book for yourself!"
-                  //value={searchTerm}
-                  //onChange={handleChange}
+                  value={searchTerm}
+                  onChange={handleChange}
                 />
               </div>
             </li>

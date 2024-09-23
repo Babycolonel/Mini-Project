@@ -32,11 +32,12 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
         archivedBooks.push(story);
         localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
         alert(story.title + " has been added to bookmarks")
+        console.log(archivedBooks)
         //call onArchive callback if needed
         //if (onArchive) onArchive(id);
       }
       else {
-        localStorage.removeItem('archivedBooks', JSON.stringify(archivedBooks));
+        localStorage.removeItem('archivedBooks', JSON.stringify(archivedBooks, story));
         archivedBooks.pop(story);
         alert(story.title + " has been removed from bookmarks")
         console.log(archivedBooks)
