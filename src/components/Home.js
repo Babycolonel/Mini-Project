@@ -15,18 +15,33 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { FILTER_GENRE } from "../constants/actionTypes";
 import { Action } from "@remix-run/router";
 import { SEARCH_BOOK } from "../constants/actionTypes";
+import booksData from "../data/booksData";
 
 const Home = ({ stories }) => {
-  const [age, setAge] = React.useState('');
+  const [books, setBooks] = useState([]);
+  const [age, setAge] = useState('');
+
+  useEffect(() => {
+  //store the booksData in localStorage
+  if (!localStorage.getItem('books')) {
+    localStorage.setItem('books', JSON.stringify(booksData));
+  }
+
+  //retrieve books from localStorage and set state
+  const localBooks = JSON.parse(localStorage.getItem('books'));
+  setBooks(localBooks || []);
+  //empty array dependency so it only runs once
+  }, []);
 
   const handleChange = (event) => {
-  //  alert(event.target.value);
-    setAge(event.target.value);
+  const genre = event.target.value;
+  setAge(genre);
 
-   // store.dispatch({ type: STORY_ARCHIVE, id })
-  const genre  = event.target.value
-  store.dispatch({type: FILTER_GENRE, genre })
+  //filter by genre and update state
+  const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
+  setBooks(filteredBooks);
   };
+
   return (
     <>
       <head>
@@ -62,7 +77,7 @@ const Home = ({ stories }) => {
         <span className="headerText">Browse</span>
         </div>
         <span className='flex-container'>
-          <Book stories={stories} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
+          <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
         </span>
         <br></br>
         <br></br>

@@ -3,11 +3,18 @@ import About from "./About";
 import Layout from "./Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BookMark from "./BookMark";
+import { useEffect } from "react";
+import booksData from "../data/booksData";
 
 
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
 const App = () => {
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(booksData));
+    console.log(booksData);
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
