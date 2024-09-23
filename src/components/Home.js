@@ -39,11 +39,13 @@ const Home = ({ stories }) => {
   setAge(genre);
 
   //filter by genre and update state
+  //if filter "All" display all books in local storage
   if (genre === 'All'){
     console.log("IT IS ALL BOOKS");
     const allBooks = JSON.parse(localStorage.getItem('books'));
     setBooks(allBooks);
   }
+  //else display normal filtered books based on genre
   else {
     const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
     setBooks(filteredBooks);
