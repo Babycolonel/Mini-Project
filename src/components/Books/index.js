@@ -2,7 +2,10 @@ import { Button } from '@mui/material';
 import '../Home.css';
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-const Story = ({ story, onArchive, onReview }) => {
+import { render } from '@testing-library/react';
+import BookMark from '../BookMark';
+
+const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
 
   const navigate = useNavigate();
 
@@ -20,7 +23,7 @@ const Story = ({ story, onArchive, onReview }) => {
       navigate(`/about/${id}`);
       // onReview(id);
     }
-
+    
     const handleArchive = (id) => {
       //store archived book in localStorage
       const archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
@@ -28,11 +31,16 @@ const Story = ({ story, onArchive, onReview }) => {
       if (!isBookMarked) {
         archivedBooks.push(story);
         localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
+        alert(story.title + " has been added to bookmarks")
         //call onArchive callback if needed
-        if (onArchive) onArchive(id);
+        //if (onArchive) onArchive(id);
       }
       else {
-        alert("Book is already added to bookmarks")
+        localStorage.removeItem('archivedBooks', JSON.stringify(archivedBooks));
+        archivedBooks.pop(story);
+        alert(story.title + " has been removed from bookmarks")
+        console.log(archivedBooks)
+        //if (onRemoveArchive) onRemoveArchive(id);
       }
     };
   

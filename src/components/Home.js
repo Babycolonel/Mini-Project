@@ -35,11 +35,20 @@ const Home = ({ stories }) => {
 
   const handleChange = (event) => {
   const genre = event.target.value;
+  console.log(event.target.value);
   setAge(genre);
 
   //filter by genre and update state
-  const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
-  setBooks(filteredBooks);
+  if (genre === 'All'){
+    console.log("IT IS ALL BOOKS");
+    const allBooks = JSON.parse(localStorage.getItem('books'));
+    setBooks(allBooks);
+  }
+  else {
+    const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
+    setBooks(filteredBooks);
+  }
+
   };
 
   return (
@@ -59,7 +68,7 @@ const Home = ({ stories }) => {
         </div>
         <div className="headerBorder">
         <div className="dropDownContainer">
-            <InputLabel id="dropDownLabel" onFilter={genre => store.dispatch({type: FILTER_GENRE, genre })} >Genre</InputLabel>
+            <InputLabel id="dropDownLabel" >Genre</InputLabel>
             <Select 
               labelId="dropDownLabel"
               id="dropDown"
@@ -67,6 +76,7 @@ const Home = ({ stories }) => {
               label="Age"
               onChange={handleChange}
             >
+              <MenuItem value={'All'}>All</MenuItem>
               <MenuItem value={'Adventure'}>Adventure</MenuItem>
               <MenuItem value={'Children'}>Children</MenuItem>
               <MenuItem value={'Fantasy'}>Fantasy</MenuItem>
