@@ -306,6 +306,7 @@ body {
   transform: translateY(-4.0vw);
   font-size: 1.4vw;
   display: inline-block;
+  border-radius: 4px;
 }
 
 #bookMark {
@@ -322,4 +323,22 @@ body {
 #bookMark:hover {
   background-color: rgb(229, 182, 236);
   cursor: pointer;
+}
+
+.navButtonContainer {
+  transform: translateX(48vw);
+}
+
+.navButtons {
+  width: 8vw;
+  height: 3vw;
+  display: inline-block;
+  font-size: 1.5vw;
+  border-radius: 4px;
+  margin-right: 0.8vw;
+  background-color: rgb(244, 224, 247);
+}
+
+.navButtons :hover {
+  background-color: rgba(59, 54, 48, 0.199);
 }
