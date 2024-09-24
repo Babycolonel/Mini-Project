@@ -20,11 +20,12 @@ import booksData from "../data/booksData";
 const Home = ({ stories }) => {
   const [books, setBooks] = useState([]);
   const [age, setAge] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-  //store the booksData in localStorage
-  if (!localStorage.getItem('books')) {
-    localStorage.setItem('books', JSON.stringify(booksData));
+    //store the booksData in localStorage
+    if (!localStorage.getItem('books')) {
+      localStorage.setItem('books', JSON.stringify(booksData));
   }
 
   //retrieve books from localStorage and set state
@@ -33,25 +34,48 @@ const Home = ({ stories }) => {
   //empty array dependency so it only runs once
   }, []);
 
-  const handleChange = (event) => {
-  const genre = event.target.value;
-  console.log(event.target.value);
-  setAge(genre);
 
-  //filter by genre and update state
-  //if filter "All" display all books in local storage
-  if (genre === 'All'){
-    console.log("IT IS ALL BOOKS");
-    const allBooks = JSON.parse(localStorage.getItem('books'));
-    setBooks(allBooks);
-  }
-  //else display normal filtered books based on genre
-  else {
-    const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
+  useEffect(() => {
+    let filteredBooks = JSON.parse(localStorage.getItem('books'));
+
+    //filter by genre if a specific genre is selected
+    if (age !== '' && age !== 'All') {
+      filteredBooks = filteredBooks.filter(book => book.genre === age);
+    }
+
+    //filter by search term
+    if (searchTerm) {
+      filteredBooks = filteredBooks.filter(book => 
+        book.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    //set filtered list
     setBooks(filteredBooks);
-  }
+  }, [age, searchTerm]);
 
+  const handleChange = (event) => {
+    const genre = event.target.value;
+    console.log(event.target.value);
+    setAge(genre);
+
+    //filter by genre and update state
+    //if filter "All" display all books in local storage
+    if (genre === 'All'){
+      console.log("IT IS ALL BOOKS");
+      const allBooks = JSON.parse(localStorage.getItem('books'));
+      setBooks(allBooks);
+    }
+    //else display normal filtered books based on genre
+    else {
+      const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
+      setBooks(filteredBooks);
+    }
   };
+  
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  }
 
   return (
     <>
@@ -87,6 +111,13 @@ const Home = ({ stories }) => {
             </Select>
             </div>
         <span className="headerText">Browse</span>
+        <input
+            type="text"
+            id='searchBar'
+            placeholder="Find a book for yourself!"
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
         </div>
         <span className='flex-container'>
           <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>

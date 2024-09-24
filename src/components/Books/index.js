@@ -40,7 +40,7 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
         //if (onArchive) onArchive(id);
       }
       else {
-        //do not use remove as it removes all items from the list
+        //do not use removeItem as it removes all items from the list
         //use filter just to keep books with different objectIDs from the unbookmarked book
         archivedBooks = archivedBooks.filter(book => book.objectID !== story.objectID);
         localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
