@@ -65,13 +65,10 @@ const Layout = ({ stories }) => {
                 <Link to="/">Home</Link>
                 <Link to="/about">About</Link>
                 <Link to="/bookmark">BookMark</Link>
-                {/* <input
-                  type="text"
-                  id='searchBar'
-                  placeholder="Find a book for yourself!"
-                  //value={searchTerm}
-                  //onChange={handleChange}
-                /> */}
+                <div className="navButtonContainer">
+                  <button className="navButtons">Register</button>
+                  <button className="navButtons">Log In</button>
+                </div>
               </div>
             </li>
             
