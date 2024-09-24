@@ -2,7 +2,10 @@ import { Button } from '@mui/material';
 import '../Home.css';
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-const Story = ({ story, onArchive, onReview }) => {
+import { render } from '@testing-library/react';
+import BookMark from '../BookMark';
+
+const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
 
   const navigate = useNavigate();
 
@@ -20,19 +23,30 @@ const Story = ({ story, onArchive, onReview }) => {
       navigate(`/about/${id}`);
       // onReview(id);
     }
-
+    
     const handleArchive = (id) => {
       //store archived book in localStorage
-      const archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+      let archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+      //ensure archivedBooks is always an array even when returns empty/null
+      if (!Array.isArray(archivedBooks)) {
+        archivedBooks = [];
+      }    
       const isBookMarked = archivedBooks.some(book => book.objectID === objectID)
       if (!isBookMarked) {
         archivedBooks.push(story);
         localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
-        //call onArchive callback if needed
-        if (onArchive) onArchive(id);
+        alert(story.title + " has been added to bookmarks")
+        console.log(archivedBooks)
+        //if (onArchive) onArchive(id);
       }
       else {
-        alert("Book is already added to bookmarks")
+        //do not use removeItem as it removes all items from the list
+        //use filter just to keep books with different objectIDs from the unbookmarked book
+        archivedBooks = archivedBooks.filter(book => book.objectID !== story.objectID);
+        localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
+        alert(story.title + " has been removed from bookmarks")
+        console.log(archivedBooks)
+        //if (onRemoveArchive) onRemoveArchive(id);
       }
     };
   
