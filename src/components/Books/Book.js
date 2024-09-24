@@ -3,14 +3,15 @@ import '../App.css';
 import Story from '.';
 
 
-const Book = ({ stories, onArchive, onReview}) =>
-     <div className="stories" >
+const Book = ({ stories, onArchive, onReview }) =>
+  <div className="stories" >
     {(stories || []).map(story =>
-        <Story 
+      <Story 
         key={story.objectID}
         story={story} 
         onArchive={onArchive}
-        onReview={onReview}/>
+        onReview={onReview}
+      />
     )}
   </div>
 

@@ -21,12 +21,14 @@ const Home = ({ stories }) => {
   const [books, setBooks] = useState([]);
   const [age, setAge] = useState('');
 
+  const onReviewBook = bookId => store.dispatch({type: REVIEW_BOOK, id: bookId });
+
   useEffect(() => {
   //store the booksData in localStorage
   if (!localStorage.getItem('books')) {
     localStorage.setItem('books', JSON.stringify(booksData));
   }
-
+  
   //retrieve books from localStorage and set state
   const localBooks = JSON.parse(localStorage.getItem('books'));
   setBooks(localBooks || []);
@@ -77,7 +79,7 @@ const Home = ({ stories }) => {
         <span className="headerText">Browse</span>
         </div>
         <span className='flex-container'>
-          <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
+          <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview={onReviewBook}/>
         </span>
         <br></br>
         <br></br>

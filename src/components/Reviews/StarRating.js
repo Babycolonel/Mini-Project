@@ -37,6 +37,7 @@ StarRating.defaultProps = {
 const Rate = ({}) => {
     const handleRatingChange = (newRating) => {
       console.log('New rating:', newRating);
+      
     };
   
     return (

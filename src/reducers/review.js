@@ -1,17 +1,31 @@
-import { REVIEW_BOOK } from "../constants/actionTypes";
-const INITIAL_STATE = [];
+import { FETCH_REVIEW_BOOK } from "../action/review";
 
-const applyReviewStory = (state, action) =>
-  [ ...state, action.id ];
+const INITIAL_STATE = {};
 
-/* keeps list of references to searched stories */
-function searchReducer(state = INITIAL_STATE, action) {
+const fetchReviewBook = (state, action) => {
+  console.log(action);
+  const reviewedBook = JSON.parse(localStorage.getItem('reviewedBook')) || {};
+
+  console.log(reviewedBook);
+  if (reviewedBook?.objectID == action.id) {
+    return reviewedBook;
+  }
+
+  return {};
+}
+
+function reviewReducer(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case REVIEW_BOOK : {
-      return applyReviewStory(state, action);
+    case FETCH_REVIEW_BOOK: {
+      console.log(action);
+      // return fetchReviewBook(state, action);
+
+      return state;
     }
-    default : return state;
+
+    default:
+      return state;
   }
 }
 
-export default searchReducer;
+export default reviewReducer;

@@ -31,8 +31,13 @@ const applySearchStory = (state, action) => {
 }
 
 const applyReviewStory = (state, action) => {
-  console.log(action)
-  return state.filter((book) => {return action.id === book.objectID})
+  const books = JSON.parse(localStorage.getItem('books')) || [];
+
+  const bookForReview = books.find(book => action.id === book.objectID);
+
+  if (bookForReview) {
+    localStorage.setItem('reviewedBook', JSON.stringify(bookForReview));
+  }
 }
   
 function storyReducer(state = INITIAL_STATE, action) {

@@ -2,6 +2,9 @@ import '../About.css';
 import Rate from './StarRating';
 
 const Review = ({ review }) => {
+
+    if (!review) return null;
+
     const {
       title,
       url,
@@ -9,7 +12,7 @@ const Review = ({ review }) => {
       num_comments,
       image,
       objectID,
-      star,
+      start,    
     } = review;
   
     return (

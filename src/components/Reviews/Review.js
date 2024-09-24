@@ -1,17 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 import '../App.css';
 import Review from '.'
 
-const Review1 = ({ reviews}) =>
-    <div className="app">
-       <div className="reviews" >
-      {(reviews || []).map(x =>
-          <Review 
-  
-          review={x}
-          />
-      )}
+const Review1 = ({ reviewBook }) =>
+  <div className="app">
+      <div className="reviews" >
+      <Review review={reviewBook} />
     </div>
-    </div>
+  </div>
   
-  export default Review1;
+  export default memo(Review1);

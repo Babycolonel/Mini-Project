@@ -10,10 +10,10 @@ import booksData from "../data/booksData";
 <script src="https://unpkg.com/react-router-dom/umd/react-router-dom.min.js"></script>
 
 const App = () => {
-  useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(booksData));
-    console.log(booksData);
-  }, []);
+  // useEffect(() => {
+  //   localStorage.setItem('books', JSON.stringify(booksData));
+  //   console.log(booksData);
+  // }, []);
 
   return (
     <BrowserRouter>

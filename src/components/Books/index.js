@@ -17,8 +17,13 @@ const Story = ({ story, onArchive, onReview }) => {
     } = story;
 
     const handleClick = (id) => {
+      onReview(id);
+      // const reviewedBooks = JSON.parse(localStorage.getItem('reviewedBooks')) || [];
+      // const isBookMarked = reviewedBooks.some(book => book.objectID === objectID)
+
+      // reviewedBooks.push(story);
+      // localStorage.setItem('reviewedBooks', JSON.stringify(reviewedBooks));
       navigate(`/about/${id}`);
-      // onReview(id);
     }
 
     const handleArchive = (id) => {

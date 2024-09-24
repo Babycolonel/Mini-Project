@@ -1,7 +1,7 @@
 import "./About.css";
 
 
-import React, { useEffect, useState, createContext, useContext } from 'react';
+import React, { useEffect, useState, createContext, useContext, useLayoutEffect, useCallback } from 'react';
 
 import "./Home.css";
 import "./About.css";
@@ -9,26 +9,31 @@ import "./Layout";
 import Review from "./Reviews/Review";
 import Rate from "./Reviews/StarRating";
 import Book from './Books/Book'; 
-import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
+import { FETCH_REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
 import store from "../store";
 import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
-// import { withRouter } from "react-router-dom";
+import { handleFetchReviewBook } from "../action/review";
 
 const About = (props) => {
-  const { reviews } = props;
+  const { dispatch, reviewBook } = props;
 
-  const [reviewItem, setReviewItem] = useState(null);
+  const [reviewedBook, setReviewedBook] = useState(null);
 
   const pa = useParams();
 
-  // const router = useRoutes();
+  const fetchReviewBook = (bookId) => {
+    // store.dispatch({ type: FETCH_REVIEW_BOOK, id: bookId });
+  }
+      
+  useEffect(() => {
+    setReviewedBook(reviewBook);
+  }, [reviewBook?.objectID]);
 
   useEffect(() => {
-    const book = reviews.find(item => item.objectID == pa.id);
-    console.log(book);
-    setReviewItem(book);
-  }, [pa.id, reviews.length]);
+    // fetchReviewBook(pa.id);
+    // dispatch(handleFetchReviewBook(pa.id));
+  }, [pa.id]);
 
  return (
    <>
@@ -47,8 +52,16 @@ const About = (props) => {
        <div className="headerBorder">
         <p className="ABheaderText">Review</p>
         </div>
-         <div className="reviewText">
-         <Review reviews={reviewItem ? [reviewItem] : []} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
+          <div className="reviewText">
+            <button onClick={() => store.dispatch({ type: FETCH_REVIEW_BOOK, id: pa.id })}>abc</button>
+          <Review reviewBook={reviewedBook} />
+         {/* {reviews.map(book => (
+          <Review
+            key={book.objectID}
+            story={book.review}
+          
+          />
+        ))} */}
          </div>
  
      </div>
@@ -57,12 +70,16 @@ const About = (props) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
-    reviews: state,
+    reviewBook: state,
   };
 }
 
 export default connect(
   mapStateToProps,
 )(About);
+
+// export default connect(store => ({
+//   reviewBook: store.reviewReducer
+// }))(About);
