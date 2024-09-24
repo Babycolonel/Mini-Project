@@ -342,3 +342,11 @@ body {
 .navButtons :hover {
   background-color: rgba(59, 54, 48, 0.199);
 }
+
+#clearButton {
+  width: 14vw;
+  height: 3vw;
+  font-size: 1.05vw;
+  transform: translateX(45vw) translateY(-2vw);
+  border-radius: 4px;
+}
