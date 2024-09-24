@@ -350,3 +350,8 @@ body {
   transform: translateX(45vw) translateY(-2vw);
   border-radius: 4px;
 }
+
+.modalContainer {
+  background-color: #282c34;
+  z-index: 1;
+}

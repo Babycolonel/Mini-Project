@@ -11,6 +11,9 @@ import store from "../store";
 import Home from "./Home.js";
 import booksData from "../data/booksData";
 import React, { useEffect, useState, createContext, useContext } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // const InputCustom = React.memo((props) => {
 //   console.log('render');
@@ -57,8 +60,29 @@ const Layout = ({ stories }) => {
   //   store.dispatch({ type: SEARCH_BOOK, title: input });
   // },[input]);
 */
+
+const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+
     return(
       <>
+      {/* pop up when registering/loging in */}
+      <Modal show={show} onHide={handleClose} className="modalContainer">
+              <Modal.Header closeButton>
+                <Modal.Title>Register</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>Test Test Test Test</Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+           </Modal>
         <nav>
             <li className='navHeight'>
               <div className='flex-container'>
@@ -66,12 +90,11 @@ const Layout = ({ stories }) => {
                 <Link to="/about">About</Link>
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
-                  <button className="navButtons">Register</button>
+                  <button className="navButtons" onClick={handleShow}>Register</button>
                   <button className="navButtons">Log In</button>
                 </div>
               </div>
             </li>
-            
         </nav>
         <Outlet />
       </>
