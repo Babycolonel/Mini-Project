@@ -1,0 +1,54 @@
+import "./Leaderboard";
+import React, { useEffect, useState, createContext, useContext } from 'react';
+
+import "./Home.css";
+import "./About.css";
+import "./Layout";
+import Review from "./Reviews/Review";
+import Rate from "./Reviews/StarRating";
+import Book from './Books/Book'; 
+import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
+import store from "../store";
+import { connect } from 'react-redux';
+import { useParams } from "react-router-dom";
+
+const Leaderboard = (stories) => {
+  
+  
+   return (
+     <>
+       <head>
+         <link rel="stylesheet" type="text/css" href="App.css"/>
+         <script defer src='activePage.js'></script>
+       </head>
+  
+       <div id="home">
+       <div id="titleBackground">
+       <div id="titleName">
+             <p>Leaderboard</p>
+         </div>
+  
+         </div>
+         <div className="headerBorder">
+          <p className="ABheaderText">Top books this month</p>
+          </div>
+           <div className="reviewText">
+        
+           </div>
+   
+       </div>
+       </>
+   );
+  }
+  
+  const mapStateToProps = state => {
+    console.log(state);
+    return {
+      reviews: state,
+    };
+  }
+  
+  export default connect(
+    mapStateToProps,
+  )(Leaderboard);
+  

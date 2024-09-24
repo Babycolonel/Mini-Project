@@ -63,7 +63,7 @@ const Layout = ({ stories }) => {
             <li className='navHeight'>
               <div className='flex-container'>
                 <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
+                <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
                   <button className="navButtons">Register</button>
