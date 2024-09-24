@@ -26,19 +26,24 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
     
     const handleArchive = (id) => {
       //store archived book in localStorage
-      const archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+      let archivedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+      //ensure archivedBooks is always an array even when returns empty/null
+      if (!Array.isArray(archivedBooks)) {
+        archivedBooks = [];
+      }    
       const isBookMarked = archivedBooks.some(book => book.objectID === objectID)
       if (!isBookMarked) {
         archivedBooks.push(story);
         localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
         alert(story.title + " has been added to bookmarks")
         console.log(archivedBooks)
-        //call onArchive callback if needed
         //if (onArchive) onArchive(id);
       }
       else {
-        localStorage.removeItem('archivedBooks', JSON.stringify(archivedBooks, story));
-        archivedBooks.pop(story);
+        //do not use remove as it removes all items from the list
+        //use filter just to keep books with different objectIDs from the unbookmarked book
+        archivedBooks = archivedBooks.filter(book => book.objectID !== story.objectID);
+        localStorage.setItem('archivedBooks', JSON.stringify(archivedBooks));
         alert(story.title + " has been removed from bookmarks")
         console.log(archivedBooks)
         //if (onRemoveArchive) onRemoveArchive(id);
