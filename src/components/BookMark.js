@@ -39,6 +39,7 @@ const BookMark = ({ stories }) => {
         </div>
         <div className="headerBorder">
         <span className="BMheaderText">{archivedBooks.length} favourited</span>
+        <button id="clearButton" onClick={clearBookmarks}>CLEAR ALL BOOKMARKS</button>
         </div>
         <span className='flex-container'>
         {archivedBooks.map(book => (
@@ -48,7 +49,6 @@ const BookMark = ({ stories }) => {
           />
         ))}
         </span>
-        <button onClick={clearBookmarks}>CLEAR ALL BOOKMARKS</button>
         </div>
         </>
     );

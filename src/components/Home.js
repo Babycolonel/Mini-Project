@@ -17,6 +17,7 @@ import { Action } from "@remix-run/router";
 import { SEARCH_BOOK } from "../constants/actionTypes";
 import booksData from "../data/booksData";
 
+
 const Home = ({ stories }) => {
   const [books, setBooks] = useState([]);
   const [age, setAge] = useState('');
@@ -44,9 +45,11 @@ const Home = ({ stories }) => {
     }
 
     //filter by search term
+    //checks for both book title and author input
     if (searchTerm) {
       filteredBooks = filteredBooks.filter(book => 
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
+        || book.author.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -56,7 +59,7 @@ const Home = ({ stories }) => {
 
   const handleChange = (event) => {
     const genre = event.target.value;
-    console.log(event.target.value);
+    console.log("EVENT TARGET VALUE = " + event.target.value);
     setAge(genre);
 
     //filter by genre and update state
@@ -122,12 +125,7 @@ const Home = ({ stories }) => {
         <span className='flex-container'>
           <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
         </span>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+
       </div>
       </>
   );
