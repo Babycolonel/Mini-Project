@@ -22,17 +22,17 @@ const {
   
 /* layout of the UI when displaying the state from the store */
     return (
-      <div className='homePageContainer' >
+      <div className='homePageContainer1' >
         <div className="story">
             
-            <div className='homePageTitles'>
+            <div className='homePageTitles1'>
                 <span>
                 <a>{title}</a>
                 </span>
                 <br></br>
             </div>
             
-        <div className='homePageText'>
+        <div className='homePageText1'>
             <span>{author}</span>
             <br></br>
             <span>{num_comments} comments</span>
@@ -41,7 +41,7 @@ const {
         <div  className ="RankStar">
           <Rate></Rate>
         </div>
-        <img src={image} className='bookImage'></img>
+        <img src={image} className='bookImage1'></img>
             <br></br>
       </div>
       </div>  
