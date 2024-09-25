@@ -1,5 +1,6 @@
 import Home from "./Home";
 import About from "./About";
+import Leaderboard from "./Leaderboard";
 import Layout from "./Layout";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BookMark from "./BookMark";
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/" element={<Layout/>}>
           <Route index element={<Home />} />
           <Route path="about/:id" element={<About />} />
+          <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="bookmark" element={<BookMark />} />
         </Route>
       </Routes>
