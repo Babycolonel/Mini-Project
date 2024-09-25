@@ -48,6 +48,7 @@ const Home = ({ stories }) => {
     if (searchTerm) {
       filteredBooks = filteredBooks.filter(book => 
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
+        || book.author.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -123,12 +124,7 @@ const Home = ({ stories }) => {
         <span className='flex-container'>
           <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
         </span>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+
       </div>
       </>
   );

@@ -177,7 +177,7 @@ a:is(:link, :active, :visited){
   display: flex;
   align-items: center;
   overflow: hidden;
-  /* background-color: rgb(43, 75, 57); */
+  background-color: rgb(43, 75, 57);
 }
 
 #avatar3 {
@@ -216,26 +216,27 @@ body {
 }
 
 .bookImage {
-  width: 20vw;
+  width: 18vw;
   height: 30vw;
   align-items: center;
   border-radius: 4%;
-  margin-left: 0.5vw;
+  margin-left: -1vw;
   margin-top: 0.5vw;
   transform: translate(10%,0%);
 }
 
 .homePageContainer {
-  width: 25vw;
-  height: 38vw;
+  width: 20.3vw;
+  height: 40vw;
   color: white;
   border: solid;
   border-color: rgb(114, 83, 54);
   border-width: 0.4vw;
   align-items: center;
-  margin-left: 4vw;
-  margin-right: 2vw;
-  margin-top: 3vw;
+  margin-left: 3vw;
+  margin-right: 1vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
   display: inline-block;
   border-radius: 4%;
   background-color: rgb(212, 175, 106);
@@ -248,14 +249,14 @@ body {
 }
 
 .homePageTitles {
-  font-size: 2vw;
+  font-size: 1.5vw;
   align-self: center;
   color: black;
   margin-left: 0.5vw;
 }
 
 .homePageText {
-  font-size: 1.2vw;
+  font-size: 1.1vw;
   align-items: center;
   color: black;
   margin-left: 0.5vw;
@@ -271,7 +272,7 @@ body {
 .headerText {
   font-size: 8vw;
   font-family: "Bebas Neue", sans-serif;
-  margin-top: 0.5vw;
+  margin-top: 0vw;
   margin-left: -8vw;
   margin-bottom: 0vw;
   color:  rgb(212, 175, 106);
@@ -314,8 +315,7 @@ body {
   width: 2.5vw;
   height: 2.5vw;
   margin-left: 15vw;
-  transform: translateY(-0.5vw);
-  transform: translateX(2.6vw);
+  transform: translateX(-2.2vw) translateY(0.9vw);
   font-size: 1.2vw;
   border-radius: 100%;
   position: absolute;

@@ -68,22 +68,25 @@ const handleShow = () => setShow(true);
     return(
       <>
       {/* link makes pop up work but changes some layout, uncomment with caution */}
-      {/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></link> */}
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></link>
       {/* pop up when registering/loging in */}
-      <Modal show={show} onHide={handleClose} className="modalContainer">
-              <Modal.Header closeButton>
-                <Modal.Title>Register</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Test Test Test Test</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Close
-                </Button>
-                <Button variant="primary" onClick={handleClose}>
-                  Save Changes
-                </Button>
-              </Modal.Footer>
-           </Modal>
+        <Modal show={show} onHide={handleClose} className="modalContainer">
+          <Modal.Header closeButton>
+            <Modal.Title>Register</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Username:</Modal.Body>
+          <input placeholder="Name that will be seen by others."></input>
+          <Modal.Body>Password:</Modal.Body>
+          <input placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Create Account
+            </Button>
+          </Modal.Footer>
+        </Modal>
         <nav>
             <li className='navHeight'>
               <div className='flex-container'>
