@@ -22,7 +22,7 @@ const {
   
 /* layout of the UI when displaying the state from the store */
     return (
-      <div className='homePageContainer1' >
+      <div className='leaderboard-container' >
         <div className="story">
             
             <div className='homePageTitles1'>
