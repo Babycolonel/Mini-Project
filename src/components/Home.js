@@ -45,6 +45,7 @@ const Home = ({ stories }) => {
     }
 
     //filter by search term
+    //checks for both book title and author input
     if (searchTerm) {
       filteredBooks = filteredBooks.filter(book => 
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
