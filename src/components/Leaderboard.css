@@ -1,4 +1,4 @@
-.bookImage {
+.bookImage1 {
     width: 20vw;
     height: 30vw;
     align-items: right;
@@ -9,7 +9,7 @@
     position: absolute;
   }
   
-  .homePageContainer {
+  .homePageContainer1 {
     width: 50vw;
     height: 38vw;
     color: white;
@@ -28,11 +28,11 @@
 
   }
   
-  .homePageContainer:hover {
+  .homePageContainer1:hover {
     transform: scale(1.1);
   }
   
-  .homePageTitles {
+  .homePageTitles1 {
     font-size: 2vw;
     align-self: center;
     color: black;
@@ -41,7 +41,7 @@
     ;
   }
   
-  .homePageText {
+  .homePageText1 {
     font-size: 1.2vw;
     align-items: center;
     color: black;
