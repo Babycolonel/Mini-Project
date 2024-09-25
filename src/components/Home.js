@@ -92,7 +92,7 @@ const Home = ({ stories }) => {
             <p>Le Book Navigator</p>
           </div>
           <div id="titleWords">
-            <p>welcome to our website</p>
+            <p>Welcome to our website</p>
           </div>
         </div>
         <div className="headerBorder">

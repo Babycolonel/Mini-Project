@@ -67,10 +67,10 @@
 /* big name at the top */
 #titleName {
   position: absolute;
-  font-size: 8vw;
+  font-size: 7vw;
   margin: 0;
   padding: 0;
-  top: 40%;
+  top: 50%;
   left: 50%;
   color: rgb(212, 175, 106);
   transform: translate(-50%, -50%);
@@ -81,7 +81,7 @@
 /* short desc below titleName */
 #titleWords {
   position: absolute;
-  font-size: 3vw;
+  font-size: 2.5vw;
   margin: 0;
   padding: 0;
   top: 75%;
@@ -272,9 +272,9 @@ body {
 .headerText {
   font-size: 8vw;
   font-family: "Bebas Neue", sans-serif;
-  margin-top: 0vw;
+  margin-top: -1vw;
   margin-left: -8vw;
-  margin-bottom: 0vw;
+  margin-bottom: -1vw;
   color:  rgb(212, 175, 106);
   display: inline-block;
 } 
@@ -327,7 +327,7 @@ body {
 }
 
 .navButtonContainer {
-  transform: translateX(48vw);
+  transform: translateX(42vw);
 }
 
 .navButtons {
