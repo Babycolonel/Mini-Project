@@ -80,6 +80,7 @@ const handleCreateAccount = () => {
     alert('Account created successfully!');
     setShow(false);
   }
+
 };
 
     return(

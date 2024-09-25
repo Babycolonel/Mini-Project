@@ -371,3 +371,8 @@ body {
   max-width: var(--bs-modal-width);
   align-items: center;
 }
+
+#noSearch {
+  font-size: 10vw;
+  font-family: "Bebas Neue", sans-serif;
+}

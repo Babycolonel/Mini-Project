@@ -22,6 +22,7 @@ const Home = ({ stories }) => {
   const [books, setBooks] = useState([]);
   const [age, setAge] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     //store the booksData in localStorage
@@ -47,6 +48,7 @@ const Home = ({ stories }) => {
     //filter by search term
     //checks for both book title and author input
     if (searchTerm) {
+      setShow(false);
       filteredBooks = filteredBooks.filter(book => 
         book.title.toLowerCase().includes(searchTerm.toLowerCase())
         || book.author.toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,6 +57,13 @@ const Home = ({ stories }) => {
 
     //set filtered list
     setBooks(filteredBooks);
+    if (filteredBooks.length == 0) {
+      console.log("filtered books nothing " );
+      setShow(true);
+    }
+    else {
+      setShow(false);
+    }
   }, [age, searchTerm]);
 
   const handleChange = (event) => {
@@ -97,7 +106,7 @@ const Home = ({ stories }) => {
         </div>
         <div className="headerBorder">
         <div className="dropDownContainer">
-            <InputLabel id="dropDownLabel" >Genre</InputLabel>
+            <InputLabel id="dropDownLabel">Genre</InputLabel>
             <Select 
               labelId="dropDownLabel"
               id="dropDown"
@@ -122,6 +131,10 @@ const Home = ({ stories }) => {
             onChange={handleSearchChange}
           />
         </div>
+        <div>
+          {/* conditionally renders the message */}
+          {show && <div id="noSearch">No search results...</div>}
+      </div>
         <span className='flex-container'>
           <Book stories={books} onArchive={id => store.dispatch({type: STORY_ARCHIVE, id})} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
         </span>
