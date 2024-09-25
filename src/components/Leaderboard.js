@@ -11,10 +11,31 @@ import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
 import store from "../store";
 import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
+import Ranks1 from "./Leaderboards/Ranks";
+import booksData from "../data/booksData";
 
 const Leaderboard = (stories) => {
-  
-  
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    //store the booksData in localStorage
+    if (!localStorage.getItem('books')) {
+      localStorage.setItem('books', JSON.stringify(booksData));
+  }
+
+  //retrieve books from localStorage and set state
+  const localBooks = JSON.parse(localStorage.getItem('books'));
+  setBooks(localBooks || []);
+  console.log(localBooks + "djdjdd");
+  //empty array dependency so it only runs once
+  }, []);
+
+  useEffect(() => {
+    let allBooks = JSON.parse(localStorage.getItem('books'));
+
+    setBooks(allBooks)
+  }, []);
+
    return (
      <>
        <head>
@@ -32,8 +53,12 @@ const Leaderboard = (stories) => {
          <div className="headerBorder">
           <p className="ABheaderText">Top books this month</p>
           </div>
-           <div className="reviewText">
-        
+           <div>
+            <span className='flex-container'>
+             <Ranks1 ranks={books}/>
+             {console.log(books)};
+            </span>
+
            </div>
    
        </div>
@@ -44,7 +69,7 @@ const Leaderboard = (stories) => {
   const mapStateToProps = state => {
     console.log(state);
     return {
-      reviews: state,
+      rank: state,
     };
   }
   
