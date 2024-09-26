@@ -71,16 +71,19 @@ const handlePasswordChange = (event) => {
 };
 
 const handleCreateAccount = () => {
-  //Criteria, 1 uppercase, 1 number, 1 symbol, >= 10 characters
+  //criteria, 1 uppercase, 1 number, 1 symbol, >= 10 characters
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{10,}$/;
   if (!passwordRegex.test(password)) {
     alert('Invalid password: 1 uppercase, 1 number, 1 symbol, and minimum 10 characters required.');
   } else {
-    // Close the modal if password is valid
+    //close the modal if password is valid
     alert('Account created successfully!');
     setShow(false);
   }
 
+  const handleLoginAccount = () => {
+    // call sqlDB and check for login detail
+  }
 };
 
     return(
@@ -114,7 +117,7 @@ const handleCreateAccount = () => {
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
                   <button className="navButtons" onClick={handleShow}>Register</button>
-                  <button className="navButtons">Log In</button>
+                  <button className="navButtons" onClick={handleShow}>Log In</button>
                 </div>
               </div>
             </li>
