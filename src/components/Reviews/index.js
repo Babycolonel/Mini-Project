@@ -12,6 +12,7 @@ const Review = ({ review }) => {
     } = review;
   
     return (
+      <div className='review-container'>
       <div className="reviewBig">
         <div>
           <img src={image} className='reviewImage'></img>
@@ -25,6 +26,8 @@ const Review = ({ review }) => {
             <Rate ></Rate>
           </div>
         </div>
+      </div>
+
       </div>
     );
   }
