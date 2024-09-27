@@ -17,6 +17,7 @@ const {
     points,
     image,
     objectID,
+    rank,
 } = ranks;
 
   
@@ -37,6 +38,7 @@ const {
             <br></br>
             <span>{num_comments} comments</span>
             <br></br>
+            <span>#{rank}</span>
         </div>
         <div  className ="RankStar">
           <Rate></Rate>

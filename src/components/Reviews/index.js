@@ -8,6 +8,7 @@ const Review = ({ review }) => {
       author,
       num_comments,
       image,
+      points,
     } = review;
   
     return (
@@ -21,7 +22,7 @@ const Review = ({ review }) => {
             <p>{author}</p>
           </div>
           <div className = "rateStyle">
-            <Rate></Rate>
+            <Rate ></Rate>
           </div>
         </div>
       </div>

@@ -33,7 +33,9 @@ const Leaderboard = (stories) => {
   useEffect(() => {
     let allBooks = JSON.parse(localStorage.getItem('books'));
 
-    setBooks(allBooks)
+    const sortedBooks = allBooks.sort((a,b) => a.rank - b.rank);
+
+    setBooks(sortedBooks);
   }, []);
 
    return (
