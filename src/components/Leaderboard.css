@@ -7,6 +7,7 @@
   margin-top: -3vw;
   transform: translate(10%,0%);
   position: absolute;
+  z-index: 300;
 }
 
 .leaderboard-container {

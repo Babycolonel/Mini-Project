@@ -7,7 +7,7 @@ import BookMark from '../BookMark';
 import {DisplayRate} from '../Reviews/StarRating';
 const Ranks = ({ ranks }) => {
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
 const {
     title,
@@ -20,14 +20,19 @@ const {
     rank,
 } = ranks;
 
+const handleClick = (id) => {
+  navigate(`/about/${id}`);
+  // onReview(id);
+  console.log("heloi");
+}
   
 /* layout of the UI when displaying the state from the store */
     return (
       <div className='leaderboard-container' >
-      <span className='rank'>#{rank}</span>
+      <span className='rank' >#{rank}</span>
         <div className="story">
             
-            <div className='homePageTitles1'>
+            <div className='homePageTitles1' >
                 <span>
                 <a>{title}</a>
                 </span>
@@ -47,7 +52,7 @@ const {
             
           </DisplayRate>
         </div>
-        <img src={image} className='bookImage1'></img>
+        <img src={image} className='bookImage1'  onClick={() => handleClick(objectID)}></img>
             <br></br>
       </div>
       </div>  

@@ -16,7 +16,7 @@ const booksData = [
         "url": "https://wimpykid.com/",
         "author": "Jeff Kinney",
         "num_comments": 2,
-        "points": 2,
+        "points": 5,
         "objectID": 1,
         "genre": "Children",
         "rank": 1
