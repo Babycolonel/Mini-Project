@@ -24,6 +24,7 @@ const {
 /* layout of the UI when displaying the state from the store */
     return (
       <div className='leaderboard-container' >
+      <span className='rank'>#{rank}</span>
         <div className="story">
             
             <div className='homePageTitles1'>
@@ -38,7 +39,7 @@ const {
             <br></br>
             <span>{num_comments} comments</span>
             <br></br>
-            <span>#{rank}</span>
+
         </div>
         <div  className ="RankStar">
           <Rate></Rate>
