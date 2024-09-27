@@ -2,7 +2,8 @@ import { createStore } from 'redux';
 import storyReducer from '../reducers/story';
 
 const store = createStore(
-  storyReducer
+  storyReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 export default store;

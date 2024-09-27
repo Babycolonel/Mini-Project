@@ -9,43 +9,47 @@ import "./Home.css";
 
 const BookMark = ({ stories }) => {
   const [archivedBooks, setArchivedBooks] = useState([]);
-
+  
   useEffect(() => {
     //get archived books from localStorage
     const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
     setArchivedBooks(storedBooks);
-  }, []);
+  }, );
+
+  const clearBookmarks = () => {
+    // Clear bookmarks from local storage
+    localStorage.removeItem('archivedBooks');
+    setArchivedBooks([]);
+  };
 
     return (
         <>
         <head>
         <link rel="stylesheet" type="text/css" href="App.css"/>
         <script defer src='activePage.js'></script>
-      </head> 
-      <body /*onLoad={handleChange}*/>    
+      </head>   
       <div id="bookmark">
         <div id="titleBackground">
           <div id="titleName">
             <p>BookMarked</p>
           </div>
           <div id="titleWords">
-            <p>View your archived stories</p>
+            <p>View your favourite stories here</p>
           </div>
         </div>
         <div className="headerBorder">
-        <span className="BMheaderText">Browse</span>
+        <span className="BMheaderText">{archivedBooks.length} favourited</span>
+        <button id="clearButton" onClick={clearBookmarks}>CLEAR ALL BOOKMARKS</button>
         </div>
         <span className='flex-container'>
         {archivedBooks.map(book => (
           <Story
             key={book.objectID}
             story={book}
-            // onArchive and onReview can be passed as needed
           />
         ))}
         </span>
         </div>
-      </body>
         </>
     );
 }
