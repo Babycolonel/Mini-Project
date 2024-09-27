@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Star from './Star';
 import PropTypes from 'prop-types';
-import Review from './Review';
 
 const StarRating = ({ initialRating, maxRating, onRate }) => {
   const [rating, setRating] = useState(initialRating);
-  
+
   const handleStarClick = (index) => {
     setRating(index + 1);
     if (onRate) onRate(index + 1);
@@ -36,36 +35,14 @@ StarRating.defaultProps = {
 };
 
 const Rate = ({}) => {
-
-  
-  const [currentRating, setCurrentRating] = useState(0);
-
-  useEffect(() => {
-    // Retrieve the current rating from localStorage
-    // const bookData = localStorage.getItem('books');
-    // const booksArray = JSON.parse(bookData);
-
-
-    // const savedRating = Number(booksArray[0]?.points);
-
-
-    // console.log(savedRating +"hello");
-    console.log(currentRating);
-
-    setCurrentRating(currentRating);
-    
-
-  }, []);
-
-  const handleRatingChange = (newRating) => {
-    console.log('New rating:', newRating);
-    localStorage.setItem('currentRating', newRating);
-  };
+    const handleRatingChange = (newRating) => {
+      console.log('New rating:', newRating);
+    };
   
     return (
       <div>
         <StarRating 
-          initialRating={currentRating} 
+          initialRating={3} 
           maxRating={5} 
           onRate={handleRatingChange} 
         />
