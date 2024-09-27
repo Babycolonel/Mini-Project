@@ -1,5 +1,5 @@
 import '../About.css';
-import Rate from './StarRating';
+import { Rate } from './StarRating';
 
 const Review = ({ review }) => {
     const {

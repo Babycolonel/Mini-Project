@@ -16,7 +16,7 @@ const booksData = [
         "url": "https://wimpykid.com/",
         "author": "Jeff Kinney",
         "num_comments": 2,
-        "points": 5,
+        "points": 2,
         "objectID": 1,
         "genre": "Children",
         "rank": 1
@@ -27,7 +27,7 @@ const booksData = [
         "url": "https://dunenovels.com/",
         "author": "Frank Herbet",
         "num_comments": 2,
-        "points": 6,
+        "points": 3,
         "objectID": 2,
         "genre": "Fantasy",
         "rank": 3
@@ -38,7 +38,7 @@ const booksData = [
         "url": "https://stepheniemeyer.com/the-twilight-saga/",
         "author": "Stephenie Meyer",
         "num_comments": 9,
-        "points": 8,
+        "points": 1,
         "objectID": 3,
         "genre": "Romance",
         "rank": 4
@@ -49,7 +49,7 @@ const booksData = [
         "url": "https://stepheniemeyer.com/the-twilight-saga/",
         "author": "John Boyne",
         "num_comments": 9,
-        "points": 8,
+        "points": 5,
         "objectID": 4,
         "genre": "Literature",
         "rank": 5
@@ -60,7 +60,7 @@ const booksData = [
         "url": "https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/",
         "author": "James Dashner",
         "num_comments": 15,
-        "points": 8,
+        "points": 3,
         "objectID": 5,
         "genre": "Adventure",
         "rank": 6

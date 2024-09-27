@@ -4,7 +4,7 @@ import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import BookMark from '../BookMark';
-import Rate from '../Reviews/StarRating';
+import {DisplayRate} from '../Reviews/StarRating';
 const Ranks = ({ ranks }) => {
 
   const navigate = useNavigate();
@@ -42,7 +42,10 @@ const {
 
         </div>
         <div  className ="RankStar">
-          <Rate></Rate>
+          <DisplayRate
+          star = {points}>
+            
+          </DisplayRate>
         </div>
         <img src={image} className='bookImage1'></img>
             <br></br>
