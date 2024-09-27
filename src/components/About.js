@@ -3,7 +3,7 @@ import "./About.css";
 
 import React, { useEffect, useState, createContext, useContext } from 'react';
 
-import "./Home.css";
+
 import "./About.css";
 import "./Layout";
 import Review from "./Reviews/Review";
@@ -18,17 +18,19 @@ import { useParams } from "react-router-dom";
 const About = (props) => {
   const { reviews } = props;
 
-  const [reviewItem, setReviewItem] = useState(null);
+  // const [reviewItem, setReviewItem] = useState(null);
 
   const pa = useParams();
 
-  // const router = useRoutes();
-
+  const [reviewedBooks, setReviewedBooks] = useState([]);
+  
   useEffect(() => {
-    const book = reviews.find(item => item.objectID == pa.id);
-    console.log(book);
-    setReviewItem(book);
+    //get archived books from localStorage
+    const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    const book = storedBooks.find(book => book.objectID == pa.id);
+    setReviewedBooks(book);
   }, [pa.id, reviews.length]);
+
 
  return (
    <>
@@ -37,7 +39,7 @@ const About = (props) => {
        <script defer src='activePage.js'></script>
      </head>
 
-     <div id="home">
+     <div id="about">
      <div id="titleBackground">
      <div id="titleName">
            <p>「✦ Book reviews ✦」</p>
@@ -47,10 +49,14 @@ const About = (props) => {
        <div className="headerBorder">
         <p className="ABheaderText">Review</p>
         </div>
-         <div className="reviewText">
-         <Review reviews={reviewItem ? [reviewItem] : []} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
-         </div>
- 
+        <div className="tester">
+        <Review reviews={reviewedBooks ? [reviewedBooks] : []} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
+        </div>
+        {/* <span className="backgroundE">
+         <Review reviews={reviewedBooks ? [reviewedBooks] : []} onReview ={id => store.dispatch({type: REVIEW_BOOK, id}) }/>
+         </span> */}
+
+
      </div>
      </>
  );
