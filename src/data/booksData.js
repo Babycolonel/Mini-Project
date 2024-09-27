@@ -45,7 +45,7 @@ const booksData = [
     },
     {
         "image": "https://m.media-amazon.com/images/I/91Gy28f5M0L._AC_UF1000,1000_QL80_.jpg",
-        "title": "Boy In The Stripped",
+        "title": "Boy In The Striped Pjs",
         "url": "https://stepheniemeyer.com/the-twilight-saga/",
         "author": "John Boyne",
         "num_comments": 9,
