@@ -28,7 +28,7 @@ const handleClick = (id) => {
   
 /* layout of the UI when displaying the state from the store */
     return (
-      <div className='leaderboard-container' >
+      <div className='leaderboard-container' onClick={() => handleClick(objectID)}>
       <span className='rank' >#{rank}</span>
         <div className="story">
             
@@ -52,7 +52,7 @@ const handleClick = (id) => {
             
           </DisplayRate>
         </div>
-        <img src={image} className='bookImage1'  onClick={() => handleClick(objectID)}></img>
+        <img src={image} className='bookImage1' ></img>
             <br></br>
       </div>
       </div>  

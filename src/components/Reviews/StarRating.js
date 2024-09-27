@@ -60,7 +60,7 @@ StarDisplay.defaultProps = {
   maxRating: 5,
 };
 
-const Rate = ({}) => {
+const Rate = ({newRating}) => {
     const handleRatingChange = (newRating) => {
       console.log('New rating:', newRating);
     };
@@ -68,7 +68,7 @@ const Rate = ({}) => {
     return (
       <div>
         <StarRating 
-          initialRating={3} 
+          initialRating={newRating} 
           maxRating={5} 
           onRate={handleRatingChange} 
         />
