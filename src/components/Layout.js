@@ -122,11 +122,12 @@ const handleCreateAccount = () => {
 
   const handleLoginAccount = () => {
     // call sqlDB and check for login detail
+    //checking if both username and password exist in DB
     const existingUser = users.find(user => user.username === username && user.password === password);
     if (existingUser) {
       alert('Login successful!');
-      // Perform any additional actions upon successful login
-    } else {
+      setShow(false);
+      //do/show login stuff
       alert('Invalid username or password.');
     }
 };
