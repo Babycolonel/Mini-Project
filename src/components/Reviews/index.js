@@ -1,5 +1,5 @@
 import '../About.css';
-import Rate from './StarRating';
+import { Rate } from './StarRating';
 
 const Review = ({ review }) => {
     const {
@@ -8,6 +8,7 @@ const Review = ({ review }) => {
       author,
       num_comments,
       image,
+      points,
     } = review;
   
     return (
@@ -22,7 +23,11 @@ const Review = ({ review }) => {
             <p>{author}</p>
           </div>
           <div className = "rateStyle">
-            <Rate></Rate>
+            <Rate 
+            star = {points}
+            >
+            
+            </Rate>
           </div>
         </div>
       </div>

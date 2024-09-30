@@ -34,20 +34,61 @@ StarRating.defaultProps = {
   maxRating: 5,
 };
 
-const Rate = ({}) => {
+const StarDisplay = ({ initialRating, maxRating }) => {
+  const [rating] = useState(initialRating);
+
+
+  return (
+    <div style={{ display: 'flex' }}>
+      {Array.from({ length: maxRating }, (_, index) => (
+        <Star 
+          key={index}
+          filled={index < rating}
+        />
+      ))}
+    </div>
+  );
+};
+
+StarDisplay.propTypes = {
+  initialRating: PropTypes.number,
+  maxRating: PropTypes.number,
+};
+
+StarDisplay.defaultProps = {
+  initialRating: 0,
+  maxRating: 5,
+};
+
+const Rate = ({star, newRating}) => {
     const handleRatingChange = (newRating) => {
       console.log('New rating:', newRating);
+      star={newRating};
     };
   
     return (
       <div>
         <StarRating 
-          initialRating={3} 
+          initialRating={newRating} 
           maxRating={5} 
           onRate={handleRatingChange} 
+          
         />
       </div>
     );
   };
   
-  export default Rate;
+  const DisplayRate = ({star}) => {
+
+    return (
+      <div>
+        <StarDisplay
+          initialRating={star} 
+          maxRating={5} 
+        />
+      </div>
+    );
+  }
+
+
+  export {Rate, DisplayRate};

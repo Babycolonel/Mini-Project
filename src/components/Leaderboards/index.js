@@ -4,10 +4,10 @@ import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import BookMark from '../BookMark';
-import Rate from '../Reviews/StarRating';
+import {DisplayRate} from '../Reviews/StarRating';
 const Ranks = ({ ranks }) => {
 
-  const navigate = useNavigate();
+const navigate = useNavigate();
 
 const {
     title,
@@ -17,15 +17,22 @@ const {
     points,
     image,
     objectID,
+    rank,
 } = ranks;
 
+const handleClick = (id) => {
+  navigate(`/about/${id}`);
+  // onReview(id);
+  console.log("heloi");
+}
   
 /* layout of the UI when displaying the state from the store */
     return (
-      <div className='leaderboard-container' >
+      <div className='leaderboard-container' onClick={() => handleClick(objectID)}>
+      <span className='rank' >#{rank}</span>
         <div className="story">
             
-            <div className='homePageTitles1'>
+            <div className='homePageTitles1' >
                 <span>
                 <a>{title}</a>
                 </span>
@@ -37,11 +44,15 @@ const {
             <br></br>
             <span>{num_comments} comments</span>
             <br></br>
+
         </div>
         <div  className ="RankStar">
-          <Rate></Rate>
+          <DisplayRate
+          star = {points}>
+            
+          </DisplayRate>
         </div>
-        <img src={image} className='bookImage1'></img>
+        <img src={image} className='bookImage1' ></img>
             <br></br>
       </div>
       </div>  

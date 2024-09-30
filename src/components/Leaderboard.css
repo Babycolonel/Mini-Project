@@ -1,12 +1,13 @@
 .bookImage1 {
   width: 20vw;
   height: 30vw;
-  align-items: right;
+  align-items: center;
   border-radius: 4%;
   margin-left: 25vw;
-  margin-top: 0.5vw;
+  margin-top: -3vw;
   transform: translate(10%,0%);
   position: absolute;
+  z-index: 300;
 }
 
 .leaderboard-container {
@@ -56,4 +57,16 @@
 
 .div{
   position: flex;
+}
+
+.rank {
+  background-color: rgb(255, 217, 0);
+  border: solid;
+  border-radius: 3vw;
+  padding: 1vw;
+  position: block;
+  color: black;
+  margin-left: -2vw;
+  margin-bottom: 3vw;
+  
 }
