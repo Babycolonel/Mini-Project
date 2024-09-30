@@ -170,3 +170,10 @@ body {
   border-radius: 2%;    
   padding: 1%;
 }
+
+#reviewText {
+  margin-top: 5vw;
+  height: 10vw;
+  
+  text-align: top;
+}

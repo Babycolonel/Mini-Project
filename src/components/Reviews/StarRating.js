@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Star from './Star';
 import PropTypes from 'prop-types';
 
-
 const StarRating = ({ initialRatingR, maxRatingR, onRate }) => {
   const [rating, setRating] = useState(initialRatingR);
 
@@ -75,11 +74,10 @@ const Rate = ({starR}) => {
   }, [starR]);
 
   console.log(newRating);
-      const handleRatingChange = (rating) => {
-      console.log('New rating:', newRating);
-      setNewRating(rating);
-
-    };
+  const handleRatingChange = (rating) => {
+  console.log('New rating:', newRating);
+  setNewRating(rating);
+  };
   
     return (
       <div>
