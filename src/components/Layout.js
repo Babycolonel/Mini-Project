@@ -65,6 +65,7 @@ const [show, setShow] = useState(false);
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
+const [userLoggedIn, setUserLoggedIn] = useState(null)
 
 const handleClose = () => setShow(false); 
 const handleShow = () => setShow(true);
@@ -127,7 +128,9 @@ const handleCreateAccount = () => {
     if (existingUser) {
       alert('Login successful!');
       setShow(false);
-      //do/show login stuff
+      setUserLoggedIn(existingUser);
+      // Perform any additional actions upon successful login
+    } else {
       alert('Invalid username or password.');
     }
 };
@@ -166,8 +169,16 @@ const handleCreateAccount = () => {
                 <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
-                  <button className="navButtons" onClick={handleShow}>Register</button>
-                  <button className="navButtons" onClick={handleShow}>Log In</button>
+                  {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
+                {userLoggedIn? (
+                <span>Welcome, {userLoggedIn.username}!</span>
+                ) : 
+                (
+                <>
+                  <button className="navButtons" onClick={() => { handleShow(); fetchUsers(); }}>Register</button>
+                  <button className="navButtons" onClick={() => { handleShow(); fetchUsers(); }}>Log In</button>
+                </>
+                )}
                 </div>
               </div>
             </li>
