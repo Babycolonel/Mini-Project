@@ -159,7 +159,7 @@ body {
 .review-container {
   border: solid;
   width: fit-content;
-  margin-left: 20vw;
+  margin-left: 18vw;
   color: white;
   border: solid;
   border-color: rgb(114, 83, 54);
@@ -169,4 +169,14 @@ body {
   align-items: center;
   border-radius: 2%;    
   padding: 1%;
+}
+
+#reviewText {
+  margin-top: 2vw;
+  height: 10vw;
+  
+  text-align: top;
+}
+#reviewButton {
+  background-color: #1f613c;
 }

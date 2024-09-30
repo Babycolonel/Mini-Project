@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Star from './Star';
 import PropTypes from 'prop-types';
 
-const StarRating = ({ initialRating, maxRating, onRate }) => {
-  const [rating, setRating] = useState(initialRating);
+const StarRating = ({ initialRatingR, maxRatingR, onRate }) => {
+  const [rating, setRating] = useState(initialRatingR);
+
+  useEffect(() => {
+    setRating(initialRatingR);
+  }, [initialRatingR]);
 
   const handleStarClick = (index) => {
-    setRating(index + 1);
-    if (onRate) onRate(index + 1);
+    const newRating = index + 1;
+    setRating(newRating);
+    if (onRate) onRate(newRating);
   };
-
   return (
     <div style={{ display: 'flex' }}>
-      {Array.from({ length: maxRating }, (_, index) => (
+      {Array.from({ length: maxRatingR }, (_, index) => (
         <Star 
           key={index}
           filled={index < rating}
@@ -24,14 +28,14 @@ const StarRating = ({ initialRating, maxRating, onRate }) => {
 };
 
 StarRating.propTypes = {
-  initialRating: PropTypes.number,
-  maxRating: PropTypes.number,
+  initialRatingR: PropTypes.number,
+  maxRatingR: PropTypes.number,
   onRate: PropTypes.func,
 };
 
 StarRating.defaultProps = {
-  initialRating: 0,
-  maxRating: 5,
+  initialRatingR: 0,
+  maxRatingR: 5,
 };
 
 const StarDisplay = ({ initialRating, maxRating }) => {
@@ -60,16 +64,25 @@ StarDisplay.defaultProps = {
   maxRating: 5,
 };
 
-const Rate = ({star, newRating}) => {
-    const handleRatingChange = (newRating) => {
-      console.log('New rating:', newRating);
-      star={newRating};
-    };
+const Rate = ({starR}) => {
+  const [newRating, setNewRating] = useState(starR);
+  console.log("wwwww" + starR);
+
+  // newRating = starR;
+  useEffect(() => {
+    setNewRating(starR);
+  }, [starR]);
+
+  console.log(newRating);
+  const handleRatingChange = (rating) => {
+  console.log('New rating:', newRating);
+  setNewRating(rating);
+  };
   
     return (
       <div>
         <StarRating 
-          initialRating={newRating} 
+          initialRatingR={newRating} 
           maxRating={5} 
           onRate={handleRatingChange} 
           
@@ -90,5 +103,17 @@ const Rate = ({star, newRating}) => {
     );
   }
 
+ 
+// const BookList = () => {
+//   const [books, setBooks] = useState(booksData);
 
+//   const updatePoints = (objectID, newPoints) => {
+//     setBooks((prevBooks) =>
+//       prevBooks.map((book) =>
+//         book.objectID === objectID ? { ...book, points: newPoints } : book
+//       )
+//     );
+//   };
+
+// };
   export {Rate, DisplayRate};
