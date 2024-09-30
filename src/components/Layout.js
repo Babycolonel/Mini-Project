@@ -13,6 +13,7 @@ import booksData from "../data/booksData";
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import axios from "axios";
 
 // const InputCustom = React.memo((props) => {
 //   console.log('render');
@@ -61,10 +62,30 @@ const Layout = ({ stories }) => {
 */
 
 const [show, setShow] = useState(false);
+const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
+const [users, setUsers] = useState([])
+const [userLoggedIn, setUserLoggedIn] = useState(null)
 
 const handleClose = () => setShow(false); 
 const handleShow = () => setShow(true);
+
+const fetchUsers = () => {
+  axios.get('http://localhost:7000/users')
+    .then(response => {
+      setUsers(response.data); // Update state with the user data
+    })
+    .catch(error => {
+      console.error('There was an error fetching the users!', error);
+    });
+};
+
+//call at beginning of function so that it immediately checks for users instead of only checking after the account is made
+fetchUsers();
+
+const handleUsernameChange = (event) => {
+  setUsername(event.target.value);
+};
 
 const handlePasswordChange = (event) => {
   setPassword(event.target.value);
@@ -75,16 +96,47 @@ const handleCreateAccount = () => {
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{10,}$/;
   if (!passwordRegex.test(password)) {
     alert('Invalid password: 1 uppercase, 1 number, 1 symbol, and minimum 10 characters required.');
-  } else {
-    //close the modal if password is valid
-    alert('Account created successfully!');
-    setShow(false);
+    return;
+  } 
+  const existingUser = users.find(user => user.username === username);
+  console.log(users, username);
+  if (existingUser) {
+    alert('Username already exists, please choose another one.');
+    return;
   }
+  
+  //close the modal if password is valid
+  alert('Account created successfully!');
+  setShow(false);
+  //add logic to send post to db in order to create a new user
+  //creating a new user in DB
+  axios.post('http://localhost:7000/register', {
+    username: username,
+    password: password,
+    created_at: 'now'
+  }).then(response => {
+    console.log("MADE ACC YAY", response.data);
+    fetchUsers();
+   }).catch(error => {
+    console.log("didnt make acc booo", error);
+  })
+};
 
   const handleLoginAccount = () => {
     // call sqlDB and check for login detail
-  }
+    //checking if both username and password exist in DB
+    const existingUser = users.find(user => user.username === username && user.password === password);
+    if (existingUser) {
+      alert('Login successful!');
+      setShow(false);
+      //setting logged in user
+      setUserLoggedIn(existingUser);
+      // Perform any additional actions upon successful login
+    } else {
+      alert('Invalid username or password.');
+    }
 };
+
 
     return(
       <>
@@ -97,7 +149,7 @@ const handleCreateAccount = () => {
             <Modal.Title>Register</Modal.Title>
           </Modal.Header>
           <Modal.Body>Username:</Modal.Body>
-          <input placeholder="Name that will be seen by others."></input>
+          <input value={username} onChange={handleUsernameChange} placeholder="Name that will be seen by others."></input>
           <Modal.Body>Password:</Modal.Body>
           <input type="password" value={password} onChange={handlePasswordChange} placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
           <Modal.Footer>
@@ -107,6 +159,9 @@ const handleCreateAccount = () => {
             <Button variant="primary" onClick={handleCreateAccount}>
               Create Account
             </Button>
+            <Button variant="primary" onClick={handleLoginAccount}>
+              Log In
+          </Button>
           </Modal.Footer>
         </Modal>
         <nav>
@@ -116,8 +171,16 @@ const handleCreateAccount = () => {
                 <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
-                  <button className="navButtons" onClick={handleShow}>Register</button>
-                  <button className="navButtons" onClick={handleShow}>Log In</button>
+                {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
+                {userLoggedIn? (
+                <span>Welcome, {userLoggedIn.username}!</span>
+                ) : 
+                (
+                <>
+                  <button className="navButtons" onClick={() => { handleShow(); fetchUsers(); }}>Register</button>
+                  <button className="navButtons" onClick={() => { handleShow(); fetchUsers(); }}>Log In</button>
+                </>
+                )}
                 </div>
               </div>
             </li>
@@ -125,7 +188,6 @@ const handleCreateAccount = () => {
         <Outlet />
       </>
     )
-};
-
+  };
 
 export default React.memo(Layout);
