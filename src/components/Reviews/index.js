@@ -32,13 +32,13 @@ const Review = ({ review }) => {
             // value={searchTerm}
             // onChange={handleSearchChange}
           />
-          <button id="reviewButton">Save</button>
           <div className = "rateStyle">
             <Rate 
             starR = {points}
             >  
             </Rate>
           </div>
+          <button id="reviewButton">Save</button>
         </div>
       </div>
 
