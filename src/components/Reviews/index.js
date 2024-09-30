@@ -24,7 +24,7 @@ const Review = ({ review }) => {
           </div>
           <div className = "rateStyle">
             <Rate 
-            newRating = {points}
+            star = {points}
             >
             
             </Rate>
