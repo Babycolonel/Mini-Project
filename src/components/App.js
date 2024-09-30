@@ -24,6 +24,8 @@ const App = () => {
           <Route path="about/:id" element={<About />} />
           <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="bookmark" element={<BookMark />} />
+          {/* need to make path for profile section, can include a delete button for reviews */}
+          {/* <Route path="profile" element={<Profile />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>
