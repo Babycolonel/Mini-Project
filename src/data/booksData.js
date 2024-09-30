@@ -7,8 +7,7 @@ const booksData = [
         "num_comments": 3,
         "points": 4,
         "objectID": 0,
-        "genre": "Adventure",
-        "rank": 2
+        "genre": "Adventure"
     },
     {
         "image": "https://m.media-amazon.com/images/I/81R2N4PRuUL._AC_UF1000,1000_QL80_.jpg",
@@ -18,8 +17,7 @@ const booksData = [
         "num_comments": 2,
         "points": 5,
         "objectID": 1,
-        "genre": "Children",
-        "rank": 1
+        "genre": "Children"
     },
     {
         "image": "https://preview.redd.it/fgy14jrd3af41.jpg?auto=webp&s=4425fb0240637ce6bbeec7fdc49ce5d4718323f8",
@@ -27,10 +25,9 @@ const booksData = [
         "url": "https://dunenovels.com/",
         "author": "Frank Herbet",
         "num_comments": 2,
-        "points": 3,
+        "points": 6,
         "objectID": 2,
-        "genre": "Fantasy",
-        "rank": 3
+        "genre": "Fantasy"
     },
     {
         "image": "https://i.ebayimg.com/images/g/QTUAAOSwIOtbYt82/s-l1200.jpg",
@@ -38,21 +35,19 @@ const booksData = [
         "url": "https://stepheniemeyer.com/the-twilight-saga/",
         "author": "Stephenie Meyer",
         "num_comments": 9,
-        "points": 1,
+        "points": 8,
         "objectID": 3,
-        "genre": "Romance",
-        "rank": 4
+        "genre": "Romance"
     },
     {
         "image": "https://m.media-amazon.com/images/I/91Gy28f5M0L._AC_UF1000,1000_QL80_.jpg",
-        "title": "Boy In The Striped Pjs",
+        "title": "Boy In The Stripped",
         "url": "https://stepheniemeyer.com/the-twilight-saga/",
         "author": "John Boyne",
         "num_comments": 9,
-        "points": 5,
+        "points": 8,
         "objectID": 4,
-        "genre": "Literature",
-        "rank": 5
+        "genre": "Literature"
     },
     {
         "image": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Maze_Runner_cover.png",
@@ -60,10 +55,9 @@ const booksData = [
         "url": "https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/",
         "author": "James Dashner",
         "num_comments": 15,
-        "points": 3,
+        "points": 8,
         "objectID": 5,
-        "genre": "Adventure",
-        "rank": 6
+        "genre": "Adventure"
     }
 ]
 
