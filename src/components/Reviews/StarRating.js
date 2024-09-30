@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Star from './Star';
 import PropTypes from 'prop-types';
 
+
 const StarRating = ({ initialRatingR, maxRatingR, onRate }) => {
   const [rating, setRating] = useState(initialRatingR);
 
@@ -77,6 +78,7 @@ const Rate = ({starR}) => {
       const handleRatingChange = (rating) => {
       console.log('New rating:', newRating);
       setNewRating(rating);
+
     };
   
     return (
@@ -103,5 +105,17 @@ const Rate = ({starR}) => {
     );
   }
 
+ 
+// const BookList = () => {
+//   const [books, setBooks] = useState(booksData);
 
+//   const updatePoints = (objectID, newPoints) => {
+//     setBooks((prevBooks) =>
+//       prevBooks.map((book) =>
+//         book.objectID === objectID ? { ...book, points: newPoints } : book
+//       )
+//     );
+//   };
+
+// };
   export {Rate, DisplayRate};
