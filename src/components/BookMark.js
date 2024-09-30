@@ -7,6 +7,8 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Story from "./Books";
 import "./Home.css";
 
+import axios from "axios";
+
 const BookMark = ({ stories }) => {
   const [archivedBooks, setArchivedBooks] = useState([]);
   
@@ -21,6 +23,19 @@ const BookMark = ({ stories }) => {
     localStorage.removeItem('archivedBooks');
     setArchivedBooks([]);
   };
+
+    const [users, setUsers] = useState([]);
+  
+    useEffect(() => {
+      // Make a GET request to the Flask backend
+      axios.get('http://localhost:7000/users')
+        .then(response => {
+          setUsers(response.data); // Update state with the user data
+        })
+        .catch(error => {
+          console.error('There was an error fetching the users!', error);
+        });
+    }, []);
 
     return (
         <>
@@ -51,6 +66,16 @@ const BookMark = ({ stories }) => {
         
         </span>
         </div>
+        {/* temp */}
+        <div>
+        <h1>Users</h1>
+        <ul>
+          {users.map(user => (
+            <li key={user.id}>{user.id}: {user.username} {user.password} {user.created_at}</li>
+          ))}
+        </ul>
+      </div>
+      {/* temp */}
         </>
     );
 }
