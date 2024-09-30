@@ -109,6 +109,7 @@ const handleCreateAccount = () => {
   alert('Account created successfully!');
   setShow(false);
   //add logic to send post to db in order to create a new user
+  //creating a new user in DB
   axios.post('http://localhost:7000/register', {
     username: username,
     password: password,
@@ -128,6 +129,7 @@ const handleCreateAccount = () => {
     if (existingUser) {
       alert('Login successful!');
       setShow(false);
+      //setting logged in user
       setUserLoggedIn(existingUser);
       // Perform any additional actions upon successful login
     } else {
@@ -169,7 +171,7 @@ const handleCreateAccount = () => {
                 <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
-                  {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
+                {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
                 <span>Welcome, {userLoggedIn.username}!</span>
                 ) : 
