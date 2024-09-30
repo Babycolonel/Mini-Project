@@ -50,13 +50,33 @@ const booksData = [
         "genre": "Literature"
     },
     {
-        "image": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Maze_Runner_cover.png",
+        "image": "https://m.media-amazon.com/images/I/71gl2fmAp7L._AC_UF1000,1000_QL80_.jpg",
         "title": "The Maze Runner",
         "url": "https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/",
         "author": "James Dashner",
         "num_comments": 15,
         "points": 8,
         "objectID": 5,
+        "genre": "Adventure"
+    },
+    {
+        "image": "https://m.media-amazon.com/images/I/71hbDMgo6rL._AC_UF1000,1000_QL80_.jpg",
+        "title": "The Scorch Trials",
+        "url": "https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/",
+        "author": "James Dashner",
+        "num_comments": 6,
+        "points": 5,
+        "objectID": 6,
+        "genre": "Adventure"
+    },
+    {
+        "image": "https://m.media-amazon.com/images/I/91vaqmbaF4L._AC_UF1000,1000_QL80_.jpg",
+        "title": "The Death Cure",
+        "url": "https://www.penguinrandomhouse.com/series/MZR/the-maze-runner-series/",
+        "author": "James Dashner",
+        "num_comments": 11,
+        "points": 9,
+        "objectID": 7,
         "genre": "Adventure"
     }
 ]
