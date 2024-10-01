@@ -376,3 +376,36 @@ body {
   font-size: 14vw;
   font-family: "Bebas Neue", sans-serif;
 }
+
+.eyeVisible {
+  width: 1vw;
+  height: 1vw;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRELz1YazfugZdxzltruoSStAGChatrUSZnGw&s');
+}
+
+.eyeInvisible {
+  width: 1vw;
+  height: 1vw;
+  src: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F22782488-hidden-icon-visible-invisible-icon-eye-icon-look-and-vision-hide-unhide-symbol-human-eye-magic-eye-cross-symbol-sencitive-content-see-unsee-incognito-mood-blind-sign&psig=AOvVaw087VtgnSVTyuuQ-E8CjwWm&ust=1727831973699000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjYh_CB7IgDFQAAAAAdAAAAABAJ');
+}
+
+#showPWButton {
+  width: 10vw;
+}
+
+.pfpPlacerholder {
+  border-radius: 50%;
+  width: 4vw;
+  height: 4vw;
+  border-style: none;
+  vertical-align: middle;
+  src: url('https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg');
+  object-fit: contain;
+  align-items: center;
+}
+
+.linkPFP {
+  border-radius: 50%;
+  width: 4vw;
+  height: 4vw;
+}

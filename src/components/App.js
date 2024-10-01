@@ -2,6 +2,7 @@ import Home from "./Home";
 import About from "./About";
 import Leaderboard from "./Leaderboard";
 import Layout from "./Layout";
+import Profile from "./Profile";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BookMark from "./BookMark";
 import { useEffect } from "react";
@@ -24,6 +25,8 @@ const App = () => {
           <Route path="about/:id" element={<About />} />
           <Route path="leaderboard" element={<Leaderboard />} />
           <Route path="bookmark" element={<BookMark />} />
+          {/* need to make path for profile section, can include a delete button for reviews */}
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -65,7 +65,9 @@ const [show, setShow] = useState(false);
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
+//CHANGE NULL TO A BLANK STRING FOR TESTING, REMEMBER TO CHANGE BACK
 const [userLoggedIn, setUserLoggedIn] = useState(null)
+const [passwordVisible, setPasswordVisibility] = useState(false)
 
 const handleClose = () => setShow(false); 
 const handleShow = () => setShow(true);
@@ -122,21 +124,32 @@ const handleCreateAccount = () => {
   })
 };
 
-  const handleLoginAccount = () => {
-    // call sqlDB and check for login detail
-    //checking if both username and password exist in DB
-    const existingUser = users.find(user => user.username === username && user.password === password);
-    if (existingUser) {
-      alert('Login successful!');
-      setShow(false);
-      //setting logged in user
-      setUserLoggedIn(existingUser);
-      // Perform any additional actions upon successful login
-    } else {
-      alert('Invalid username or password.');
-    }
+const handleLoginAccount = () => {
+  // call sqlDB and check for login detail
+  //checking if both username and password exist in DB
+  const existingUser = users.find(user => user.username === username && user.password === password);
+  if (existingUser) {
+    alert('Login successful!');
+    setShow(false);
+    //setting logged in user
+    setUserLoggedIn(existingUser);
+    // Perform any additional actions upon successful login
+  } else {
+    alert('Invalid username or password.');
+  }
 };
 
+const handlePasswordVisibility = () => {
+  var pw = document.getElementById("pwInput");
+  if (pw.type === "password"){
+    pw.type = "text";
+    setPasswordVisibility(true)
+  }
+  else{
+    pw.type = "password";
+    setPasswordVisibility(false)
+  }
+};
 
     return(
       <>
@@ -151,7 +164,20 @@ const handleCreateAccount = () => {
           <Modal.Body>Username:</Modal.Body>
           <input value={username} onChange={handleUsernameChange} placeholder="Name that will be seen by others."></input>
           <Modal.Body>Password:</Modal.Body>
-          <input type="password" value={password} onChange={handlePasswordChange} placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
+            <input type="password" id="pwInput" value={password} onChange={handlePasswordChange} placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
+            {/* conditional rendering based on password visibility */}
+            {passwordVisible? (
+              <>
+              <image id="eyeVisible" onClick={handlePasswordVisibility}></image>
+              <Button className="showPWButton" onClick={handlePasswordVisibility}>Hide Password</Button>
+              </>
+            ) :
+            (
+              <>
+              <image id="eyeInvisible" onClick={handlePasswordVisibility}></image>
+              <Button className="showPWButton" onClick={handlePasswordVisibility}>Show Password</Button>
+              </>
+            )}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
@@ -173,7 +199,12 @@ const handleCreateAccount = () => {
                 <div className="navButtonContainer">
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
-                <span>Welcome, {userLoggedIn.username}!</span>
+                  <>
+                  <span>Welcome, {userLoggedIn.username}!</span>
+                    <Link to="/profile" id="linkPFP">
+                      <img id="pfpPlacerholder" ></img>
+                    </Link>
+                  </>
                 ) : 
                 (
                 <>
