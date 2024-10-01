@@ -180,6 +180,12 @@ a:is(:link, :active, :visited){
   background-color: rgb(43, 75, 57);
 }
 
+.nav-flex-container {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
 #avatar3 {
   background-image: url('https://i0.wp.com/touristjourney.com/wp-content/uploads/2020/11/Ho-Chi-Minh-City.jpg?fit=2500%2C1666&ssl=1');
   background-size: cover;

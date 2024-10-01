@@ -192,7 +192,7 @@ const handlePasswordVisibility = () => {
         </Modal>
         <nav>
             <li className='navHeight'>
-              <div className='flex-container'>
+              <div className='nav-flex-container'>
                 <Link to="/">Home</Link>
                 <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>

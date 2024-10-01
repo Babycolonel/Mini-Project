@@ -95,7 +95,7 @@ const Home = ({ stories }) => {
         <link rel="stylesheet" type="text/css" href="App.css"/>
         <script defer src='activePage.js'></script>
       </head> 
-      <div id="home">
+      <div id="profile">
         <div id="titleBackground">
           <div id="titleName">
             <p>Le Book Navigator</p>
