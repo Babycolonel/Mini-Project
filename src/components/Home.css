@@ -393,3 +393,7 @@ body {
   height: 1vw;
   src: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F22782488-hidden-icon-visible-invisible-icon-eye-icon-look-and-vision-hide-unhide-symbol-human-eye-magic-eye-cross-symbol-sencitive-content-see-unsee-incognito-mood-blind-sign&psig=AOvVaw087VtgnSVTyuuQ-E8CjwWm&ust=1727831973699000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjYh_CB7IgDFQAAAAAdAAAAABAJ');
 }
+
+#showPWButton {
+  width: 10vw;
+}

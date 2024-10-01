@@ -163,23 +163,20 @@ const handlePasswordVisibility = () => {
           <Modal.Body>Username:</Modal.Body>
           <input value={username} onChange={handleUsernameChange} placeholder="Name that will be seen by others."></input>
           <Modal.Body>Password:</Modal.Body>
-          <div>
-
-          <input type="password" id="pwInput" value={password} onChange={handlePasswordChange} placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
-          {/* conditional rendering based on password visibility */}
-          {passwordVisible? (
-            <>
-            <image id="eyeVisible" onClick={handlePasswordVisibility}></image>
-            {/* <Button onClick={handlePasswordVisibility}>Hide</Button> */}
-            </>
-          ) :
-          (
-            <>
-            <image id="eyeInvisible" onClick={handlePasswordVisibility}></image>
-            {/* <Button onClick={handlePasswordVisibility}>Show</Button> */}
-            </>
-          )}
-          </div>
+            <input type="password" id="pwInput" value={password} onChange={handlePasswordChange} placeholder="1 Caps, 1 Number, 1 Symbol, minimum 10 characters."></input>
+            {/* conditional rendering based on password visibility */}
+            {passwordVisible? (
+              <>
+              <image id="eyeVisible" onClick={handlePasswordVisibility}></image>
+              <Button className="showPWButton" onClick={handlePasswordVisibility}>Hide Password</Button>
+              </>
+            ) :
+            (
+              <>
+              <image id="eyeInvisible" onClick={handlePasswordVisibility}></image>
+              <Button className="showPWButton" onClick={handlePasswordVisibility}>Show Password</Button>
+              </>
+            )}
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
