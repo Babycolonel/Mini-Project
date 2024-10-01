@@ -46,14 +46,15 @@ const handleClick = (id) => {
             <br></br>
 
         </div>
+        <img src={image} className='bookImage1' ></img>
+        <br></br>
         <div  className ="RankStar">
           <DisplayRate
           star = {points}>
             
           </DisplayRate>
         </div>
-        <img src={image} className='bookImage1' ></img>
-            <br></br>
+
       </div>
       </div>  
     );

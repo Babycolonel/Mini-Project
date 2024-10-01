@@ -3,23 +3,23 @@
   height: 30vw;
   align-items: center;
   border-radius: 4%;
-  margin-left: 25vw;
-  margin-top: -3vw;
+  margin-left: 2vw;
+  margin-top: 1vw;
   transform: translate(10%,0%);
-  position: absolute;
+  position: block;
   z-index: 300;
 }
 
 .leaderboard-container {
-  width: 50vw;
-  height: 38vw;
+  width: 30vw;
+  height: 47vw;
   color: white;
   border: solid;
   border-color: rgb(114, 83, 54);
   border-width: 0.4vw;
   /* align-items: center; */
-  margin-left: 25vw;
-  margin-right: 50%;
+  margin-left: 2vw;
+  /* margin-right: 50%; */
   margin-top: 3vw;
   display: inline-block;
   border-radius: 4%;
@@ -52,7 +52,9 @@
 
 .RankStar {
   width: fit-content;
-  position: absolute
+  position: absolute;
+  margin-left: 3vw;
+padding-bottom: 1px;
 }
 
 .div{
