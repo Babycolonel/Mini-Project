@@ -101,6 +101,7 @@ const handleCreateAccount = () => {
     return;
   } 
   const existingUser = users.find(user => user.username === username);
+  console.log(existingUser);
   console.log(users, username);
   if (existingUser) {
     alert('Username already exists, please choose another one.');
@@ -134,7 +135,8 @@ const handleLoginAccount = () => {
     setShow(false);
     //setting logged in user
     setUserLoggedIn(existingUser);
-    // Perform any additional actions upon successful login
+    console.log(existingUser);
+    // be able to store data that there is a logged in user so when refresh, still stays
   } else {
     alert('Invalid username or password.');
   }
@@ -201,7 +203,7 @@ const handlePasswordVisibility = () => {
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
                   <>
-                  <span>Welcome, {userLoggedIn.username}!</span>
+                  <span>{userLoggedIn.username}</span>
                     <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
                       <img id="pfpPlacerholder" ></img>
                     </Link>

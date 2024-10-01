@@ -60,14 +60,14 @@
   background-position: center center;
   position: relative;
   /* black tint to background */
-  background-color: rgba(59, 54, 48, 0.747);
+  background-color: rgba(59, 54, 48, 0.829);
   background-blend-mode: multiply;
 }
 
 /* big name at the top */
 #titleName {
   position: absolute;
-  font-size: 7vw;
+  font-size: 5vw;
   margin: 0;
   padding: 0;
   top: 50%;
@@ -81,7 +81,7 @@
 /* short desc below titleName */
 #titleWords {
   position: absolute;
-  font-size: 2.5vw;
+  font-size: 2vw;
   margin: 0;
   padding: 0;
   top: 75%;

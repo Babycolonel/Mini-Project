@@ -116,20 +116,24 @@ const Profile = ({ stories }) => {
       </head> 
       <div id="home">
         <div id="titleBackground">
-          <div id="titleName">
-            <p>Profile</p>
+        <img
+          className="profileImage"
+          src={user.profilePic !== null?.user.profilePic|| "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+          //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
+        />
+          <div id="titleNameProfile">
+            <p>{user.username}</p>
           </div>
-          <div id="titleWords">
+          <div id="titleWordsProfile">
             <p>View your preferences and reviews here</p>
           </div>
         </div>
         <div className="headerBorder">
-        <span className="headerTextProfile">Browse</span>
+        <span className="headerTextProfile">Your Reviews</span>
         </div>
         <div>
         {user ? (
             <>
-            <h1>Name: {user.username}</h1>
             {/* display other user details here */}
             </>
         ) : (

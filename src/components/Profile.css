@@ -7,3 +7,42 @@
     color:  rgb(212, 175, 106);
     display: inline-block;
   } 
+
+/* big name at the top */
+#titleNameProfile {
+  position: absolute;
+  font-size: 7vw;
+  margin: 0;
+  padding: 0;
+  top: 50%;
+  left: 35%;
+  color: rgb(212, 175, 106);
+  transform: translate(-50%, -50%);
+  /* keep font consistent */
+  white-space: nowrap;
+}
+
+/* short desc below titleName */
+#titleWordsProfile {
+  position: absolute;
+  font-size: 2.5vw;
+  margin: 0;
+  padding: 0;
+  top: 75%;
+  left: 51%;
+  color:rgb(212, 175, 106);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.profileImage {
+  width: 20vw;
+  height: 20vw;
+  display: block;
+  border-radius: 50%; /* For circular profile picture */
+  margin-left: 2vw;
+  padding-top: 0vw;
+  transform: translateY(6vw);
+  object-fit: cover; /* Ensures the image fits within the circle */
+  z-index: 1; /* Ensure it's displayed in front */
+}
