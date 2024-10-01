@@ -376,3 +376,20 @@ body {
   font-size: 14vw;
   font-family: "Bebas Neue", sans-serif;
 }
+
+.pfpPlaceholder {
+  border-radius: 50%;
+  src: url('https://media.istockphoto.com/id/2151669184/vi/vec-to/vector-ph%E1%BA%B3ng-minh-h%E1%BB%8Da-trong-thang-%C4%91%E1%BB%99-x%C3%A1m-h%C3%ACnh-%C4%91%E1%BA%A1i-di%E1%BB%87n-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ng%C6%B0%E1%BB%9Di.jpg?s=2048x2048&w=is&k=20&c=1vsMeCbdY17xT1G84iBsOBK8waRWtmrTV0VJiMTI29s=');
+}
+
+.eyeVisible {
+  width: 1vw;
+  height: 1vw;
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRELz1YazfugZdxzltruoSStAGChatrUSZnGw&s');
+}
+
+.eyeInvisible {
+  width: 1vw;
+  height: 1vw;
+  src: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F22782488-hidden-icon-visible-invisible-icon-eye-icon-look-and-vision-hide-unhide-symbol-human-eye-magic-eye-cross-symbol-sencitive-content-see-unsee-incognito-mood-blind-sign&psig=AOvVaw087VtgnSVTyuuQ-E8CjwWm&ust=1727831973699000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCLjYh_CB7IgDFQAAAAAdAAAAABAJ');
+}
