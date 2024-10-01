@@ -13,6 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import booksData from "../data/booksData";
 import axios from "axios";
+import Layout from "./Layout";
+import { useLocation } from "react-router-dom";
 
 
 const Profile = ({ stories }) => {
@@ -99,7 +101,12 @@ const Profile = ({ stories }) => {
 
   //find a way to bring logged in user data into profile.js
 
+
   fetchUsers();
+
+  const location = useLocation();
+  //access user data passed via state
+  const { user } = location.state || {};
 
   return (
     <>
@@ -120,9 +127,15 @@ const Profile = ({ stories }) => {
         <span className="headerTextProfile">Browse</span>
         </div>
         <div>
-          {/* conditionally renders the message */}
-          {show && <div id="noSearch">No search results...</div>}
-      </div>
+        {user ? (
+            <>
+            <h1>Name: {user.username}</h1>
+            {/* display other user details here */}
+            </>
+        ) : (
+            <h1>No user data found. Please log in.</h1>
+        )}
+        </div>
         <div>
             {/* PUT UR REVIEW STUFF HERE ORLANDO */}
         </div>

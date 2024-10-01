@@ -128,6 +128,7 @@ const handleLoginAccount = () => {
   // call sqlDB and check for login detail
   //checking if both username and password exist in DB
   const existingUser = users.find(user => user.username === username && user.password === password);
+  console.log(username, password)
   if (existingUser) {
     alert('Login successful!');
     setShow(false);
@@ -201,7 +202,7 @@ const handlePasswordVisibility = () => {
                 {userLoggedIn? (
                   <>
                   <span>Welcome, {userLoggedIn.username}!</span>
-                    <Link to="/profile" id="linkPFP">
+                    <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
                       <img id="pfpPlacerholder" ></img>
                     </Link>
                   </>
