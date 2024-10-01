@@ -65,6 +65,7 @@ const [show, setShow] = useState(false);
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
+//CHANGE NULL TO A BLANK STRING FOR TESTING, REMEMBER TO CHANGE BACK
 const [userLoggedIn, setUserLoggedIn] = useState(null)
 const [passwordVisible, setPasswordVisibility] = useState(false)
 
@@ -200,7 +201,9 @@ const handlePasswordVisibility = () => {
                 {userLoggedIn? (
                   <>
                   <span>Welcome, {userLoggedIn.username}!</span>
-                  <img id="pfpPlacerholder"></img>
+                    <Link to="/profile" id="linkPFP">
+                      <img id="pfpPlacerholder" ></img>
+                    </Link>
                   </>
                 ) : 
                 (

@@ -377,11 +377,6 @@ body {
   font-family: "Bebas Neue", sans-serif;
 }
 
-.pfpPlaceholder {
-  border-radius: 50%;
-  src: url('https://media.istockphoto.com/id/2151669184/vi/vec-to/vector-ph%E1%BA%B3ng-minh-h%E1%BB%8Da-trong-thang-%C4%91%E1%BB%99-x%C3%A1m-h%C3%ACnh-%C4%91%E1%BA%A1i-di%E1%BB%87n-h%E1%BB%93-s%C6%A1-ng%C6%B0%E1%BB%9Di-d%C3%B9ng-bi%E1%BB%83u-t%C6%B0%E1%BB%A3ng-ng%C6%B0%E1%BB%9Di.jpg?s=2048x2048&w=is&k=20&c=1vsMeCbdY17xT1G84iBsOBK8waRWtmrTV0VJiMTI29s=');
-}
-
 .eyeVisible {
   width: 1vw;
   height: 1vw;
@@ -396,4 +391,21 @@ body {
 
 #showPWButton {
   width: 10vw;
+}
+
+.pfpPlacerholder {
+  border-radius: 50%;
+  width: 4vw;
+  height: 4vw;
+  border-style: none;
+  vertical-align: middle;
+  src: url('https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg');
+  object-fit: contain;
+  align-items: center;
+}
+
+.linkPFP {
+  border-radius: 50%;
+  width: 4vw;
+  height: 4vw;
 }
