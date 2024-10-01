@@ -118,7 +118,7 @@ const Profile = ({ stories }) => {
         <div id="titleBackground">
         <img
           className="profileImage"
-          src={user.profilePic !== null?.user.profilePic|| "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+          src={user.profilePic !== null?.user.profilePic || "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
           //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
         />
           <div id="titleNameProfile">
