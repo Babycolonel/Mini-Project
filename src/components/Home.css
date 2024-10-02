@@ -399,24 +399,30 @@ body {
   width: 10vw;
 }
 
-.pfpPlacerholder {
-  border-radius: 50%;
-  width: 4vw;
-  height: 4vw;
-  border-style: none;
-  vertical-align: middle;
-  src: url('https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg');
-  object-fit: contain;
-  align-items: center;
+.pfpPlaceHolder {
+  border-radius: 50%;        
+  width: 4vw;                
+  height: 4vw;               
+  border-style: none;        
+  vertical-align: middle;   
+  /*ensure the image covers the container while maintaining aspect ratio */
+  object-fit: cover;          
+  overflow: hidden;         
+  display: flex;   
+  /*center the image horizontally */
+  justify-content: center;    
+  /*center the image vertically */
+  align-items: center;        
 }
 
 .linkPFP {
   border-radius: 50%;
   width: 4vw;
   height: 4vw;
+  transform: translateY(-1vw);
 }
 
 .profileName {
   color: rgb(235, 210, 173);
-  font-size: 3vw;
+  font-size: 1.5vw;
 }

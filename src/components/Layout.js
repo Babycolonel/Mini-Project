@@ -209,10 +209,10 @@ const location = useLocation();
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
                   <>
-                  <span id="profileName">{userLoggedIn.username}</span>
+                  <span className="profileName">{userLoggedIn.username}</span>
                     <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
-                      <img id="pfpPlacerholder" 
-                      //src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+                      <img className="pfpPlaceHolder" 
+                      src={userLoggedIn.profilePic !== null? userLoggedIn.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
                       ></img>
                     </Link>
                   </>
