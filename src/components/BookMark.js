@@ -12,16 +12,32 @@ import axios from "axios";
 const BookMark = ({ stories }) => {
   const [archivedBooks, setArchivedBooks] = useState([]);
   
+  //local storage
+  // useEffect(() => {
+  //   //get archived books from localStorage
+  //   const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+  //   setArchivedBooks(storedBooks);
+  // }, );
+
   useEffect(() => {
-    //get archived books from localStorage
-    const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
-    setArchivedBooks(storedBooks);
-  }, );
+    //fetch archived books
+      axios.get('http://localhost:7000/books/archive')
+        .then(response => {
+          //set archived books as data received from GET
+          setArchivedBooks(response.data);
+          console.log("ARCHIVED RN: " + response.data)
+        });
+  }, [])
 
   const clearBookmarks = () => {
-    // Clear bookmarks from local storage
-    localStorage.removeItem('archivedBooks');
-    setArchivedBooks([]);
+    axios.delete('http://localhost:7000/books/archive')
+      .then(response => {
+        setArchivedBooks([]); // Clear the local state after deletion
+        console.log(response.data.message);
+      })
+      .catch(error => {
+        console.error('Error clearing bookmarks:', error);
+      });
   };
 
     const [users, setUsers] = useState([]);
