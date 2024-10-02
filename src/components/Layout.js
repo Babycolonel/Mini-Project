@@ -72,18 +72,19 @@ const [passwordVisible, setPasswordVisibility] = useState(false)
 const handleClose = () => setShow(false); 
 const handleShow = () => setShow(true);
 
+
 const fetchUsers = () => {
   axios.get('http://localhost:7000/users')
     .then(response => {
       setUsers(response.data); // Update state with the user data
     })
     .catch(error => {
-      console.error('There was an error fetching the users!', error);
+      //console.error('There was an error fetching the users!', error);
     });
 };
 
 //call at beginning of function so that it immediately checks for users instead of only checking after the account is made
-fetchUsers();
+//fetchUsers();
 
 const handleUsernameChange = (event) => {
   setUsername(event.target.value);
@@ -203,7 +204,7 @@ const handlePasswordVisibility = () => {
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
                   <>
-                  <span>{userLoggedIn.username}</span>
+                  <span id="profileName">{userLoggedIn.username}</span>
                     <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
                       <img id="pfpPlacerholder" ></img>
                     </Link>

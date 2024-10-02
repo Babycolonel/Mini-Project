@@ -415,3 +415,8 @@ body {
   width: 4vw;
   height: 4vw;
 }
+
+.profileName {
+  color: rgb(235, 210, 173);
+  font-size: 3vw;
+}

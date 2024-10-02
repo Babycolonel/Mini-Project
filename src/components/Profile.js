@@ -107,6 +107,7 @@ const Profile = ({ stories }) => {
   const location = useLocation();
   //access user data passed via state
   const { user } = location.state || {};
+  console.log(user.profilePic);
 
   return (
     <>
@@ -118,7 +119,8 @@ const Profile = ({ stories }) => {
         <div id="titleBackground">
         <img
           className="profileImage"
-          src={user.profilePic !== null?.user.profilePic || "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+          // display profile pic if present, if not display guest profile pic
+          src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
           //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
         />
           <div id="titleNameProfile">
