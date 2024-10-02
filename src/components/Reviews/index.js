@@ -7,7 +7,8 @@ import About from '../About';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import axios from 'axios';
 import '../Layout';
-const Review = ({ review }, userLoggedIn, users, id, newRating) => {
+import './StarRating';
+const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
     const {
       title,
       url,
@@ -45,13 +46,13 @@ const Review = ({ review }, userLoggedIn, users, id, newRating) => {
 
       console.log(userReviews)
       console.log("idk" + newRating);
-      console.log(users, id);
+      console.log(userId);
       if(userLoggedIn){
       // setShow(false);
       //add logic to send post to db in order to create a new user
       //creating a new user in DB
       axios.post('http://localhost:7000/register', {
-        id: id,
+        id: userId,
         review: userReviews,
         stars: newRating,
         created_at: 'now'
