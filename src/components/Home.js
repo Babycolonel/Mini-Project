@@ -35,6 +35,7 @@ const Home = ({ stories }) => {
   //empty array dependency so it only runs once
   }, []);
 
+  //lock in time
 
   useEffect(() => {
     let filteredBooks = JSON.parse(localStorage.getItem('books'));
