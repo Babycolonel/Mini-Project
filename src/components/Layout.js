@@ -65,8 +65,9 @@ const [show, setShow] = useState(false);
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
+const [id, setId] = useState([]);
 //CHANGE NULL TO A BLANK STRING FOR TESTING, REMEMBER TO CHANGE BACK
-const [userLoggedIn, setUserLoggedIn] = useState(null)
+const [userLoggedIn, setUserLoggedIn] = useState("testing")
 const [passwordVisible, setPasswordVisibility] = useState(false)
 
 const handleClose = () => setShow(false); 
@@ -128,12 +129,14 @@ const handleLoginAccount = () => {
   // call sqlDB and check for login detail
   //checking if both username and password exist in DB
   const existingUser = users.find(user => user.username === username && user.password === password);
+  const userId = users.find(user => user.id === id);
   if (existingUser) {
     alert('Login successful!');
     setShow(false);
     //setting logged in user
     setUserLoggedIn(existingUser);
     // Perform any additional actions upon successful login
+    setId(userId.id)
   } else {
     alert('Invalid username or password.');
   }

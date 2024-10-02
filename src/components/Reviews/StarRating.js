@@ -66,16 +66,16 @@ StarDisplay.defaultProps = {
 
 const Rate = ({starR}) => {
   const [newRating, setNewRating] = useState(starR);
-  console.log("wwwww" + starR);
+  // console.log("wwwww" + starR);
 
   // newRating = starR;
   useEffect(() => {
     setNewRating(starR);
   }, [starR]);
 
-  console.log(newRating);
+  // console.log(newRating);
   const handleRatingChange = (rating) => {
-  console.log('New rating:', newRating);
+  // console.log('New rating:', newRating);
   setNewRating(rating);
   };
   
