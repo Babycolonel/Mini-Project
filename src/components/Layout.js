@@ -14,6 +14,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 // const InputCustom = React.memo((props) => {
 //   console.log('render');
@@ -155,6 +156,10 @@ const handlePasswordVisibility = () => {
   }
 };
 
+const location = useLocation();
+  //access user data passed via state
+  const { user } = location.state || {};
+
     return(
       <>
       {/* link makes pop up work but changes some layout, uncomment with caution */}
@@ -206,7 +211,9 @@ const handlePasswordVisibility = () => {
                   <>
                   <span id="profileName">{userLoggedIn.username}</span>
                     <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
-                      <img id="pfpPlacerholder" ></img>
+                      <img id="pfpPlacerholder" 
+                      //src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+                      ></img>
                     </Link>
                   </>
                 ) : 

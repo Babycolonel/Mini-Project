@@ -107,7 +107,7 @@ const Profile = ({ stories }) => {
   const location = useLocation();
   //access user data passed via state
   const { user } = location.state || {};
-  console.log(user.profilePic);
+  //console.log(user.profilePic);
 
   return (
     <>
