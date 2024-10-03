@@ -64,7 +64,7 @@ StarDisplay.defaultProps = {
   maxRating: 5,
 };
 
-const Rate = ({starR}) => {
+const Rate = ({starR, onRatingChange}) => {
   const [newRating, setNewRating] = useState(starR);
   // console.log("wwwww" + starR);
 
@@ -77,6 +77,9 @@ const Rate = ({starR}) => {
   const handleRatingChange = (rating) => {
   // console.log('New rating:', newRating);
   setNewRating(rating);
+  if (onRatingChange){
+    onRatingChange(rating);
+  }
   };
   
     return (

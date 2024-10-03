@@ -7,8 +7,8 @@ import About from '../About';
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import axios from 'axios';
 import '../Layout';
-import './StarRating';
-const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
+import StarRating from './StarRating';
+const Review = ({ review, userLoggedIn, users, userId}) => {
     const {
       title,
       url,
@@ -28,6 +28,7 @@ const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
 
 
     const [userReviews, setUserReviews] = useState([]);
+
     const fetchUserReviews = () => {
       axios.get('http://localhost:7000/users')
         .then(response => {
@@ -40,14 +41,17 @@ const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
     
     //call at beginning of function so that it immediately checks for users instead of only checking after the account is made
   
-  
-  
+    const [newRating, setNewRating] = useState(0);
+    
+    const handleRatingChange = (rating) => {
+      setNewRating(rating); // Update the newRating state
+    };
     const handleCreateReview = () => {
 
       console.log(userReviews)
       console.log("idk" + newRating);
       console.log(userId);
-      if(userLoggedIn){
+      if(!userLoggedIn){
       // setShow(false);
       //add logic to send post to db in order to create a new user
       //creating a new user in DB
@@ -56,14 +60,16 @@ const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
         review: userReviews,
         stars: newRating,
         created_at: 'now'
+
       }).then(response => {
         console.log("ADded review", response.data);
+
         fetchUserReviews();
        }).catch(error => {
         console.log("didnt add review", error);
       })
       }
-      else if (!userLoggedIn){
+      else if (userLoggedIn){
         alert("please log in");
       }   
     };
@@ -91,7 +97,8 @@ const Review = ({ review, userLoggedIn, users, userId, newRating }) => {
           />
           <div className = "rateStyle">
             <Rate 
-            starR = {points}
+            starR = {newRating}
+            onRatingChange={handleRatingChange}
             >  
             </Rate>
           </div>

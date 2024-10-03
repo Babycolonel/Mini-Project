@@ -14,8 +14,6 @@ import store from "../store";
 import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
 // import { withRouter } from "react-router-dom";
-import axios from "axios";
-import Layout from "./Layout";
 
 const About = (props) => {
   const { reviews } = props;
@@ -23,7 +21,7 @@ const About = (props) => {
   // const [reviewItem, setReviewItem] = useState(null);
 
   const pa = useParams();
-  const [userReviews, setUserReviews] = useState([]);
+
 
   const [reviewedBooks, setReviewedBooks] = useState([]);
   
@@ -33,27 +31,6 @@ const About = (props) => {
     const book = storedBooks.find(book => book.objectID == pa.id);
     setReviewedBooks(book);
   }, [pa.id, reviews.length]);
-
-
-
-
-
-  const fetchUserReviews = () => {
-    axios.get('http://localhost:7000/users')
-      .then(response => {
-        setUserReviews(response.data); // Update state with the user data
-      })
-      .catch(error => {
-        console.error('There was an error fetching the reviews!', error);
-      });
-  };
-  
-  //call at beginning of function so that it immediately checks for users instead of only checking after the account is made
-  fetchUserReviews();
-
-
-
-
 
 
  return (
