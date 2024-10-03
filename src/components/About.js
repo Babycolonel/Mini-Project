@@ -22,6 +22,7 @@ const About = (props) => {
 
   const pa = useParams();
 
+
   const [reviewedBooks, setReviewedBooks] = useState([]);
   
   useEffect(() => {

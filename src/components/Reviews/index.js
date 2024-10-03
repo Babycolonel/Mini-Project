@@ -1,8 +1,14 @@
 import '../About.css';
 import { Rate } from './StarRating';
+
 import booksData from '../../data/booksData';
 import InputLabel from '@mui/material/InputLabel';
-const Review = ({ review }) => {
+import About from '../About';
+import React, { useEffect, useState, createContext, useContext } from 'react';
+import axios from 'axios';
+import '../Layout';
+import StarRating from './StarRating';
+const Review = ({ review, userLoggedIn, users, userId}) => {
     const {
       title,
       url,
@@ -10,8 +16,65 @@ const Review = ({ review }) => {
       num_comments,
       image,
       points,
+      objectID,
     } = review;
+
+    const [reviewText, setReviewText] = useState('');
+
+    const handleTextChange = (event) => {
+      setReviewText(event.target.value); // Update state with the textarea value
+      setUserReviews(reviewText);
+    };
+
+
+    const [userReviews, setUserReviews] = useState([]);
+
+    const fetchUserReviews = () => {
+      axios.get('http://localhost:7000/users')
+        .then(response => {
+           setUserReviews(response.data); // Update state with the user data
+        })
+        .catch(error => {
+          console.error('There was an error fetching the reviews!', error);
+        });
+    };
+    
+    //call at beginning of function so that it immediately checks for users instead of only checking after the account is made
   
+    const [newRating, setNewRating] = useState(0);
+    
+    const handleRatingChange = (rating) => {
+      setNewRating(rating); // Update the newRating state
+    };
+    const handleCreateReview = () => {
+
+      console.log(userReviews)
+      console.log("idk" + newRating);
+      console.log(userId);
+      if(!userLoggedIn){
+      // setShow(false);
+      //add logic to send post to db in order to create a new user
+      //creating a new user in DB
+      axios.post('http://localhost:7000/register', {
+        id: userId,
+        review: userReviews,
+        stars: newRating,
+        created_at: 'now'
+
+      }).then(response => {
+        console.log("ADded review", response.data);
+
+        fetchUserReviews();
+       }).catch(error => {
+        console.log("didnt add review", error);
+      })
+      }
+      else if (userLoggedIn){
+        alert("please log in");
+      }   
+    };
+
+    
     return (
       <div className='review-container'>
       <div className="reviewBig">
@@ -29,16 +92,17 @@ const Review = ({ review }) => {
             type="text"
             id='reviewText'
             placeholder="Leave a Review!"
-            // value={searchTerm}
-            // onChange={handleSearchChange}
+            value={reviewText}
+            onChange={handleTextChange}
           />
           <div className = "rateStyle">
             <Rate 
-            starR = {points}
+            starR = {newRating}
+            onRatingChange={handleRatingChange}
             >  
             </Rate>
           </div>
-          <button id="reviewButton">Save</button>
+          <button id="reviewButton" onClick={handleCreateReview}>Save</button>
         </div>
       </div>
 
@@ -46,4 +110,7 @@ const Review = ({ review }) => {
     );
   }
 
+
   export default Review;
+
+  
