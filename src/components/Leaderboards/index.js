@@ -17,7 +17,7 @@ const {
     points,
     image,
     objectID,
-    rank,
+    ranking,
 } = ranks;
 
 const handleClick = (id) => {
@@ -29,7 +29,7 @@ const handleClick = (id) => {
 /* layout of the UI when displaying the state from the store */
     return (
       <div className='leaderboard-container' onClick={() => handleClick(objectID)}>
-      <span className='rank' >#{rank}</span>
+      <span className='rank' >#{ranking}</span>
         <div className="story">
             
             <div className='homePageTitles1' >
