@@ -1,5 +1,6 @@
 import '../About.css';
 import { Rate } from './StarRating';
+import { useOutletContext } from 'react-router-dom';
 
 import booksData from '../../data/booksData';
 import InputLabel from '@mui/material/InputLabel';
@@ -8,7 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import axios from 'axios';
 import '../Layout';
 import StarRating from './StarRating';
-const Review = ({ review, userLoggedIn, users, userId}) => {
+const Review = ({ review, users}) => {
     const {
       title,
       url,
@@ -20,13 +21,21 @@ const Review = ({ review, userLoggedIn, users, userId}) => {
     } = review;
 
     const [reviewText, setReviewText] = useState('');
-
+    const { userLoggedIn, userId } = useOutletContext();
+    console.log('User Logged In:', userLoggedIn);
+    console.log('User ID:', userId);
     const handleTextChange = (event) => {
       setReviewText(event.target.value); // Update state with the textarea value
       setUserReviews(reviewText);
     };
 
-
+    const processUserInfo = () => {
+      if (userLoggedIn) {
+        console.log(`User ID: ${userId}`);
+      } else {
+        console.log('User is not logged in.');
+      }
+    };
     const [userReviews, setUserReviews] = useState([]);
 
     const fetchUserReviews = () => {
@@ -51,7 +60,7 @@ const Review = ({ review, userLoggedIn, users, userId}) => {
       console.log(userReviews)
       console.log("idk" + newRating);
       console.log(userId);
-      if(!userLoggedIn){
+      if(userLoggedIn){
       // setShow(false);
       //add logic to send post to db in order to create a new user
       //creating a new user in DB
@@ -69,7 +78,7 @@ const Review = ({ review, userLoggedIn, users, userId}) => {
         console.log("didnt add review", error);
       })
       }
-      else if (userLoggedIn){
+      else if (!userLoggedIn){
         alert("please log in");
       }   
     };
@@ -107,8 +116,12 @@ const Review = ({ review, userLoggedIn, users, userId}) => {
       </div>
 
       </div>
+      
     );
-  }
+    return {
+      processUserInfo,
+    };
+  };
 
 
   export default Review;

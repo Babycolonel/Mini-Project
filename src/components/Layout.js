@@ -67,7 +67,8 @@ const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
 //CHANGE NULL TO A BLANK STRING FOR TESTING, REMEMBER TO CHANGE BACK
-const [userLoggedIn, setUserLoggedIn] = useState(null)
+const [userLoggedIn, setUserLoggedIn] = useState(false);
+const [userId, setUserId] = useState(null);
 const [passwordVisible, setPasswordVisibility] = useState(false)
 
 const handleClose = () => setShow(false); 
@@ -136,7 +137,8 @@ const handleLoginAccount = () => {
     alert('Login successful!');
     setShow(false);
     //setting logged in user
-    setUserLoggedIn(existingUser);
+    setUserLoggedIn(true);
+    setUserId(existingUser.id);
     console.log(existingUser);
     // be able to store data that there is a logged in user so when refresh, still stays
   } else {
@@ -154,6 +156,11 @@ const handlePasswordVisibility = () => {
     pw.type = "password";
     setPasswordVisibility(false)
   }
+};
+
+const userInfo = {
+  userLoggedIn,
+  userId,
 };
 
 const location = useLocation();
@@ -227,8 +234,8 @@ const location = useLocation();
               </div>
             </li>
         </nav>
-        <Outlet />
-      </>
+        <Outlet context={userInfo} />
+        </>
     )
   };
 
