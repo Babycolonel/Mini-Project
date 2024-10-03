@@ -18,6 +18,8 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
       points,
       image,
       objectID,
+      genre,
+      ranking
     } = story;
 
     const handleClick = (id) => {
@@ -58,11 +60,11 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
           //set archived books as data received from GET
           let archivedBooks = response.data;
 
-          const isBookMarked = archivedBooks.some(book => book.objectID === story.objectID)
+          const isBookMarked = archivedBooks.some(book => book.objectID === id)
 
           if (!isBookMarked) {
             //if not archived, post and add book to archived books
-            axios.post(`http://localhost:7000/books/archive/${story.objectID}`, {
+            axios.post(`http://localhost:7000/books/archive/${id}`, {
               objectID: story.objectID, 
               title: story.title, 
               image: story.image,
@@ -83,7 +85,17 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
           }
           else {
             //if already bookmarked, delete and remove book from archived books
-            axios.delete(`http://localhost:7000/books/archive/${story.objectID}`)
+            axios.delete(`http://localhost:7000/books/archive/${id}`, {
+              objectID: story.objectID, 
+              title: story.title, 
+              image: story.image,
+              url: story.url,
+              author: story.author,
+              genre: story.genre,
+              num_comments: story.num_comments,
+              points: story.points,
+              ranking: story.ranking
+            })
             .then(() => {
               alert(story.title + " has been removed from bookmarks");
               console.log(story.title + " unarchived");
