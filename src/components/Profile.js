@@ -16,7 +16,6 @@ import axios from "axios";
 import Layout from "./Layout";
 import { useLocation } from "react-router-dom";
 
-
 const Profile = ({ stories }) => {
   const [books, setBooks] = useState([]);
   const [age, setAge] = useState('');

@@ -6,6 +6,7 @@ import store from "../store";
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import Story from "./Books";
 import "./Home.css";
+import "./Books/index.js";
 
 import axios from "axios";
 
@@ -27,7 +28,8 @@ const BookMark = ({ stories }) => {
           setArchivedBooks(response.data);
           console.log("ARCHIVED RN: " + response.data)
         });
-  }, [])
+        //updating from bookmarking/unbookmarking, causing GET, state updattes, run again and re renders the UI
+  }, [{/*updateTrigger*/}])
 
   const clearBookmarks = () => {
     axios.delete('http://localhost:7000/books/archive')

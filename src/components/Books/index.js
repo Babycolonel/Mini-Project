@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import BookMark from '../BookMark';
 import axios from 'axios';
+import { useState } from 'react';
 
 const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
 
@@ -53,6 +54,8 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
     //   }
     // };
 
+    const [updateTrigger, setUpdateTrigger] = useState(false);
+
     const handleArchive = (id) => {
       //fetch archived books
       axios.get('http://localhost:7000/books/archive')
@@ -78,6 +81,7 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
             .then(() => {
               alert(story.title + " has been added to bookmarks");
               console.log(story.title + " archived");
+              setUpdateTrigger(prev => !prev)
             })
             .catch(error => {
               console.error('Error archiving the book:', error);
@@ -85,20 +89,11 @@ const Story = ({ story, onArchive, onReview, onRemoveArchive}) => {
           }
           else {
             //if already bookmarked, delete and remove book from archived books
-            axios.delete(`http://localhost:7000/books/archive/${id}`, {
-              objectID: story.objectID, 
-              title: story.title, 
-              image: story.image,
-              url: story.url,
-              author: story.author,
-              genre: story.genre,
-              num_comments: story.num_comments,
-              points: story.points,
-              ranking: story.ranking
-            })
+            axios.delete(`http://localhost:7000/books/archive/${id}`)
             .then(() => {
               alert(story.title + " has been removed from bookmarks");
               console.log(story.title + " unarchived");
+              setUpdateTrigger(prev => !prev); 
             })
             .catch(error => {
               console.error('Error unarchiving the book:', error);
