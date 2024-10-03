@@ -13,29 +13,49 @@ import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
 import Ranks1 from "./Leaderboards/Ranks";
 import booksData from "../data/booksData";
+import axios from "axios";
 
 const Leaderboard = (stories) => {
   const [books, setBooks] = useState([]);
+  const localBooks = [];
+
+  // useEffect(() => {
+  //   //store the booksData in localStorage
+  //   if (!localStorage.getItem('books')) {
+  //     localStorage.setItem('books', JSON.stringify(booksData));
+  // }
+
+  // //retrieve books from localStorage and set state
+  // const localBooks = JSON.parse(localStorage.getItem('books'));
+  // setBooks(localBooks || []);
+  // console.log(localBooks + "djdjdd");
+  // //empty array dependency so it only runs once
+  // }, []);
+
+  // useEffect(() => {
+  //   let allBooks = JSON.parse(localStorage.getItem('books'));
+
+  //   const sortedBooks = allBooks.sort((a,b) => a.rank - b.rank);
+
+  //   setBooks(sortedBooks);
+  // }, []);
 
   useEffect(() => {
-    //store the booksData in localStorage
-    if (!localStorage.getItem('books')) {
-      localStorage.setItem('books', JSON.stringify(booksData));
-  }
-
-  //retrieve books from localStorage and set state
-  const localBooks = JSON.parse(localStorage.getItem('books'));
-  setBooks(localBooks || []);
-  console.log(localBooks + "djdjdd");
-  //empty array dependency so it only runs once
-  }, []);
-
-  useEffect(() => {
-    let allBooks = JSON.parse(localStorage.getItem('books'));
-
-    const sortedBooks = allBooks.sort((a,b) => a.rank - b.rank);
-
-    setBooks(sortedBooks);
+    axios.get('http://localhost:7000/books')
+      .then(response => {
+        const fetchedBooks = response.data;
+        
+        // Sort the books by ranking
+        const sortedBooks = fetchedBooks.sort((a, b) => a.ranking - b.ranking);
+        
+        // Set the sorted books to state
+        setBooks(sortedBooks);
+  
+        console.log("Books after sorting: ", sortedBooks);
+      })
+      .catch(error => {
+        console.error('There was an error fetching the books!', error);
+      });
   }, []);
 
    return (

@@ -6,22 +6,40 @@ import store from "../store";
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import Story from "./Books";
 import "./Home.css";
+import "./Books/index.js";
 
 import axios from "axios";
 
 const BookMark = ({ stories }) => {
   const [archivedBooks, setArchivedBooks] = useState([]);
   
+  //local storage
+  // useEffect(() => {
+  //   //get archived books from localStorage
+  //   const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
+  //   setArchivedBooks(storedBooks);
+  // }, );
+
   useEffect(() => {
-    //get archived books from localStorage
-    const storedBooks = JSON.parse(localStorage.getItem('archivedBooks')) || [];
-    setArchivedBooks(storedBooks);
-  }, );
+    //fetch archived books
+      axios.get('http://localhost:7000/books/archive')
+        .then(response => {
+          //set archived books as data received from GET
+          setArchivedBooks(response.data);
+          console.log("ARCHIVED RN: " + response.data)
+        });
+        //updating from bookmarking/unbookmarking, causing GET, state updattes, run again and re renders the UI
+  }, [{/*updateTrigger*/}])
 
   const clearBookmarks = () => {
-    // Clear bookmarks from local storage
-    localStorage.removeItem('archivedBooks');
-    setArchivedBooks([]);
+    axios.delete('http://localhost:7000/books/archive')
+      .then(response => {
+        setArchivedBooks([]); // Clear the local state after deletion
+        console.log(response.data.message);
+      })
+      .catch(error => {
+        console.error('Error clearing bookmarks:', error);
+      });
   };
 
     const [users, setUsers] = useState([]);
@@ -67,14 +85,14 @@ const BookMark = ({ stories }) => {
         </span>
         </div>
         {/* temp */}
-        <div>
+        {/* <div>
         <h1>Users</h1>
         <ul>
           {users.map(user => (
             <li key={user.id}>{user.id}: {user.username} {user.password} {user.created_at}</li>
           ))}
         </ul>
-      </div>
+      </div> */}
       {/* temp */}
         </>
     );

@@ -14,6 +14,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 // const InputCustom = React.memo((props) => {
 //   console.log('render');
@@ -72,18 +73,19 @@ const [passwordVisible, setPasswordVisibility] = useState(false)
 const handleClose = () => setShow(false); 
 const handleShow = () => setShow(true);
 
+
 const fetchUsers = () => {
   axios.get('http://localhost:7000/users')
     .then(response => {
       setUsers(response.data); // Update state with the user data
     })
     .catch(error => {
-      console.error('There was an error fetching the users!', error);
+      //console.error('There was an error fetching the users!', error);
     });
 };
 
 //call at beginning of function so that it immediately checks for users instead of only checking after the account is made
-fetchUsers();
+//fetchUsers();
 
 const handleUsernameChange = (event) => {
   setUsername(event.target.value);
@@ -101,6 +103,7 @@ const handleCreateAccount = () => {
     return;
   } 
   const existingUser = users.find(user => user.username === username);
+  console.log(existingUser);
   console.log(users, username);
   if (existingUser) {
     alert('Username already exists, please choose another one.');
@@ -128,12 +131,14 @@ const handleLoginAccount = () => {
   // call sqlDB and check for login detail
   //checking if both username and password exist in DB
   const existingUser = users.find(user => user.username === username && user.password === password);
+  console.log(username, password)
   if (existingUser) {
     alert('Login successful!');
     setShow(false);
     //setting logged in user
     setUserLoggedIn(existingUser);
-    // Perform any additional actions upon successful login
+    console.log(existingUser);
+    // be able to store data that there is a logged in user so when refresh, still stays
   } else {
     alert('Invalid username or password.');
   }
@@ -150,6 +155,10 @@ const handlePasswordVisibility = () => {
     setPasswordVisibility(false)
   }
 };
+
+const location = useLocation();
+  //access user data passed via state
+  const { user } = location.state || {};
 
     return(
       <>
@@ -192,7 +201,7 @@ const handlePasswordVisibility = () => {
         </Modal>
         <nav>
             <li className='navHeight'>
-              <div className='flex-container'>
+              <div className='nav-flex-container'>
                 <Link to="/">Home</Link>
                 <Link to="/leaderboard">Leaderboard</Link>
                 <Link to="/bookmark">BookMark</Link>
@@ -200,9 +209,11 @@ const handlePasswordVisibility = () => {
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
                 {userLoggedIn? (
                   <>
-                  <span>Welcome, {userLoggedIn.username}!</span>
-                    <Link to="/profile" id="linkPFP">
-                      <img id="pfpPlacerholder" ></img>
+                  <span className="profileName">{userLoggedIn.username}</span>
+                    <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
+                      <img className="pfpPlaceHolder" 
+                      src={userLoggedIn.profilePic !== null? userLoggedIn.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+                      ></img>
                     </Link>
                   </>
                 ) : 
