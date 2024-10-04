@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client"
 import React, { useEffect, useState, createContext, useContext } from 'react';
 import "./Home.css";
 import "./Profile.css"
-
+// import { useOutletContext } from 'react-router-dom';
 import "./Layout";
 import Book from './Books/Book'; 
 import { connect } from 'react-redux';
@@ -22,7 +22,7 @@ const Profile = ({ stories }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [show, setShow] = useState(false);
   const [users, setUsers] = useState([]);
-
+  // const { user } = useOutletContext();
   useEffect(() => {
     //store the booksData in localStorage
     if (!localStorage.getItem('books')) {
