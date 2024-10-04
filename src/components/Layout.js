@@ -67,7 +67,8 @@ const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
 const [users, setUsers] = useState([])
 //CHANGE NULL TO A BLANK STRING FOR TESTING, REMEMBER TO CHANGE BACK
-const [userLoggedIn, setUserLoggedIn] = useState(false);
+const [userLoggedIn, setUserLoggedIn] = useState();
+const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [userId, setUserId] = useState(null);
 const [passwordVisible, setPasswordVisibility] = useState(false)
 
@@ -137,8 +138,10 @@ const handleLoginAccount = () => {
     alert('Login successful!');
     setShow(false);
     //setting logged in user
-    setUserLoggedIn(true);
+    setUserLoggedIn(existingUser);
+    setIsLoggedIn(true);
     setUserId(existingUser.id);
+    // setUserId(existingUser.id);
     console.log(existingUser);
     // be able to store data that there is a logged in user so when refresh, still stays
   } else {
@@ -159,7 +162,7 @@ const handlePasswordVisibility = () => {
 };
 
 const userInfo = {
-  userLoggedIn,
+  isLoggedIn,
   userId,
 };
 
@@ -214,7 +217,7 @@ const location = useLocation();
                 <Link to="/bookmark">BookMark</Link>
                 <div className="navButtonContainer">
                 {/* conditional rendering based on if logged in or not, and whose account is logged in ((condition) true : false)*/}
-                {userLoggedIn? (
+                {isLoggedIn? (
                   <>
                   <span className="profileName">{userLoggedIn.username}</span>
                     <Link to="/profile" state={{user: userLoggedIn}}id="linkPFP">
@@ -239,4 +242,4 @@ const location = useLocation();
     )
   };
 
-export default React.memo(Layout);
+  export default React.memo(Layout);

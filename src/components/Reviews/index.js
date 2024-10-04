@@ -21,8 +21,8 @@ const Review = ({ review, users}) => {
     } = review;
 
     const [reviewText, setReviewText] = useState('');
-    const { userLoggedIn, userId } = useOutletContext();
-    console.log('User Logged In:', userLoggedIn);
+    const { isLoggedIn, userId } = useOutletContext();
+    console.log('User Logged In:', isLoggedIn);
     console.log('User ID:', userId);
     const handleTextChange = (event) => {
       setReviewText(event.target.value); // Update state with the textarea value
@@ -30,7 +30,7 @@ const Review = ({ review, users}) => {
     };
 
     const processUserInfo = () => {
-      if (userLoggedIn) {
+      if (isLoggedIn) {
         console.log(`User ID: ${userId}`);
       } else {
         console.log('User is not logged in.');
@@ -53,7 +53,7 @@ const Review = ({ review, users}) => {
       console.log("idk" + newRating);
       console.log(userId);
     
-      if (!userLoggedIn) {
+      if (!isLoggedIn) {
         alert("Please log in to add a review");
         return; // Exit the function early if not logged in
       }
