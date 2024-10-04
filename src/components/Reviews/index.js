@@ -59,7 +59,7 @@ const Review = ({ review, users}) => {
       }
     
       // Proceed to create a review if the user is logged in
-      axios.post('http://localhost:7000/reviews', {
+      axios.post('http://localhost:7000/comment', {
         id: userId,
         review: userReviews,
         stars: newRating,
@@ -68,6 +68,7 @@ const Review = ({ review, users}) => {
       .then(response => {
         console.log("Added review", response.data);
         setIsReviewCreated(true);
+        // fetchUserReviews();
       })
       .catch(error => {
         console.log("Didn't add review", error);
@@ -79,6 +80,7 @@ const Review = ({ review, users}) => {
       axios.get('http://localhost:7000/reviews')
         .then(response => {
           setUserReviews(response.data); // Update state with the reviews
+          console.log("get works");
         })
         .catch(error => {
           console.error('There was an error fetching the reviews!', error);
@@ -89,6 +91,7 @@ const Review = ({ review, users}) => {
     useEffect(() => {
       fetchUserReviews();
       setIsReviewCreated(false);
+      console.log("why");
     }, [isReviewCreated]); // Empty dependency array to run on mount
     
     return (
@@ -125,9 +128,7 @@ const Review = ({ review, users}) => {
       </div>
       
     );
-    return {
-      processUserInfo,
-    };
+
   };
 
 
