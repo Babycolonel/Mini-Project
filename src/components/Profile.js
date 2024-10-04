@@ -15,79 +15,105 @@ import booksData from "../data/booksData";
 import axios from "axios";
 import Layout from "./Layout";
 import { useLocation } from "react-router-dom";
+import ProfileReview from "./Profiles/ProfileReviews";
 
 const Profile = ({ stories }) => {
   const [books, setBooks] = useState([]);
+  const [reviews, setReviews] = useState([]);
   const [age, setAge] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [show, setShow] = useState(false);
   const [users, setUsers] = useState([]);
   // const { user } = useOutletContext();
-  useEffect(() => {
-    //store the booksData in localStorage
-    if (!localStorage.getItem('books')) {
-      localStorage.setItem('books', JSON.stringify(booksData));
-  }
+  // useEffect(() => {
+  //   //store the booksData in localStorage
+  //   if (!localStorage.getItem('books')) {
+  //     localStorage.setItem('books', JSON.stringify(booksData));
+  // }
 
-  //retrieve books from localStorage and set state
-  const localBooks = JSON.parse(localStorage.getItem('books'));
-  setBooks(localBooks || []);
-  //empty array dependency so it only runs once
-  }, []);
+  // //retrieve books from localStorage and set state
+  // const localBooks = JSON.parse(localStorage.getItem('books'));
+  // setBooks(localBooks || []);
+  // //empty array dependency so it only runs once
+  // }, []);
 
-
-  useEffect(() => {
-    let filteredBooks = JSON.parse(localStorage.getItem('books'));
-
-    //filter by genre if a specific genre is selected
-    if (age !== '' && age !== 'All') {
-      filteredBooks = filteredBooks.filter(book => book.genre === age);
-    }
-
-    //filter by search term
-    //checks for both book title and author input
-    if (searchTerm) {
-      setShow(false);
-      filteredBooks = filteredBooks.filter(book => 
-        book.title.toLowerCase().includes(searchTerm.toLowerCase())
-        || book.author.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-    }
+  
+  // useEffect(() => {
+    // let filteredBooks = JSON.parse(localStorage.getItem('books'));
+    
+    // //filter by genre if a specific genre is selected
+    // if (age !== '' && age !== 'All') {
+      //   filteredBooks = filteredBooks.filter(book => book.genre === age);
+      // }
+      
+      // //filter by search term
+      // //checks for both book title and author input
+      // if (searchTerm) {
+        //   setShow(false);
+        //   filteredBooks = filteredBooks.filter(book => 
+          //     book.title.toLowerCase().includes(searchTerm.toLowerCase())
+    //     || book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    //   );
+    // }
 
     //set filtered list
-    setBooks(filteredBooks);
-    if (filteredBooks.length == 0) {
-      console.log("filtered books nothing " );
-      setShow(true);
-    }
-    else {
-      setShow(false);
-    }
-  }, [age, searchTerm]);
+  //   setBooks(filteredBooks);
+  //   if (filteredBooks.length == 0) {
+    //     console.log("filtered books nothing " );
+    //     setShow(true);
+    //   }
+    //   else {
+      //     setShow(false);
+      //   }
+      // }, [age, searchTerm]);
+      
+      // const handleChange = (event) => {
+        //   const genre = event.target.value;
+        //   console.log("EVENT TARGET VALUE = " + event.target.value);
+        //   setAge(genre);
+        
+        //   //filter by genre and update state
+        //   //if filter "All" display all books in local storage
+        //   if (genre === 'All'){
+          //     console.log("IT IS ALL BOOKS");
+          //     const allBooks = JSON.parse(localStorage.getItem('books'));
+          //     setBooks(allBooks);
+          //   }
+  //   //else display normal filtered books based on genre
+  //   else {
+    //     const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
+    //     setBooks(filteredBooks);
+    //   }
+  // };
+  useEffect(() => {
+    axios.get('http://localhost:7000/books')
+      .then(response => {
+        const fetchedBooks = response.data;
 
-  const handleChange = (event) => {
-    const genre = event.target.value;
-    console.log("EVENT TARGET VALUE = " + event.target.value);
-    setAge(genre);
+        // Set the sorted books to state
+        setBooks(fetchedBooks);
+  
+      })
+      .catch(error => {
+        console.error('There was an error fetching the books!', error);
+      });
+      axios.get('http://localhost:7000/reviews')
+      .then(response => {
+        const fetchedReviews = response.data;
 
-    //filter by genre and update state
-    //if filter "All" display all books in local storage
-    if (genre === 'All'){
-      console.log("IT IS ALL BOOKS");
-      const allBooks = JSON.parse(localStorage.getItem('books'));
-      setBooks(allBooks);
-    }
-    //else display normal filtered books based on genre
-    else {
-      const filteredBooks = JSON.parse(localStorage.getItem('books')).filter(book => book.genre === genre);
-      setBooks(filteredBooks);
-    }
-  };
+        // Set the sorted books to state
+        setReviews(fetchedReviews);
+  
+      })
+      .catch(error => {
+        console.error('There was an error fetching the reviews!', error);
+      });
+  }, []);
   
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   }
-
+  useEffect(() => {
   const fetchUsers = () => {
     axios.get('http://localhost:7000/users')
       .then(response => {
@@ -97,11 +123,11 @@ const Profile = ({ stories }) => {
         console.error('There was an error fetching the users!', error);
       });
   };
-
+}, []);
   //find a way to bring logged in user data into profile.js
 
 
-  fetchUsers();
+
 
   const location = useLocation();
   //access user data passed via state
@@ -142,7 +168,11 @@ const Profile = ({ stories }) => {
         )}
         </div>
         <div>
-            {/* PUT UR REVIEW STUFF HERE ORLANDO */}
+          
+        <ProfileReview
+        profileReviews = {reviews}
+        // books = {books}
+        key = {reviews.id} />
         </div>
       </div>
       </>

@@ -67,6 +67,7 @@ const Review = ({ review, users}) => {
       })
       .then(response => {
         console.log("Added review", response.data);
+        alert("Review successfully added");
         setIsReviewCreated(true);
         // fetchUserReviews();
       })
