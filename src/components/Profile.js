@@ -177,8 +177,7 @@ const Profile = ({ stories }) => {
         <ProfileReview
         profileReviews = {reviews}
         refresh={updateFromDelete}
-        // books = {books}
-        key = {reviews.id} />
+        books = {books} />
         </div>
       </div>
       </>

@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 import Profile from '.'
 import ProfileReviews from '.'
-const ProfileReview = ({ profileReviews, refresh}) =>
+const ProfileReview = ({ profileReviews, refresh, books}) =>
     <div className="profile" >
     {(profileReviews || []).map(x =>
         <Profile 
@@ -10,6 +10,7 @@ const ProfileReview = ({ profileReviews, refresh}) =>
         // key ={x.objectId}
         profile={x}
         refresh={refresh}
+        books = {books}
         />
     )}
     {/* {(books || []).map(x =>

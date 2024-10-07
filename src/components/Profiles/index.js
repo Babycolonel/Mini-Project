@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import { useState } from 'react';
 import {DisplayRate} from '../Reviews/StarRating';
 import axios from 'axios';
-const Profile = ({ profile, refresh}) => {
+const Profile = ({ profile, refresh, books}) => {
 
 const navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const {
     author,
     num_comments,
     points,
-    image,
+
     objectID,
     ranking,
     review,
@@ -24,6 +24,11 @@ const {
     reviewID,
     
 } = profile;
+
+const {
+  image,
+
+} = books;
 
 const handleClick = (id) => {
   // navigate(`/about/${id}`);
@@ -33,10 +38,10 @@ const handleClick = (id) => {
 const [updateTrigger, setUpdateTrigger] = useState(false);
 
 const handleDelete = (id) =>{
-console.log("delete" + id)
-const data ="review deleted"
-refresh(data)
-// axios.get('http://localhost:7000/reviews')
+  console.log("delete" + id)
+  const data ="review deleted"
+  refresh(data)
+  // axios.get('http://localhost:7000/reviews')
 
     axios.delete(`http://localhost:7000/remove/${id}`)
     .then(() => {
@@ -71,7 +76,7 @@ refresh(data)
 
         </div>
         <div><p className="Review"> {review}</p></div>
-        {/* <img src={image} className='bookImage1' ></img> */}
+        <img src={image} className='bookImage1' ></img>
         <br></br>
         <div  className ="RankStar">
           <DisplayRate
