@@ -7,7 +7,7 @@ const ProfileReview = ({ profileReviews, books}) =>
     {(profileReviews || []).map(x =>
         <Profile 
         // books = {books}
-        reviewId ={x.objectId}
+        // key ={x.objectId}
         profile={x}
         />
     )}

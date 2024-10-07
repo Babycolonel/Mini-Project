@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 
 import {DisplayRate} from '../Reviews/StarRating';
 import axios from 'axios';
-const Profile = ({ profile }) => {
+const Profile = ({ profile}) => {
 
 const navigate = useNavigate();
 
@@ -21,22 +21,22 @@ const {
     ranking,
     review,
     stars,
-    reviewId,
+    reviewID,
     
 } = profile;
 
 const handleClick = (id) => {
   // navigate(`/about/${id}`);
   // onReview(id);
-  console.log("profile hi " + {reviewId});
+  console.log("profile hi " + {reviewID});
 }
 
 const handleDelete = (id) =>{
-console.log("delete" + reviewId)
+console.log("delete" + id)
 
 // axios.get('http://localhost:7000/reviews')
 
-    axios.delete(`http://localhost:7000/reviews/${id}`)
+    axios.delete(`http://localhost:7000/remove/${id}`)
     .catch(error => {
       console.error('Error deleting the book:', error);
     })
@@ -44,11 +44,11 @@ console.log("delete" + reviewId)
 };
 /* layout of the UI when displaying the state from the store */
     return (
-      <div className='leaderboard-container' onClick={() => handleClick(objectID)}>
+      <div className='leaderboard-container' >
 
         <div className="story">
             
-            <button onClick={() => handleDelete(reviewId)}> delete</button>
+            <button onClick={() => handleDelete(reviewID)}> delete</button>
 
 
             <div className='homePageTitles1' >

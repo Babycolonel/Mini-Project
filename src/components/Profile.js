@@ -99,10 +99,10 @@ const Profile = ({ stories }) => {
       });
       axios.get('http://localhost:7000/reviews')
       .then(response => {
-        const fetchedReviews = response.data;
+
 
         // Set the sorted books to state
-        setReviews(fetchedReviews);
+        setReviews(response.data);
   
       })
       .catch(error => {
