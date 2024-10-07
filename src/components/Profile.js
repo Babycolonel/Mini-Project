@@ -85,6 +85,11 @@ const Profile = ({ stories }) => {
     //     setBooks(filteredBooks);
     //   }
   // };
+  const [refresh, setRefresh]= useState(null)
+  const updateFromDelete = (data) => {
+   setRefresh(data)
+  }
+
   useEffect(() => {
     axios.get('http://localhost:7000/books')
       .then(response => {
@@ -108,7 +113,7 @@ const Profile = ({ stories }) => {
       .catch(error => {
         console.error('There was an error fetching the reviews!', error);
       });
-  }, []);
+  }, [updateFromDelete]);
   
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
@@ -171,6 +176,7 @@ const Profile = ({ stories }) => {
           
         <ProfileReview
         profileReviews = {reviews}
+        refresh={updateFromDelete}
         // books = {books}
         key = {reviews.id} />
         </div>

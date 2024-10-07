@@ -3,10 +3,10 @@ import '../Leaderboard.css';
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import { render } from '@testing-library/react';
-
+import { useState } from 'react';
 import {DisplayRate} from '../Reviews/StarRating';
 import axios from 'axios';
-const Profile = ({ profile}) => {
+const Profile = ({ profile, refresh}) => {
 
 const navigate = useNavigate();
 
@@ -30,13 +30,19 @@ const handleClick = (id) => {
   // onReview(id);
   console.log("profile hi " + {reviewID});
 }
+const [updateTrigger, setUpdateTrigger] = useState(false);
 
 const handleDelete = (id) =>{
 console.log("delete" + id)
-
+const data ="review deleted"
+refresh(data)
 // axios.get('http://localhost:7000/reviews')
 
     axios.delete(`http://localhost:7000/remove/${id}`)
+    .then(() => {
+      setUpdateTrigger(prev => !prev)
+    })
+
     .catch(error => {
       console.error('Error deleting the book:', error);
     })
@@ -65,7 +71,7 @@ console.log("delete" + id)
 
         </div>
         <div><p className="Review"> {review}</p></div>
-        <img src={image} className='bookImage1' ></img>
+        {/* <img src={image} className='bookImage1' ></img> */}
         <br></br>
         <div  className ="RankStar">
           <DisplayRate
