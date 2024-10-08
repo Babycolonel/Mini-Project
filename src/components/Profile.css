@@ -46,3 +46,9 @@
   object-fit: cover; /* Ensures the image fits within the circle */
   z-index: 1; /* Ensure it's displayed in front */
 }
+
+.ReviewDisplay{
+  color: black;
+  font-size: 2vw;
+}
+

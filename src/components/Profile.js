@@ -113,7 +113,7 @@ const Profile = ({ stories }) => {
       .catch(error => {
         console.error('There was an error fetching the reviews!', error);
       });
-  }, [updateFromDelete]);
+  }, []);
   
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);

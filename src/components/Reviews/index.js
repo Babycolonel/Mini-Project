@@ -9,6 +9,7 @@ import React, { useEffect, useState, createContext, useContext } from 'react';
 import axios from 'axios';
 import '../Layout';
 import StarRating from './StarRating';
+import { object } from 'prop-types';
 const Review = ({ review, users}) => {
     const {
       title,
@@ -52,6 +53,7 @@ const Review = ({ review, users}) => {
       console.log(userReviews);
       console.log("idk" + newRating);
       console.log(userId);
+      console.log(objectID);
     
       if (!isLoggedIn) {
         alert("Please log in to add a review");
@@ -63,6 +65,7 @@ const Review = ({ review, users}) => {
         id: userId,
         review: userReviews,
         stars: newRating,
+        bookID: objectID,
         created_at: new Date().toISOString() // Use current date and time
       })
       .then(response => {

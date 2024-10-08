@@ -6,29 +6,32 @@ import { render } from '@testing-library/react';
 import { useState } from 'react';
 import {DisplayRate} from '../Reviews/StarRating';
 import axios from 'axios';
+import '../Profile.css'
 const Profile = ({ profile, refresh, books}) => {
 
 const navigate = useNavigate();
 
 const {
-    title,
-    url,
-    author,
-    num_comments,
-    points,
 
-    objectID,
-    ranking,
     review,
     stars,
     reviewID,
+    bookID,
     
 } = profile;
-
+console.log(books)
 const {
+  title,
+  url,
+  author,
+  num_comments,
+  points,
+
+  objectID,
+  ranking,
   image,
 
-} = books;
+} = books.length ? books[bookID] : {}
 
 const handleClick = (id) => {
   // navigate(`/about/${id}`);
@@ -69,13 +72,13 @@ const handleDelete = (id) =>{
                 <br></br>
             </div>
             
-        <div className='homePageText1'>
+        {/* <div className='homePageText1'>
             <span>{author}</span>
             <br></br>
 
 
-        </div>
-        <div><p className="Review"> {review}</p></div>
+        </div> */}
+        <div><p className="ReviewDisplay"> {review}</p></div>
         <img src={image} className='bookImage1' ></img>
         <br></br>
         <div  className ="RankStar">
