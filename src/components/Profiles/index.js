@@ -7,10 +7,13 @@ import { useState } from 'react';
 import {DisplayRate} from '../Reviews/StarRating';
 import axios from 'axios';
 import '../Profile.css'
+import Modal from 'react-bootstrap/Modal';
 const Profile = ({ profile, refresh, books}) => {
 
 const navigate = useNavigate();
-
+const [show, setShow] = useState(false);
+const handleClose = () => setShow(false); 
+const handleShow = () => setShow(true);
 const {
 
     review,
@@ -59,11 +62,19 @@ const handleDelete = (id) =>{
 };
 /* layout of the UI when displaying the state from the store */
     return (
+      <>
+      <Modal show={show} onHide={handleClose} className="modalContainer">
+        <Modal.Title>Are you sure you want to delete?</Modal.Title>
+        <Modal.Footer>
+          <Button variant='primary' onClick={() => handleDelete(reviewID)}>Yes</Button>
+          <Button variant='secondary' onClick={() => handleClose()}>No</Button>
+        </Modal.Footer>
+      </Modal>
       <div className='leaderboard-container' >
 
         <div className="story">
             
-            <button onClick={() => handleDelete(reviewID)}> delete</button>
+            <button onClick={() =>  handleShow()}> delete</button>
 
 
             <div className='homePageTitles1' >
@@ -91,6 +102,7 @@ const handleDelete = (id) =>{
 
       </div>
       </div>  
+      </>
     );
   }
 
