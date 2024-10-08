@@ -87,17 +87,20 @@ const Profile = ({ stories }) => {
   // };
   const [refresh, setRefresh]= useState(null)
   const updateFromDelete = (data) => {
-   setRefresh(data)
+    axios.get('http://localhost:7000/books')
+      .then(response => {
+        setRefresh(data)
+        setBooks(response.data);
+  })
   }
-
-  useEffect(() => {
+  useEffect((data) => {
     axios.get('http://localhost:7000/books')
       .then(response => {
         const fetchedBooks = response.data;
 
         // Set the sorted books to state
         setBooks(fetchedBooks);
-  
+        setRefresh(data)
       })
       .catch(error => {
         console.error('There was an error fetching the books!', error);
@@ -113,7 +116,7 @@ const Profile = ({ stories }) => {
       .catch(error => {
         console.error('There was an error fetching the reviews!', error);
       });
-  }, []);
+  }, [refresh]);
   
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);

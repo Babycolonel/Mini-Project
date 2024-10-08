@@ -43,12 +43,13 @@ const [updateTrigger, setUpdateTrigger] = useState(false);
 const handleDelete = (id) =>{
   console.log("delete" + id)
   const data ="review deleted"
+
   refresh(data)
   // axios.get('http://localhost:7000/reviews')
 
     axios.delete(`http://localhost:7000/remove/${id}`)
     .then(() => {
-      setUpdateTrigger(prev => !prev)
+
     })
 
     .catch(error => {
