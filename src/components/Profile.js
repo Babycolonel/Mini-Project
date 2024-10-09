@@ -163,9 +163,18 @@ const Profile = ({ stories }) => {
     setpfpLink(event.target.value);
   }
 
-  const handlePFP = () => {
+  const handlePFP = (id) => {
+    console.log("User ID:", id); 
     //handle putting link and updating table for specific user
-
+    axios.put(`http://localhost:7000/users/${id}/profilePic`, {
+      profilePic: pfpLink
+    })
+    .then(response => {
+      console.log(response.data.message);
+    })
+    .catch(error => {
+      console.error("Error updating profile picture")
+    })
     alert('Changing PFP')
     // close modal
     setShow(false);
@@ -187,7 +196,7 @@ const Profile = ({ stories }) => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handlePFP}>
+            <Button variant="primary" onClick={() => handlePFP(user.id)}>
               Change
             </Button>
           </Modal.Footer>
