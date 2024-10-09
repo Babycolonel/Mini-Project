@@ -164,12 +164,14 @@ const Profile = ({ stories }) => {
         {isLoggedIn ? (
             <>
             <div id="titleBackground">
-              <img
-                className="profileImage"
-                // display profile pic if present, if not display guest profile pic
-                src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
-                //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
-              />
+              <div className="imageContainer">
+                <img
+                  className="profileImage"
+                  // display profile pic if present, if not display guest profile pic
+                  src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+                  //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
+                />
+              </div>
               <div id="titleNameProfile">
                 <p>{user.username}</p>
               </div>
@@ -180,7 +182,7 @@ const Profile = ({ stories }) => {
             </div>
             <div className="headerBorder">
               <span className="headerTextProfile">Your Reviews</span>
-              <button onClick={handleLogOut}>Log Out</button>
+              <button onClick={handleLogOut} id="logOutButton">Log Out</button>
             </div>
             <div>
               <ProfileReview
