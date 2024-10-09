@@ -19,6 +19,8 @@ import ProfileReview from "./Profiles/ProfileReviews";
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useOutletContext } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 const Profile = ({ stories }) => {
   const [books, setBooks] = useState([]);
@@ -26,6 +28,9 @@ const Profile = ({ stories }) => {
   const [age, setAge] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false); 
+  const handleShow = () => setShow(true);
   //const [users, setUsers] = useState([]);
   // const { user } = useOutletContext();
   // useEffect(() => {
@@ -88,6 +93,7 @@ const Profile = ({ stories }) => {
     //     setBooks(filteredBooks);
     //   }
   // };
+  const [pfpLink, setpfpLink] = useState('')
   const [refresh, setRefresh]= useState(null)
   const location = useLocation();
   const [user, setUser] = useState(location.state?.user || null);
@@ -153,8 +159,39 @@ const Profile = ({ stories }) => {
     navigate("/");
   }
 
+  const handlePFPChange= (event) => {
+    setpfpLink(event.target.value);
+  }
+
+  const handlePFP = () => {
+    //handle putting link and updating table for specific user
+
+    alert('Changing PFP')
+    // close modal
+    setShow(false);
+  }
+
   return (
     <>
+    {/* link makes pop up work but changes some layout, uncomment with caution */}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"></link>
+      {/* pop up when registering/loging in */}
+        <Modal show={show} onHide={handleClose} className="modalContainer">
+          <Modal.Header closeButton>
+            <Modal.Title>Change Profile Picture</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Link:</Modal.Body>
+          <input value={pfpLink} onChange={handlePFPChange} placeholder="Link..."></input>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handlePFP}>
+              Change
+            </Button>
+          </Modal.Footer>
+        </Modal>
       <head>
         <link rel="stylesheet" type="text/css" href="App.css"/>
         <script defer src='activePage.js'></script>
@@ -182,7 +219,10 @@ const Profile = ({ stories }) => {
             </div>
             <div className="headerBorder">
               <span className="headerTextProfile">Your Reviews</span>
+              <span>
+              <button onClick={() => { handleShow(); }} id="logOutButton">PFP</button>
               <button onClick={handleLogOut} id="logOutButton">Log Out</button>
+              </span>
             </div>
             <div>
               <ProfileReview
