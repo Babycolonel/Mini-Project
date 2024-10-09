@@ -98,6 +98,7 @@ const Profile = ({ stories }) => {
   const location = useLocation();
   const [user, setUser] = useState(location.state?.user || null);
   const {isLoggedIn, setIsLoggedIn} = useOutletContext(); // Get the context from Outlet
+  const [isPFPChanged, setIsPFPChanged] = useState(false);
   const navigate = useNavigate();  // This will help in redirecting
   const updateFromDelete = (data) => {
     axios.get('http://localhost:7000/books')
@@ -134,17 +135,7 @@ const Profile = ({ stories }) => {
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   }
-  useEffect(() => {
-  const fetchUsers = () => {
-    axios.get('http://localhost:7000/users')
-      .then(response => {
-        setUser(response.data); // Update state with the user data
-      })
-      .catch(error => {
-        console.error('There was an error fetching the users!', error);
-      });
-  };
-}, []);
+
   //find a way to bring logged in user data into profile.js
 
   //access user data passed via state
@@ -171,14 +162,31 @@ const Profile = ({ stories }) => {
     })
     .then(response => {
       console.log(response.data.message);
+      setIsPFPChanged(true);
     })
     .catch(error => {
       console.error("Error updating profile picture")
     })
     alert('Changing PFP')
-    // close modal
+    //close modal
     setShow(false);
   }
+
+  useEffect(() => {
+    const fetchUsers = () => {
+      axios.get('http://localhost:7000/users')
+        .then(response => {
+          setUser(response.data); // Update state with the user data
+        })
+        .catch(error => {
+          console.error('There was an error fetching the users!', error);
+        });
+    };
+    if (isPFPChanged) {
+      fetchUsers();
+      setIsPFPChanged(false)
+    }
+  }, [isPFPChanged]);
 
   return (
     <>
