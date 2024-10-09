@@ -13,6 +13,7 @@ import { REVIEW_BOOK, STORY_ARCHIVE } from '../constants/actionTypes';
 import store from "../store";
 import { connect } from 'react-redux';
 import { useParams } from "react-router-dom";
+import axios from "axios";
 // import { withRouter } from "react-router-dom";
 
 const About = (props) => {
@@ -27,9 +28,20 @@ const About = (props) => {
   
   useEffect(() => {
     //get archived books from localStorage
-    const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
-    const book = storedBooks.find(book => book.objectID == pa.id);
-    setReviewedBooks(book);
+    // const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    axios.get('http://localhost:7000/books')
+    .then(response => {
+      const storedBooks = response.data;
+    
+      const book = storedBooks.find(book => book.objectID == pa.id);
+
+      // Set the sorted books to state
+      setReviewedBooks(book);
+
+    })
+    .catch(error => {
+      console.error('There was an error fetching the books!', error);
+    });
   }, [pa.id, reviews.length]);
 
 
