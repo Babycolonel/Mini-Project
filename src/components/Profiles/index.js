@@ -70,7 +70,7 @@ const handleDelete = (id) =>{
           <Button variant='secondary' onClick={() => handleClose()}>No</Button>
         </Modal.Footer>
       </Modal>
-      <div className='leaderboard-container' >
+      <div className='review-container' >
 
         <div className="story">
             

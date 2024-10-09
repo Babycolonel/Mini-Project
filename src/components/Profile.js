@@ -16,6 +16,9 @@ import axios from "axios";
 import Layout from "./Layout";
 import { useLocation } from "react-router-dom";
 import ProfileReview from "./Profiles/ProfileReviews";
+import { Outlet, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const Profile = ({ stories }) => {
   const [books, setBooks] = useState([]);
@@ -23,7 +26,7 @@ const Profile = ({ stories }) => {
   const [age, setAge] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [show, setShow] = useState(false);
-  const [users, setUsers] = useState([]);
+  //const [users, setUsers] = useState([]);
   // const { user } = useOutletContext();
   // useEffect(() => {
   //   //store the booksData in localStorage
@@ -86,6 +89,10 @@ const Profile = ({ stories }) => {
     //   }
   // };
   const [refresh, setRefresh]= useState(null)
+  const location = useLocation();
+  const [user, setUser] = useState(location.state?.user || null);
+  const {isLoggedIn, setIsLoggedIn} = useOutletContext(); // Get the context from Outlet
+  const navigate = useNavigate();  // This will help in redirecting
   const updateFromDelete = (data) => {
     axios.get('http://localhost:7000/books')
       .then(response => {
@@ -125,7 +132,7 @@ const Profile = ({ stories }) => {
   const fetchUsers = () => {
     axios.get('http://localhost:7000/users')
       .then(response => {
-        setUsers(response.data); // Update state with the user data
+        setUser(response.data); // Update state with the user data
       })
       .catch(error => {
         console.error('There was an error fetching the users!', error);
@@ -134,13 +141,17 @@ const Profile = ({ stories }) => {
 }, []);
   //find a way to bring logged in user data into profile.js
 
-
-
-
-  const location = useLocation();
   //access user data passed via state
-  const { user } = location.state || {};
+  //const { user } = location.state || {};
   //console.log(user.profilePic);
+
+  const handleLogOut = () => {
+    alert('You have been logged out');
+    setUser(null);
+    setIsLoggedIn(false);
+    console.log("user is " + user);
+    navigate("/");
+  }
 
   return (
     <>
@@ -149,40 +160,45 @@ const Profile = ({ stories }) => {
         <script defer src='activePage.js'></script>
       </head> 
       <div id="home">
-        <div id="titleBackground">
-        <img
-          className="profileImage"
-          // display profile pic if present, if not display guest profile pic
-          src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
-          //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
-        />
-          <div id="titleNameProfile">
-            <p>{user.username}</p>
-          </div>
-          <div id="titleWordsProfile">
-            <p>View your preferences and reviews here</p>
-          </div>
-        </div>
-        <div className="headerBorder">
-        <span className="headerTextProfile">Your Reviews</span>
-        </div>
-        <div>
-        {user ? (
+      <div>
+        {isLoggedIn ? (
             <>
-            {/* display other user details here */}
+            <div id="titleBackground">
+              <img
+                className="profileImage"
+                // display profile pic if present, if not display guest profile pic
+                src={user.profilePic !== null? user.profilePic : "https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"}
+                //src="https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png-286x300.jpg"
+              />
+              <div id="titleNameProfile">
+                <p>{user.username}</p>
+              </div>
+              <div id="titleWordsProfile">
+                <p>View your preferences and reviews here</p>
+                
+              </div>
+            </div>
+            <div className="headerBorder">
+              <span className="headerTextProfile">Your Reviews</span>
+              <button onClick={handleLogOut}>Log Out</button>
+            </div>
+            <div>
+              <ProfileReview
+              profileReviews = {reviews}
+              refresh={updateFromDelete}
+              books = {books} />
+            </div>
             </>
         ) : (
+          <>
+            <br></br>
             <h1>No user data found. Please log in.</h1>
+          </>
         )}
         </div>
-        <div>
-          
-        <ProfileReview
-        profileReviews = {reviews}
-        refresh={updateFromDelete}
-        books = {books} />
-        </div>
+        
       </div>
+      <Outlet context={isLoggedIn} />
       </>
   );
 }
