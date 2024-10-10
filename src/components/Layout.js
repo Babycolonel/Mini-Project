@@ -239,7 +239,7 @@ const userInfo = {
               </div>
             </li>
         </nav>
-        <Outlet context={{userInfo, isLoggedIn, setIsLoggedIn, userId}} />
+        <Outlet context={{userInfo, isLoggedIn, setIsLoggedIn, userId, setUser}} />
         </>
     )
   };

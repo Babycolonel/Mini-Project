@@ -96,7 +96,8 @@ const Profile = ({ stories }) => {
   const [pfpLink, setpfpLink] = useState('')
   const [refresh, setRefresh]= useState(null)
   const location = useLocation();
-  const [user, setUser] = useState(location.state?.user || null);
+  const { setUser } = useOutletContext();
+  const [user, setLocalUser] = useState(location.state?.user || null);
   const {isLoggedIn, setIsLoggedIn} = useOutletContext(); // Get the context from Outlet
   const [isPFPChanged, setIsPFPChanged] = useState(false);
   const navigate = useNavigate();  // This will help in redirecting
@@ -154,6 +155,16 @@ const Profile = ({ stories }) => {
     setpfpLink(event.target.value);
   }
 
+  const fetchUsers = () => {
+    axios.get('http://localhost:7000/users')
+      .then(response => {
+        setUser(response.data); // Update state with the user data
+      })
+      .catch(error => {
+        console.error('There was an error fetching the users!', error);
+      });
+  };
+
   const handlePFP = (id) => {
     console.log("User ID:", id); 
     //handle putting link and updating table for specific user
@@ -162,6 +173,10 @@ const Profile = ({ stories }) => {
     })
     .then(response => {
       console.log(response.data.message);
+      setUser(prevUser => ({
+        ...prevUser,
+        profilePic: pfpLink // Update only the profile picture
+      }));
       setIsPFPChanged(true);
     })
     .catch(error => {
@@ -172,21 +187,12 @@ const Profile = ({ stories }) => {
     setShow(false);
   }
 
-  useEffect(() => {
-    const fetchUsers = () => {
-      axios.get('http://localhost:7000/users')
-        .then(response => {
-          setUser(response.data); // Update state with the user data
-        })
-        .catch(error => {
-          console.error('There was an error fetching the users!', error);
-        });
-    };
-    if (isPFPChanged) {
-      fetchUsers();
-      setIsPFPChanged(false)
-    }
-  }, [isPFPChanged]);
+  // useEffect(() => {
+  //   if (isPFPChanged) {
+  //     fetchUsers();
+  //     setIsPFPChanged(false)
+  //   }
+  // }, [isPFPChanged]);
 
   return (
     <>
