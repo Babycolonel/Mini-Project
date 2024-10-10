@@ -111,10 +111,9 @@ const Profile = ({ stories }) => {
   useEffect((data) => {
     axios.get('http://localhost:7000/books')
       .then(response => {
-        const fetchedBooks = response.data;
 
         // Set the sorted books to state
-        setBooks(fetchedBooks);
+        setBooks(response.data);
         setRefresh(data)
       })
       .catch(error => {
@@ -123,9 +122,11 @@ const Profile = ({ stories }) => {
       axios.get('http://localhost:7000/reviews')
       .then(response => {
 
+        const reviews = response.data;
 
+        const filteredReviews = reviews.filter(review => review.id === user.id);
         // Set the sorted books to state
-        setReviews(response.data);
+        setReviews(filteredReviews);
   
       })
       .catch(error => {
