@@ -71,7 +71,7 @@
   width: 2vw;
 }
 
-.review-container {
+.profreview-container {
   width: 30vw;
   height: 47vw;
   color: white;
@@ -90,9 +90,9 @@
   margin-bottom: 2vw;
 
 }
-.review-container:hover {
+/* .review-container:hover {
   transform: scale(1.1);
-}
+} */
 
 #logOutButton {
   transform: translateX(40vw);
